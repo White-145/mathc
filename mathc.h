@@ -263,7 +263,6 @@ struct vec2 {
 			mfloat_t t;
 		};
 		mfloat_t v[VEC2_SIZE];
-		mfloat_t data[VEC2_SIZE];
 	};
 #else
 	mfloat_t x;
@@ -290,7 +289,6 @@ struct vec3 {
 			mfloat_t blue;
 		};
 		mfloat_t v[VEC3_SIZE];
-		mfloat_t data[VEC3_SIZE];
 	};
 #else
 	mfloat_t x;
@@ -327,7 +325,6 @@ struct vec4 {
         	mfloat_t alpha;
     	};
 		mfloat_t v[VEC4_SIZE];
-		mfloat_t data[VEC4_SIZE];
 	};
 #else
 	mfloat_t x;
@@ -347,7 +344,6 @@ struct quat {
 			mfloat_t w;
 		};
 		mfloat_t v[QUAT_SIZE];
-		mfloat_t data[QUAT_SIZE];
 	};
 #else
 	mfloat_t x;
@@ -372,7 +368,6 @@ struct mat2 {
 			mfloat_t m22;
 		};
 		mfloat_t v[MAT2_SIZE];
-		mfloat_t data[MAT2_SIZE];
 	};
 #else
 	mfloat_t m11;
@@ -403,7 +398,6 @@ struct mat3 {
 			mfloat_t m33;
 		};
 		mfloat_t v[MAT3_SIZE];
-		mfloat_t data[MAT3_SIZE];
 	};
 #else
 	mfloat_t m11;
@@ -447,7 +441,6 @@ struct mat4 {
 			mfloat_t m44;
 		};
 		mfloat_t v[MAT4_SIZE];
-		mfloat_t data[MAT4_SIZE];
 	};
 #else
 	mfloat_t m11;
