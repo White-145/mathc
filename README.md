@@ -38,6 +38,7 @@ MATHC can be configured using these preprocessors:
 - `MATHC_NO_STRUCT_FUNCTIONS`: don't define the functions that take structures as value.
 - `MATHC_NO_EASING_FUNCTIONS`: don't define the easing functions.
 - `MATHC_PRECISE_TRIGONOMETRY`: sin cos calculation improvements
+
 You can define these preprocessors using the compiler's option `-D` or using the compiler's option `-include` to include a configuration header with the configuration preprocessors inside it.
 
 Example of a configuration header that makes `mint_t` a `int16_t`, `mfloat_t` a `GLfloat` and uses the standard math functions with double floating-point precision:
