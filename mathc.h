@@ -24,7 +24,7 @@ the following restrictions:
 #include <stdbool.h>
 #include <math.h>
 
-#define MATHC_VERSION_YYYY 2019
+#define MATHC_VERSION_YYYY 2024
 #define MATHC_VERSION_MM 02
 #define MATHC_VERSION_DD 16
 #define MATHC_VERSION_MICRO 0
