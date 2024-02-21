@@ -19,8 +19,7 @@ the following restrictions:
 */
 
 #include "mathc.h"
-
-#if !defined(MATHC_FLOATING_POINT_TYPE) && defined(MATHC_USE_FLOATING_POINT)
+#if defined(MATHC_PRECISE_TRIGONOMETRY) && defined(MATHC_USE_FLOATING_POINT)
 /* The following code (sincos1cos and float and double versions of
  * sncs1cs) is Copyright © 1985, 1995, 2000 Stephen L. Moshier and
  * Copyright © 2020 Neven Sajko. The intention is to get accurate
@@ -2683,8 +2682,7 @@ mfloat_t *mat3_rotation_z(mfloat_t *result, mfloat_t f)
 
 mfloat_t *mat3_rotation_axis(mfloat_t *result, mfloat_t *v0, mfloat_t f)
 {
-#if !defined(MATHC_FLOATING_POINT_TYPE)
-	// Get higher accuracy 1-cosine when mfloat_t is known.
+#if defined(MATHC_PRECISE_TRIGONOMETRY)
 	sincos1cos sc1c = sncs1cs(f);
 	mfloat_t c = sc1c.cos, s = sc1c.sin, one_c = sc1c.omc;
 #else
@@ -3146,8 +3144,7 @@ mfloat_t *mat4_rotation_z(mfloat_t *result, mfloat_t f)
 
 mfloat_t *mat4_rotation_axis(mfloat_t *result, mfloat_t *v0, mfloat_t f)
 {
-#if !defined(MATHC_FLOATING_POINT_TYPE)
-	// Get higher accuracy 1-cosine when mfloat_t is known.
+#if defined(MATHC_PRECISE_TRIGONOMETRY)
 	sincos1cos sc1c = sncs1cs(f);
 	mfloat_t c = sc1c.cos, s = sc1c.sin, one_c = sc1c.omc;
 #else
@@ -6928,8 +6925,7 @@ mfloat_t sine_ease_in(mfloat_t f)
 
 mfloat_t sine_ease_in_out(mfloat_t f)
 {
-#if !defined(MATHC_FLOATING_POINT_TYPE)
-	// Get higher accuracy 1-cosine when mfloat_t is known.
+#if defined(MATHC_PRECISE_TRIGONOMETRY)
 	sincos1cos sc1c = sncs1cs(f * MPI);
 	return MFLOAT_C(0.5) * sc1c.omc;
 #else
