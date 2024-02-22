@@ -421,9 +421,7 @@ mint_t *vec3i(mint_t *result, mint_t x, mint_t y, mint_t z)
 
 mint_t *vec3i_assign(mint_t *result, const mint_t *v0)
 {
-    result[0] = v0[0];
-    result[1] = v0[1];
-    result[2] = v0[2];
+    memcpy(result, v0, sizeof(mint_t)*VEC3_SIZE);
     return result;
 }
 
@@ -439,17 +437,13 @@ mint_t *vec3i_assign_vec3(mint_t *result, const mfloat_t *v0)
 
 mint_t *vec3i_zero(mint_t *result)
 {
-    result[0] = 0;
-    result[1] = 0;
-    result[2] = 0;
+    memset(result,0,sizeof(mint_t)*VEC3_SIZE);
     return result;
 }
 
 mint_t *vec3i_one(mint_t *result)
 {
-    result[0] = 1;
-    result[1] = 1;
-    result[2] = 1;
+    memset(result,1,sizeof(mint_t)*VEC3_SIZE);
     return result;
 }
 
@@ -565,9 +559,7 @@ mint_t *vec3i_cross(mint_t *result, const mint_t *v0, const mint_t *v1)
     cross[0] = v0[1] * v1[2] - v0[2] * v1[1];
     cross[1] = v0[2] * v1[0] - v0[0] * v1[2];
     cross[2] = v0[0] * v1[1] - v0[1] * v1[0];
-    result[0] = cross[0];
-    result[1] = cross[1];
-    result[2] = cross[2];
+    memcpy(result,cross,sizeof(mint_t)*VEC3_SIZE);
     return result;
 }
 
@@ -664,10 +656,7 @@ mint_t *vec4i(mint_t *result, mint_t x, mint_t y, mint_t z, mint_t w)
 
 mint_t *vec4i_assign(mint_t *result, const mint_t *v0)
 {
-    result[0] = v0[0];
-    result[1] = v0[1];
-    result[2] = v0[2];
-    result[3] = v0[3];
+    memcpy(result, v0, sizeof(mint_t)*VEC4_SIZE);
     return result;
 }
 
@@ -684,19 +673,13 @@ mint_t *vec4i_assign_vec4(mint_t *result, const mfloat_t *v0)
 
 mint_t *vec4i_zero(mint_t *result)
 {
-    result[0] = 0;
-    result[1] = 0;
-    result[2] = 0;
-    result[3] = 0;
+    memset(result,0,sizeof(mint_t)*VEC4_SIZE);
     return result;
 }
 
 mint_t *vec4i_one(mint_t *result)
 {
-    result[0] = 1;
-    result[1] = 1;
-    result[2] = 1;
-    result[3] = 1;
+    memset(result,1,sizeof(mint_t)*VEC4_SIZE);
     return result;
 }
 
@@ -1284,9 +1267,7 @@ mfloat_t *vec3(mfloat_t *result, mfloat_t x, mfloat_t y, mfloat_t z)
 
 mfloat_t *vec3_assign(mfloat_t *result, const mfloat_t *v0)
 {
-    result[0] = v0[0];
-    result[1] = v0[1];
-    result[2] = v0[2];
+    memcpy(result,v0,sizeof(mfloat_t)*VEC3_SIZE);
     return result;
 }
 
@@ -1502,9 +1483,7 @@ mfloat_t *vec3_cross(mfloat_t *result, const mfloat_t *v0, const mfloat_t *v1)
     cross[0] = v0[1] * v1[2] - v0[2] * v1[1];
     cross[1] = v0[2] * v1[0] - v0[0] * v1[2];
     cross[2] = v0[0] * v1[1] - v0[1] * v1[0];
-    result[0] = cross[0];
-    result[1] = cross[1];
-    result[2] = cross[2];
+    memcpy(result,cross,sizeof(mfloat_t)*VEC3_SIZE);
     return result;
 }
 
@@ -1979,10 +1958,7 @@ mfloat_t *quat(mfloat_t *result, mfloat_t x, mfloat_t y, mfloat_t z, mfloat_t w)
 
 mfloat_t *quat_assign(mfloat_t *result, const mfloat_t *q0)
 {
-    result[0] = q0[0];
-    result[1] = q0[1];
-    result[2] = q0[2];
-    result[3] = q0[3];
+    memcpy(result,q0,sizeof(mfloat_t)*QUAT_SIZE);
     return result;
 }
 
@@ -2103,10 +2079,7 @@ mfloat_t *quat_power(mfloat_t *result, const mfloat_t *q0, mfloat_t exponent)
         result[2] = result[2] * s;
         result[3] = MCOS(new_alpha);
     } else {
-        result[0] = q0[0];
-        result[1] = q0[1];
-        result[2] = q0[1];
-        result[3] = q0[3];
+        memcpy(result,q0,sizeof(mfloat_t)*QUAT_SIZE);
     }
     return result;
 }
