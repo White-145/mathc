@@ -158,94 +158,94 @@ typedef double mfloat_t;
 #if defined(MATHC_USE_INT)
 struct vec2i {
 #if defined(MATHC_USE_UNIONS)
-	union {
-		struct {
-			mint_t x;
-			mint_t y;
-		};
-		struct {
-			mint_t s;
-			mint_t t;
-		};
-		struct {
-			mint_t start;
-			mint_t end;
-		};
-		mint_t v[VEC2_SIZE];
-	};
+    union {
+        struct {
+            mint_t x;
+            mint_t y;
+        };
+        struct {
+            mint_t s;
+            mint_t t;
+        };
+        struct {
+            mint_t start;
+            mint_t end;
+        };
+        mint_t v[VEC2_SIZE];
+    };
 #else
-	mint_t x;
-	mint_t y;
+    mint_t x;
+    mint_t y;
 #endif
 };
 
 struct vec3i {
 #if defined(MATHC_USE_UNIONS)
-	union {
-		struct {
-			mint_t x;
-			mint_t y;
-			mint_t z;
-		};
-		struct {
-			mint_t r;
-			mint_t g;
-			mint_t b;
-		};
-		struct {
-			mint_t red;
-			mint_t green;
-			mint_t blue;
-		};
-		mint_t v[VEC3_SIZE];
-	};
+    union {
+        struct {
+            mint_t x;
+            mint_t y;
+            mint_t z;
+        };
+        struct {
+            mint_t r;
+            mint_t g;
+            mint_t b;
+        };
+        struct {
+            mint_t red;
+            mint_t green;
+            mint_t blue;
+        };
+        mint_t v[VEC3_SIZE];
+    };
 #else
-	mint_t x;
-	mint_t y;
-	mint_t z;
+    mint_t x;
+    mint_t y;
+    mint_t z;
 #endif
 };
 
 struct vec4i {
 #if defined(MATHC_USE_UNIONS)
-	union {
-		struct {
-			mint_t x;
-			mint_t y;
-			mint_t z;
-			mint_t w;
-		};
-		struct {
-			mint_t x_;
-			mint_t y_;
-			mint_t width;
-			mint_t height;
-		};
-		struct {
-			mint_t r;
-			mint_t g;
-			mint_t b;
-			mint_t a;
-		};
-		struct {
-			mint_t red;
-			mint_t green;
-			mint_t blue;
-			mint_t alpha;
-		};
-		struct {
-			mint_t vstart;
-			mint_t vcount;
-			mint_t istart;
-			mint_t icount;
-		};
-		mint_t v[VEC4_SIZE];
-	};
+    union {
+        struct {
+            mint_t x;
+            mint_t y;
+            mint_t z;
+            mint_t w;
+        };
+        struct {
+            mint_t x_;
+            mint_t y_;
+            mint_t width;
+            mint_t height;
+        };
+        struct {
+            mint_t r;
+            mint_t g;
+            mint_t b;
+            mint_t a;
+        };
+        struct {
+            mint_t red;
+            mint_t green;
+            mint_t blue;
+            mint_t alpha;
+        };
+        struct {
+            mint_t vstart;
+            mint_t vcount;
+            mint_t istart;
+            mint_t icount;
+        };
+        mint_t v[VEC4_SIZE];
+    };
 #else
-	mint_t x;
-	mint_t y;
-	mint_t z;
-	mint_t w;
+    mint_t x;
+    mint_t y;
+    mint_t z;
+    mint_t w;
 #endif
 };
 #endif
@@ -253,103 +253,103 @@ struct vec4i {
 #if defined(MATHC_USE_FLOATING_POINT)
 struct vec2 {
 #if defined(MATHC_USE_UNIONS)
-	union {
-		struct {
-			mfloat_t x;
-			mfloat_t y;
-		};
-		struct {
-			mfloat_t s;
-			mfloat_t t;
-		};
-		mfloat_t v[VEC2_SIZE];
-	};
+    union {
+        struct {
+            mfloat_t x;
+            mfloat_t y;
+        };
+        struct {
+            mfloat_t s;
+            mfloat_t t;
+        };
+        mfloat_t v[VEC2_SIZE];
+    };
 #else
-	mfloat_t x;
-	mfloat_t y;
+    mfloat_t x;
+    mfloat_t y;
 #endif
 };
 
 struct vec3 {
 #if defined(MATHC_USE_UNIONS)
-	union {
-		struct {
-			mfloat_t x;
-			mfloat_t y;
-			mfloat_t z;
-		};
-		struct {
-			mfloat_t r;
-			mfloat_t g;
-			mfloat_t b;
-		};
-		struct {
-			mfloat_t red;
-			mfloat_t green;
-			mfloat_t blue;
-		};
-		mfloat_t v[VEC3_SIZE];
-	};
+    union {
+        struct {
+            mfloat_t x;
+            mfloat_t y;
+            mfloat_t z;
+        };
+        struct {
+            mfloat_t r;
+            mfloat_t g;
+            mfloat_t b;
+        };
+        struct {
+            mfloat_t red;
+            mfloat_t green;
+            mfloat_t blue;
+        };
+        mfloat_t v[VEC3_SIZE];
+    };
 #else
-	mfloat_t x;
-	mfloat_t y;
-	mfloat_t z;
+    mfloat_t x;
+    mfloat_t y;
+    mfloat_t z;
 #endif
 };
 
 struct vec4 {
 #if defined(MATHC_USE_UNIONS)
-	union {
-		struct {
-			mfloat_t x;
-			mfloat_t y;
-			mfloat_t z;
-			mfloat_t w;
-		};
-		struct {
-        	mfloat_t left;
-        	mfloat_t top;
-        	mfloat_t width;
-        	mfloat_t height;
-    	};
-    	struct {
-        	mfloat_t r;
-        	mfloat_t g;
-        	mfloat_t b;
-        	mfloat_t a;
-    	};
-    	struct {
-        	mfloat_t red;
-        	mfloat_t green;
-        	mfloat_t blue;
-        	mfloat_t alpha;
-    	};
-		mfloat_t v[VEC4_SIZE];
-	};
+    union {
+        struct {
+            mfloat_t x;
+            mfloat_t y;
+            mfloat_t z;
+            mfloat_t w;
+        };
+        struct {
+            mfloat_t left;
+            mfloat_t top;
+            mfloat_t width;
+            mfloat_t height;
+        };
+        struct {
+            mfloat_t r;
+            mfloat_t g;
+            mfloat_t b;
+            mfloat_t a;
+        };
+        struct {
+            mfloat_t red;
+            mfloat_t green;
+            mfloat_t blue;
+            mfloat_t alpha;
+        };
+        mfloat_t v[VEC4_SIZE];
+    };
 #else
-	mfloat_t x;
-	mfloat_t y;
-	mfloat_t z;
-	mfloat_t w;
+    mfloat_t x;
+    mfloat_t y;
+    mfloat_t z;
+    mfloat_t w;
 #endif
 };
 
 struct quat {
 #if defined(MATHC_USE_UNIONS)
-	union {
-		struct {
-			mfloat_t x;
-			mfloat_t y;
-			mfloat_t z;
-			mfloat_t w;
-		};
-		mfloat_t v[QUAT_SIZE];
-	};
+    union {
+        struct {
+            mfloat_t x;
+            mfloat_t y;
+            mfloat_t z;
+            mfloat_t w;
+        };
+        mfloat_t v[QUAT_SIZE];
+    };
 #else
-	mfloat_t x;
-	mfloat_t y;
-	mfloat_t z;
-	mfloat_t w;
+    mfloat_t x;
+    mfloat_t y;
+    mfloat_t z;
+    mfloat_t w;
 #endif
 };
 
@@ -360,20 +360,20 @@ Matrix 2×2 representation:
 */
 struct mat2 {
 #if defined(MATHC_USE_UNIONS)
-	union {
-		struct {
-			mfloat_t m11;
-			mfloat_t m21;
-			mfloat_t m12;
-			mfloat_t m22;
-		};
-		mfloat_t v[MAT2_SIZE];
-	};
+    union {
+        struct {
+            mfloat_t m11;
+            mfloat_t m21;
+            mfloat_t m12;
+            mfloat_t m22;
+        };
+        mfloat_t v[MAT2_SIZE];
+    };
 #else
-	mfloat_t m11;
-	mfloat_t m21;
-	mfloat_t m12;
-	mfloat_t m22;
+    mfloat_t m11;
+    mfloat_t m21;
+    mfloat_t m12;
+    mfloat_t m22;
 #endif
 };
 
@@ -385,30 +385,30 @@ Matrix 3×3 representation:
 */
 struct mat3 {
 #if defined(MATHC_USE_UNIONS)
-	union {
-		struct {
-			mfloat_t m11;
-			mfloat_t m21;
-			mfloat_t m31;
-			mfloat_t m12;
-			mfloat_t m22;
-			mfloat_t m32;
-			mfloat_t m13;
-			mfloat_t m23;
-			mfloat_t m33;
-		};
-		mfloat_t v[MAT3_SIZE];
-	};
+    union {
+        struct {
+            mfloat_t m11;
+            mfloat_t m21;
+            mfloat_t m31;
+            mfloat_t m12;
+            mfloat_t m22;
+            mfloat_t m32;
+            mfloat_t m13;
+            mfloat_t m23;
+            mfloat_t m33;
+        };
+        mfloat_t v[MAT3_SIZE];
+    };
 #else
-	mfloat_t m11;
-	mfloat_t m21;
-	mfloat_t m31;
-	mfloat_t m12;
-	mfloat_t m22;
-	mfloat_t m32;
-	mfloat_t m13;
-	mfloat_t m23;
-	mfloat_t m33;
+    mfloat_t m11;
+    mfloat_t m21;
+    mfloat_t m31;
+    mfloat_t m12;
+    mfloat_t m22;
+    mfloat_t m32;
+    mfloat_t m13;
+    mfloat_t m23;
+    mfloat_t m33;
 #endif
 };
 
@@ -421,44 +421,44 @@ Matrix 4×4 representation:
 */
 struct mat4 {
 #if defined(MATHC_USE_UNIONS)
-	union {
-		struct {
-			mfloat_t m11;
-			mfloat_t m21;
-			mfloat_t m31;
-			mfloat_t m41;
-			mfloat_t m12;
-			mfloat_t m22;
-			mfloat_t m32;
-			mfloat_t m42;
-			mfloat_t m13;
-			mfloat_t m23;
-			mfloat_t m33;
-			mfloat_t m43;
-			mfloat_t m14;
-			mfloat_t m24;
-			mfloat_t m34;
-			mfloat_t m44;
-		};
-		mfloat_t v[MAT4_SIZE];
-	};
+    union {
+        struct {
+            mfloat_t m11;
+            mfloat_t m21;
+            mfloat_t m31;
+            mfloat_t m41;
+            mfloat_t m12;
+            mfloat_t m22;
+            mfloat_t m32;
+            mfloat_t m42;
+            mfloat_t m13;
+            mfloat_t m23;
+            mfloat_t m33;
+            mfloat_t m43;
+            mfloat_t m14;
+            mfloat_t m24;
+            mfloat_t m34;
+            mfloat_t m44;
+        };
+        mfloat_t v[MAT4_SIZE];
+    };
 #else
-	mfloat_t m11;
-	mfloat_t m21;
-	mfloat_t m31;
-	mfloat_t m41;
-	mfloat_t m12;
-	mfloat_t m22;
-	mfloat_t m32;
-	mfloat_t m42;
-	mfloat_t m13;
-	mfloat_t m23;
-	mfloat_t m33;
-	mfloat_t m43;
-	mfloat_t m14;
-	mfloat_t m24;
-	mfloat_t m34;
-	mfloat_t m44;
+    mfloat_t m11;
+    mfloat_t m21;
+    mfloat_t m31;
+    mfloat_t m41;
+    mfloat_t m12;
+    mfloat_t m22;
+    mfloat_t m32;
+    mfloat_t m42;
+    mfloat_t m13;
+    mfloat_t m23;
+    mfloat_t m33;
+    mfloat_t m43;
+    mfloat_t m14;
+    mfloat_t m24;
+    mfloat_t m34;
+    mfloat_t m44;
 #endif
 };
 #endif
