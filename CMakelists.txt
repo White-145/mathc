@@ -1,0 +1,10 @@
+project(mathc LANGUAGES C)
+
+add_library(${PROJECT_NAME}
+    mathc.c
+)
+
+target_include_directories(${PROJECT_NAME}
+    PUBLIC
+        ./
+)
