@@ -5100,6 +5100,7 @@ struct mat2 smat2_inverse(struct mat2 m0)
 struct mat2 smat2_scaling(struct vec2 v0)
 {
     struct mat2 result;
+    mat2_identity((mfloat_t *)&result);
     mat2_scaling((mfloat_t *)&result, (const mfloat_t *)&v0);
     return result;
 }
@@ -5203,6 +5204,7 @@ struct mat3 smat3_inverse(struct mat3 m0)
 struct mat3 smat3_scaling(struct vec3 v0)
 {
     struct mat3 result;
+    mat3_identity((mfloat_t *)&result);
     mat3_scaling((mfloat_t *)&result, (const mfloat_t *)&v0);
     return result;
 }
@@ -5217,6 +5219,7 @@ struct mat3 smat3_scale(struct mat3 m0, struct vec3 v0)
 struct mat3 smat3_rotation_x(mfloat_t f)
 {
     struct mat3 result;
+    mat3_identity((mfloat_t *)&result);
     mat3_rotation_x((mfloat_t *)&result, f);
     return result;
 }
@@ -5224,6 +5227,7 @@ struct mat3 smat3_rotation_x(mfloat_t f)
 struct mat3 smat3_rotation_y(mfloat_t f)
 {
     struct mat3 result;
+    mat3_identity((mfloat_t *)&result);
     mat3_rotation_y((mfloat_t *)&result, f);
     return result;
 }
@@ -5231,6 +5235,7 @@ struct mat3 smat3_rotation_y(mfloat_t f)
 struct mat3 smat3_rotation_z(mfloat_t f)
 {
     struct mat3 result;
+    mat3_identity((mfloat_t *)&result);
     mat3_rotation_z((mfloat_t *)&result, f);
     return result;
 }
@@ -5313,6 +5318,7 @@ struct mat4 smat4_cofactor(struct mat4 m0)
 struct mat4 smat4_rotation_x(mfloat_t f)
 {
     struct mat4 result;
+    mat4_identity((mfloat_t *)&result);
     mat4_rotation_x((mfloat_t *)&result, f);
     return result;
 }
@@ -5320,6 +5326,7 @@ struct mat4 smat4_rotation_x(mfloat_t f)
 struct mat4 smat4_rotation_y(mfloat_t f)
 {
     struct mat4 result;
+    mat4_identity((mfloat_t *)&result);
     mat4_rotation_y((mfloat_t *)&result, f);
     return result;
 }
@@ -5327,6 +5334,7 @@ struct mat4 smat4_rotation_y(mfloat_t f)
 struct mat4 smat4_rotation_z(mfloat_t f)
 {
     struct mat4 result;
+    mat4_identity((mfloat_t *)&result);
     mat4_rotation_z((mfloat_t *)&result, f);
     return result;
 }
