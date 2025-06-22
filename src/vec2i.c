@@ -205,8 +205,8 @@ mint_t *vec2i_tangent(mint_t *result, const mint_t *v0) {
 
 #if defined(MATHC_USE_FLOATING_POINT)
 mint_t *vec2i_assign_vec2(mint_t *result, const mfloat_t *v0) {
-    result[0] = v0[0];
-    result[1] = v0[1];
+    result[0] = (mint_t)v0[0];
+    result[1] = (mint_t)v0[1];
     return result;
 }
 #endif

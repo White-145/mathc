@@ -323,8 +323,8 @@ mfloat_t **vec2_orthonormalization(mfloat_t result[2][2], mfloat_t basis[2][2]) 
 
 #if defined(MATHC_USE_INT)
 mfloat_t *vec2_assign_vec2i(mfloat_t *result, const mint_t *v0) {
-    result[0] = v0[0];
-    result[1] = v0[1];
+    result[0] = (mfloat_t)v0[0];
+    result[1] = (mfloat_t)v0[1];
     return result;
 }
 #endif
@@ -569,7 +569,8 @@ struct vec2 svec2_assign_vec2i(struct vec2i v0) {
 #endif
 #endif
 
-#if defined(MATHC_USE_POINTER_STRUCT_FUNCTIONS)bool psvec2_is_zero(struct vec2 *v0) {
+#if defined(MATHC_USE_POINTER_STRUCT_FUNCTIONS)
+bool psvec2_is_zero(struct vec2 *v0) {
     return vec2_is_zero((const mfloat_t *)v0);
 }
 

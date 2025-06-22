@@ -268,10 +268,10 @@ mfloat_t *vec4_lerp(mfloat_t *result, const mfloat_t *v0, const mfloat_t *v1, mf
 
 #if defined(MATHC_USE_INT)
 mfloat_t *vec4_assign_vec4i(mfloat_t *result, const mint_t *v0) {
-    result[0] = v0[0];
-    result[1] = v0[1];
-    result[2] = v0[2];
-    result[3] = v0[3];
+    result[0] = (mfloat_t)v0[0];
+    result[1] = (mfloat_t)v0[1];
+    result[2] = (mfloat_t)v0[2];
+    result[3] = (mfloat_t)v0[3];
     return result;
 }
 #endif

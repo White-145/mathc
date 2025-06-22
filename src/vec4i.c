@@ -274,10 +274,10 @@ mint_t *vec4i_clamp(mint_t *result, const mint_t *v0, const mint_t *v1, const mi
 
 #if defined(MATHC_USE_FLOATING_POINT)
 mint_t *vec4i_assign_vec4(mint_t *result, const mfloat_t *v0) {
-    result[0] = v0[0];
-    result[1] = v0[1];
-    result[2] = v0[2];
-    result[3] = v0[3];
+    result[0] = (mint_t)v0[0];
+    result[1] = (mint_t)v0[1];
+    result[2] = (mint_t)v0[2];
+    result[3] = (mint_t)v0[3];
     return result;
 }
 #endif

@@ -241,9 +241,9 @@ mint_t *vec3i_clamp(mint_t *result, const mint_t *v0, const mint_t *v1, const mi
 
 #if defined(MATHC_USE_FLOATING_POINT)
 mint_t *vec3i_assign_vec3(mint_t *result, const mfloat_t *v0) {
-    result[0] = v0[0];
-    result[1] = v0[1];
-    result[2] = v0[2];
+    result[0] = (mint_t)v0[0];
+    result[1] = (mint_t)v0[1];
+    result[2] = (mint_t)v0[2];
     return result;
 }
 #endif

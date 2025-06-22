@@ -104,6 +104,38 @@ mfloat_t *mat2_adjugate(mfloat_t *result, const mfloat_t *m0) {
     return result;
 }
 
+mfloat_t *mat2_add(mfloat_t *result, const mfloat_t *m0, const mfloat_t *m1) {
+    result[0] = m0[0] + m1[0];
+    result[1] = m0[1] + m1[1];
+    result[2] = m0[2] + m1[2];
+    result[3] = m0[3] + m1[3];
+    return result;
+}
+
+mfloat_t *mat2_add_f(mfloat_t *result, const mfloat_t *m0, mfloat_t f) {
+    result[0] = m0[0] + f;
+    result[1] = m0[1] + f;
+    result[2] = m0[2] + f;
+    result[3] = m0[3] + f;
+    return result;
+}
+
+mfloat_t *mat2_subtract(mfloat_t *result, const mfloat_t *m0, const mfloat_t *m1) {
+    result[0] = m0[0] - m1[0];
+    result[1] = m0[1] - m1[1];
+    result[2] = m0[2] - m1[2];
+    result[3] = m0[3] - m1[3];
+    return result;
+}
+
+mfloat_t *mat2_subtract_f(mfloat_t *result, const mfloat_t *m0, mfloat_t f) {
+    result[0] = m0[0] - f;
+    result[1] = m0[1] - f;
+    result[2] = m0[2] - f;
+    result[3] = m0[3] - f;
+    return result;
+}
+
 mfloat_t *mat2_multiply(mfloat_t *result, const mfloat_t *m0, const mfloat_t *m1) {
     mfloat_t multiplied[MAT3_SIZE];
     multiplied[0] = m0[0] * m1[0] + m0[2] * m1[1];
@@ -224,6 +256,30 @@ struct mat2 smat2_adjugate(struct mat2 m0) {
     return result;
 }
 
+struct mat2 smat2_add(struct mat2 m0, struct mat2 m1) {
+    struct mat2 result;
+    mat2_add((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&m1);
+    return result;
+}
+
+struct mat2 smat2_add_f(struct mat2 m0, mfloat_t f) {
+    struct mat2 result;
+    mat2_add_f((mfloat_t *)&result, (const mfloat_t *)&m0, f);
+    return result;
+}
+
+struct mat2 smat2_subtract(struct mat2 m0, struct mat2 m1) {
+    struct mat2 result;
+    mat2_subtract((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&m1);
+    return result;
+}
+
+struct mat2 smat2_subtract_f(struct mat2 m0, mfloat_t f) {
+    struct mat2 result;
+    mat2_subtract_f((mfloat_t *)&result, (const mfloat_t *)&m0, f);
+    return result;
+}
+
 struct mat2 smat2_multiply(struct mat2 m0, struct mat2 m1) {
     struct mat2 result;
     mat2_multiply((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&m1);
@@ -303,6 +359,22 @@ struct mat2 *psmat2_cofactor(struct mat2 *result, const struct mat2 *m0) {
 
 struct mat2 *psmat2_adjugate(struct mat2 *result, const struct mat2 *m0) {
     return (struct mat2 *)mat2_adjugate((mfloat_t *)result, (const mfloat_t *)m0);
+}
+
+struct mat2 *psmat2_add(struct mat2 *result, const struct mat2 *m0, const struct mat2 *m1) {
+    return (struct mat2 *)mat2_add((mfloat_t *)result, (const mfloat_t *)m0, (const mfloat_t *)m1);
+}
+
+struct mat2 *psmat2_add_f(struct mat2 *result, const struct mat2 *m0, mfloat_t f) {
+    return (struct mat2 *)mat2_add_f((mfloat_t *)result, (const mfloat_t *)m0, f);
+}
+
+struct mat2 *psmat2_subtract(struct mat2 *result, const struct mat2 *m0, const struct mat2 *m1) {
+    return (struct mat2 *)mat2_subtract((mfloat_t *)result, (const mfloat_t *)m0, (const mfloat_t *)m1);
+}
+
+struct mat2 *psmat2_subtract_f(struct mat2 *result, const struct mat2 *m0, mfloat_t f) {
+    return (struct mat2 *)mat2_subtract_f((mfloat_t *)result, (const mfloat_t *)m0, f);
 }
 
 struct mat2 *psmat2_multiply(struct mat2 *result, const struct mat2 *m0, const struct mat2 *m1) {

@@ -379,9 +379,9 @@ mfloat_t **vec3_orthonormalization(mfloat_t result[3][3], mfloat_t basis[3][3]) 
 
 #if defined(MATHC_USE_INT)
 mfloat_t *vec3_assign_vec3i(mfloat_t *result, const mint_t *v0) {
-    result[0] = v0[0];
-    result[1] = v0[1];
-    result[2] = v0[2];
+    result[0] = (mfloat_t)v0[0];
+    result[1] = (mfloat_t)v0[1];
+    result[2] = (mfloat_t)v0[2];
     return result;
 }
 #endif

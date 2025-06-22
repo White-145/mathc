@@ -188,6 +188,58 @@ mfloat_t *mat3_cofactor(mfloat_t *result, const mfloat_t *m0) {
     return result;
 }
 
+mfloat_t *mat3_add(mfloat_t *result, const mfloat_t *m0, const mfloat_t *m1) {
+    result[0] = m0[0] + m1[0];
+    result[1] = m0[1] + m1[1];
+    result[2] = m0[2] + m1[2];
+    result[3] = m0[3] + m1[3];
+    result[4] = m0[4] + m1[4];
+    result[5] = m0[5] + m1[5];
+    result[6] = m0[6] + m1[6];
+    result[7] = m0[7] + m1[7];
+    result[8] = m0[8] + m1[8];
+    return result;
+}
+
+mfloat_t *mat3_add_f(mfloat_t *result, const mfloat_t *m0, mfloat_t f) {
+    result[0] = m0[0] + f;
+    result[1] = m0[1] + f;
+    result[2] = m0[2] + f;
+    result[3] = m0[3] + f;
+    result[4] = m0[4] + f;
+    result[5] = m0[5] + f;
+    result[6] = m0[6] + f;
+    result[7] = m0[7] + f;
+    result[8] = m0[8] + f;
+    return result;
+}
+
+mfloat_t *mat3_subtract(mfloat_t *result, const mfloat_t *m0, const mfloat_t *m1) {
+    result[0] = m0[0] - m1[0];
+    result[1] = m0[1] - m1[1];
+    result[2] = m0[2] - m1[2];
+    result[3] = m0[3] - m1[3];
+    result[4] = m0[4] - m1[4];
+    result[5] = m0[5] - m1[5];
+    result[6] = m0[6] - m1[6];
+    result[7] = m0[7] - m1[7];
+    result[8] = m0[8] - m1[8];
+    return result;
+}
+
+mfloat_t *mat3_subtract_f(mfloat_t *result, const mfloat_t *m0, mfloat_t f) {
+    result[0] = m0[0] - f;
+    result[1] = m0[1] - f;
+    result[2] = m0[2] - f;
+    result[3] = m0[3] - f;
+    result[4] = m0[4] - f;
+    result[5] = m0[5] - f;
+    result[6] = m0[6] - f;
+    result[7] = m0[7] - f;
+    result[8] = m0[8] - f;
+    return result;
+}
+
 mfloat_t *mat3_multiply(mfloat_t *result, const mfloat_t *m0, const mfloat_t *m1) {
     mfloat_t multiplied[MAT3_SIZE];
     multiplied[0] = m0[0] * m1[0] + m0[3] * m1[1] + m0[6] * m1[2];
@@ -443,6 +495,30 @@ struct mat3 smat3_cofactor(struct mat3 m0) {
     return result;
 }
 
+struct mat3 smat3_add(struct mat3 m0, struct mat3 m1) {
+    struct mat3 result;
+    mat3_add((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&m1);
+    return result;
+}
+
+struct mat3 smat3_add_f(struct mat3 m0, mfloat_t f) {
+    struct mat3 result;
+    mat3_add_f((mfloat_t *)&result, (const mfloat_t *)&m0, f);
+    return result;
+}
+
+struct mat3 smat3_subtract(struct mat3 m0, struct mat3 m1) {
+    struct mat3 result;
+    mat3_subtract((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&m1);
+    return result;
+}
+
+struct mat3 smat3_subtract_f(struct mat3 m0, mfloat_t f) {
+    struct mat3 result;
+    mat3_subtract_f((mfloat_t *)&result, (const mfloat_t *)&m0, f);
+    return result;
+}
+
 struct mat3 smat3_multiply(struct mat3 m0, struct mat3 m1) {
     struct mat3 result;
     mat3_multiply((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&m1);
@@ -541,6 +617,22 @@ struct mat3 *psmat3_transpose(struct mat3 *result, const struct mat3 *m0) {
 
 struct mat3 *psmat3_cofactor(struct mat3 *result, const struct mat3 *m0) {
     return (struct mat3 *)mat3_cofactor((mfloat_t *)result, (const mfloat_t *)m0);
+}
+
+struct mat3 *psmat3_add(struct mat3 *result, const struct mat3 *m0, const struct mat3 *m1) {
+    return (struct mat3 *)mat3_add((mfloat_t *)result, (const mfloat_t *)m0, (const mfloat_t *)m1);
+}
+
+struct mat3 *psmat3_add_f(struct mat3 *result, const struct mat3 *m0, mfloat_t f) {
+    return (struct mat3 *)mat3_add_f((mfloat_t *)result, (const mfloat_t *)m0, f);
+}
+
+struct mat3 *psmat3_subtract(struct mat3 *result, const struct mat3 *m0, const struct mat3 *m1) {
+    return (struct mat3 *)mat3_subtract((mfloat_t *)result, (const mfloat_t *)m0, (const mfloat_t *)m1);
+}
+
+struct mat3 *psmat3_subtract_f(struct mat3 *result, const struct mat3 *m0, mfloat_t f) {
+    return (struct mat3 *)mat3_subtract_f((mfloat_t *)result, (const mfloat_t *)m0, f);
 }
 
 struct mat3 *psmat3_multiply(struct mat3 *result, const struct mat3 *m0, const struct mat3 *m1) {

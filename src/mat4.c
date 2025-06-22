@@ -586,6 +586,86 @@ mfloat_t *mat4_scale(mfloat_t *result, const mfloat_t *m0, const mfloat_t *v0) {
     return result;
 }
 
+mfloat_t *mat4_add(mfloat_t *result, const mfloat_t *m0, const mfloat_t *m1) {
+    result[0] = m0[0] + m1[0];
+    result[1] = m0[1] + m1[1];
+    result[2] = m0[2] + m1[2];
+    result[3] = m0[3] + m1[3];
+    result[4] = m0[4] + m1[4];
+    result[5] = m0[5] + m1[5];
+    result[6] = m0[6] + m1[6];
+    result[7] = m0[7] + m1[7];
+    result[8] = m0[8] + m1[8];
+    result[9] = m0[9] + m1[9];
+    result[10] = m0[10] + m1[10];
+    result[11] = m0[11] + m1[11];
+    result[12] = m0[12] + m1[12];
+    result[13] = m0[13] + m1[13];
+    result[14] = m0[14] + m1[14];
+    result[15] = m0[15] + m1[15];
+    return result;
+}
+
+mfloat_t *mat4_add_f(mfloat_t *result, const mfloat_t *m0, mfloat_t f) {
+    result[0] = m0[0] + f;
+    result[1] = m0[1] + f;
+    result[2] = m0[2] + f;
+    result[3] = m0[3] + f;
+    result[4] = m0[4] + f;
+    result[5] = m0[5] + f;
+    result[6] = m0[6] + f;
+    result[7] = m0[7] + f;
+    result[8] = m0[8] + f;
+    result[9] = m0[9] + f;
+    result[10] = m0[10] + f;
+    result[11] = m0[11] + f;
+    result[12] = m0[12] + f;
+    result[13] = m0[13] + f;
+    result[14] = m0[14] + f;
+    result[15] = m0[15] + f;
+    return result;
+}
+
+mfloat_t *mat4_subtract(mfloat_t *result, const mfloat_t *m0, const mfloat_t *m1) {
+    result[0] = m0[0] - m1[0];
+    result[1] = m0[1] - m1[1];
+    result[2] = m0[2] - m1[2];
+    result[3] = m0[3] - m1[3];
+    result[4] = m0[4] - m1[4];
+    result[5] = m0[5] - m1[5];
+    result[6] = m0[6] - m1[6];
+    result[7] = m0[7] - m1[7];
+    result[8] = m0[8] - m1[8];
+    result[9] = m0[9] - m1[9];
+    result[10] = m0[10] - m1[10];
+    result[11] = m0[11] - m1[11];
+    result[12] = m0[12] - m1[12];
+    result[13] = m0[13] - m1[13];
+    result[14] = m0[14] - m1[14];
+    result[15] = m0[15] - m1[15];
+    return result;
+}
+
+mfloat_t *mat4_subtract_f(mfloat_t *result, const mfloat_t *m0, mfloat_t f) {
+    result[0] = m0[0] - f;
+    result[1] = m0[1] - f;
+    result[2] = m0[2] - f;
+    result[3] = m0[3] - f;
+    result[4] = m0[4] - f;
+    result[5] = m0[5] - f;
+    result[6] = m0[6] - f;
+    result[7] = m0[7] - f;
+    result[8] = m0[8] - f;
+    result[9] = m0[9] - f;
+    result[10] = m0[10] - f;
+    result[11] = m0[11] - f;
+    result[12] = m0[12] - f;
+    result[13] = m0[13] - f;
+    result[14] = m0[14] - f;
+    result[15] = m0[15] - f;
+    return result;
+}
+
 mfloat_t *mat4_multiply(mfloat_t *result, const mfloat_t *m0, const mfloat_t *m1) {
     mfloat_t multiplied[MAT4_SIZE];
     multiplied[0] = m0[0] * m1[0] + m0[4] * m1[1] + m0[8] * m1[2] + m0[12] * m1[3];
@@ -692,20 +772,20 @@ mfloat_t *mat4_inverse(mfloat_t *result, const mfloat_t *m0) {
         - m23 * m41 * m34
         - m24 * m31 * m43
         + m24 * m41 * m33;
-    inverse[5] =m11 * m33 * m44
-        -m11 * m43 * m34
+    inverse[5] = m11 * m33 * m44
+        - m11 * m43 * m34
         - m13 * m31 * m44
         + m13 * m41 * m34
         + m14 * m31 * m43
         - m14 * m41 * m33;
     inverse[9] = -m11 * m23 * m44
-        +m11 * m43 * m24
+        + m11 * m43 * m24
         + m13 * m21 * m44
         - m13 * m41 * m24
         - m14 * m21 * m43
         + m14 * m41 * m23;
-    inverse[13] =m11 * m23 * m34
-        -m11 * m33 * m24
+    inverse[13] = m11 * m23 * m34
+        - m11 * m33 * m24
         - m13 * m21 * m34
         + m13 * m31 * m24
         + m14 * m21 * m33
@@ -717,19 +797,19 @@ mfloat_t *mat4_inverse(mfloat_t *result, const mfloat_t *m0) {
         + m24 * m31 * m42
         - m24 * m41 * m32;
     inverse[6] = -m11 * m32 * m44
-        +m11 * m42 * m34
+        + m11 * m42 * m34
         + m12 * m31 * m44
         - m12 * m41 * m34
         - m14 * m31 * m42
         + m14 * m41 * m32;
-    inverse[10] =m11 * m22 * m44
-        -m11 * m42 * m24
+    inverse[10] = m11 * m22 * m44
+        - m11 * m42 * m24
         - m12 * m21 * m44
         + m12 * m41 * m24
         + m14 * m21 * m42
         - m14 * m41 * m22;
     inverse[14] = -m11 * m22 * m34
-        +m11 * m32 * m24
+        + m11 * m32 * m24
         + m12 * m21 * m34
         - m12 * m31 * m24
         - m14 * m21 * m32
@@ -740,20 +820,20 @@ mfloat_t *mat4_inverse(mfloat_t *result, const mfloat_t *m0) {
         - m22 * m41 * m33
         - m23 * m31 * m42
         + m23 * m41 * m32;
-    inverse[7] =m11 * m32 * m43
-        -m11 * m42 * m33
+    inverse[7] = m11 * m32 * m43
+        - m11 * m42 * m33
         - m12 * m31 * m43
         + m12 * m41 * m33
         + m13 * m31 * m42
         - m13 * m41 * m32;
     inverse[11] = -m11 * m22 * m43
-        +m11 * m42 * m23
+        + m11 * m42 * m23
         + m12 * m21 * m43
         - m12 * m41 * m23
         - m13 * m21 * m42
         + m13 * m41 * m22;
-    inverse[15] =m11 * m22 * m33
-        -m11 * m32 * m23
+    inverse[15] = m11 * m22 * m33
+        - m11 * m32 * m23
         - m12 * m21 * m33
         + m12 * m31 * m23
         + m13 * m21 * m32
@@ -1015,6 +1095,30 @@ struct mat4 smat4_scale(struct mat4 m0, struct vec3 v0) {
     return result;
 }
 
+struct mat4 smat4_add(struct mat4 m0, struct mat4 m1) {
+    struct mat4 result;
+    mat4_add((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&m1);
+    return result;
+}
+
+struct mat4 smat4_add_f(struct mat4 m0, mfloat_t f) {
+    struct mat4 result;
+    mat4_add_f((mfloat_t *)&result, (const mfloat_t *)&m0, f);
+    return result;
+}
+
+struct mat4 smat4_subtract(struct mat4 m0, struct mat4 m1) {
+    struct mat4 result;
+    mat4_subtract((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&m1);
+    return result;
+}
+
+struct mat4 smat4_subtract_f(struct mat3 m0, mfloat_t f) {
+    struct mat4 result;
+    mat4_subtract_f((mfloat_t *)&result, (const mfloat_t *)&m0, f);
+    return result;
+}
+
 struct mat4 smat4_multiply(struct mat4 m0, struct mat4 m1) {
     struct mat4 result;
     mat4_multiply((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&m1);
@@ -1137,6 +1241,22 @@ struct mat4 *psmat4_scaling(struct mat4 *result, const struct mat4 *m0, const st
 
 struct mat4 *psmat4_scale(struct mat4 *result, const struct mat4 *m0, const struct vec3 *v0) {
     return (struct mat4 *)mat4_scale((mfloat_t *)result, (const mfloat_t *)m0, (const mfloat_t *)v0);
+}
+
+struct mat4 *psmat4_add(struct mat4 *result, const struct mat3 *m0, const struct mat3 *m1) {
+    return (struct mat4 *)mat4_add((mfloat_t *)result, (const mfloat_t *)m0, (const mfloat_t *)m1);
+}
+
+struct mat4 *psmat4_add_f(struct mat4 *result, const struct mat4 *m0, mfloat_t f) {
+    return (struct mat4 *)mat4_add_f((mfloat_t *)result, (const mfloat_t *)m0, f);
+}
+
+struct mat4 *psmat4_subtract(struct mat4 *result, const struct mat4 *m0, const struct mat4 *m1) {
+    return (struct mat4 *)mat4_subtract((mfloat_t *)result, (const mfloat_t *)m0, (const mfloat_t *)m1);
+}
+
+struct mat4 *psmat4_subtract_f(struct mat4 *result, const struct mat4 *m0, mfloat_t f) {    
+    return (struct mat4 *)mat4_subtract_f((mfloat_t *)result, (const mfloat_t *)m0, f);
 }
 
 struct mat4 *psmat4_multiply(struct mat4 *result, const struct mat4 *m0, const struct mat4 *m1) {
