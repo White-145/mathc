@@ -46,49 +46,49 @@ mfloat_t *vec4_assign(mfloat_t *result, const mfloat_t *v0) {
 }
 
 mfloat_t *vec4_zero(mfloat_t *result) {
-    result[0] = MFLOAT_C(0.0);
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(0.0);
+    result[0] = MZERO;
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MZERO;
     return result;
 }
 
 mfloat_t *vec4_one(mfloat_t *result) {
-    result[0] = MFLOAT_C(1.0);
-    result[1] = MFLOAT_C(1.0);
-    result[2] = MFLOAT_C(1.0);
-    result[3] = MFLOAT_C(1.0);
+    result[0] = MONE;
+    result[1] = MONE;
+    result[2] = MONE;
+    result[3] = MONE;
     return result;
 }
 
 mfloat_t *vec4_sign(mfloat_t *result, const mfloat_t *v0) {
-    if (v0[0] > MFLOAT_C(0.0)) {
-        result[0] = MFLOAT_C(1.0);
+    if (v0[0] > MZERO) {
+        result[0] = MONE;
     } else if (v0[0] < 0) {
-        result[0] = -MFLOAT_C(1.0);
+        result[0] = -MONE;
     } else {
-        result[0] = MFLOAT_C(0.0);
+        result[0] = MZERO;
     }
-    if (v0[1] > MFLOAT_C(0.0)) {
-        result[1] = MFLOAT_C(1.0);
+    if (v0[1] > MZERO) {
+        result[1] = MONE;
     } else if (v0[1] < 0) {
-        result[1] = -MFLOAT_C(1.0);
+        result[1] = -MONE;
     } else {
-        result[1] = MFLOAT_C(0.0);
+        result[1] = MZERO;
     }
-    if (v0[2] > MFLOAT_C(0.0)) {
-        result[2] = MFLOAT_C(1.0);
+    if (v0[2] > MZERO) {
+        result[2] = MONE;
     } else if (v0[2] < 0) {
-        result[2] = -MFLOAT_C(1.0);
+        result[2] = -MONE;
     } else {
-        result[2] = MFLOAT_C(0.0);
+        result[2] = MZERO;
     }
-    if (v0[3] > MFLOAT_C(0.0)) {
-        result[3] = MFLOAT_C(1.0);
+    if (v0[3] > MZERO) {
+        result[3] = MONE;
     } else if (v0[3] < 0) {
-        result[3] = -MFLOAT_C(1.0);
+        result[3] = -MONE;
     } else {
-        result[3] = MFLOAT_C(0.0);
+        result[3] = MZERO;
     }
     return result;
 }

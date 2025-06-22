@@ -42,31 +42,31 @@ mfloat_t *vec2_assign(mfloat_t *result, const mfloat_t *v0) {
 }
 
 mfloat_t *vec2_zero(mfloat_t *result) {
-    result[0] = MFLOAT_C(0.0);
-    result[1] = MFLOAT_C(0.0);
+    result[0] = MZERO;
+    result[1] = MZERO;
     return result;
 }
 
 mfloat_t *vec2_one(mfloat_t *result) {
-    result[0] = MFLOAT_C(1.0);
-    result[1] = MFLOAT_C(1.0);
+    result[0] = MONE;
+    result[1] = MONE;
     return result;
 }
 
 mfloat_t *vec2_sign(mfloat_t *result, const mfloat_t *v0) {
-    if (v0[0] > MFLOAT_C(0.0)) {
-        result[0] = MFLOAT_C(1.0);
-    } else if (v0[0] < MFLOAT_C(0.0)) {
-        result[0] = -MFLOAT_C(1.0);
+    if (v0[0] > MZERO) {
+        result[0] = MONE;
+    } else if (v0[0] < MZERO) {
+        result[0] = -MONE;
     } else {
-        result[0] = MFLOAT_C(0.0);
+        result[0] = MZERO;
     }
-    if (v0[1] > MFLOAT_C(0.0)) {
-        result[1] = MFLOAT_C(1.0);
-    } else if (v0[1] < MFLOAT_C(0.0)) {
-        result[1] = -MFLOAT_C(1.0);
+    if (v0[1] > MZERO) {
+        result[1] = MONE;
+    } else if (v0[1] < MZERO) {
+        result[1] = -MONE;
     } else {
-        result[1] = MFLOAT_C(0.0);
+        result[1] = MZERO;
     }
     return result;
 }
@@ -214,7 +214,7 @@ mfloat_t *vec2_slide(mfloat_t *result, const mfloat_t *v0, const mfloat_t *norma
 }
 
 mfloat_t *vec2_reflect(mfloat_t *result, const mfloat_t *v0, const mfloat_t *normal) {
-    mfloat_t d = MFLOAT_C(2.0) * vec2_dot(v0, normal);
+    mfloat_t d = MTWO * vec2_dot(v0, normal);
     result[0] = normal[0] * d - v0[0];
     result[1] = normal[1] * d - v0[1];
     return result;

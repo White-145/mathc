@@ -42,42 +42,42 @@ mfloat_t *mat4(mfloat_t *result, mfloat_t m11, mfloat_t m12, mfloat_t m13, mfloa
 }
 
 mfloat_t *mat4_zero(mfloat_t *result) {
-    result[0] = MFLOAT_C(0.0);
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(0.0);
-    result[4] = MFLOAT_C(0.0);
-    result[5] = MFLOAT_C(0.0);
-    result[6] = MFLOAT_C(0.0);
-    result[7] = MFLOAT_C(0.0);
-    result[8] = MFLOAT_C(0.0);
-    result[9] = MFLOAT_C(0.0);
-    result[10] = MFLOAT_C(0.0);
-    result[11] = MFLOAT_C(0.0);
-    result[12] = MFLOAT_C(0.0);
-    result[13] = MFLOAT_C(0.0);
-    result[14] = MFLOAT_C(0.0);
-    result[15] = MFLOAT_C(0.0);
+    result[0] = MZERO;
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MZERO;
+    result[4] = MZERO;
+    result[5] = MZERO;
+    result[6] = MZERO;
+    result[7] = MZERO;
+    result[8] = MZERO;
+    result[9] = MZERO;
+    result[10] = MZERO;
+    result[11] = MZERO;
+    result[12] = MZERO;
+    result[13] = MZERO;
+    result[14] = MZERO;
+    result[15] = MZERO;
     return result;
 }
 
 mfloat_t *mat4_identity(mfloat_t *result) {
-    result[0] = MFLOAT_C(1.0);
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(0.0);
-    result[4] = MFLOAT_C(0.0);
-    result[5] = MFLOAT_C(1.0);
-    result[6] = MFLOAT_C(0.0);
-    result[7] = MFLOAT_C(0.0);
-    result[8] = MFLOAT_C(0.0);
-    result[9] = MFLOAT_C(0.0);
-    result[10] = MFLOAT_C(1.0);
-    result[11] = MFLOAT_C(0.0);
-    result[12] = MFLOAT_C(0.0);
-    result[13] = MFLOAT_C(0.0);
-    result[14] = MFLOAT_C(0.0);
-    result[15] = MFLOAT_C(1.0);
+    result[0] = MONE;
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MZERO;
+    result[4] = MZERO;
+    result[5] = MONE;
+    result[6] = MZERO;
+    result[7] = MZERO;
+    result[8] = MZERO;
+    result[9] = MZERO;
+    result[10] = MONE;
+    result[11] = MZERO;
+    result[12] = MZERO;
+    result[13] = MZERO;
+    result[14] = MZERO;
+    result[15] = MONE;
     return result;
 }
 
@@ -375,22 +375,22 @@ mfloat_t *mat4_cofactor(mfloat_t *result, const mfloat_t *m0) {
 mfloat_t *mat4_rotation_x(mfloat_t *result, mfloat_t f) {
     mfloat_t c = MCOS(f);
     mfloat_t s = MSIN(f);
-    result[0] = MFLOAT_C(1.0);
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(0.0);
-    result[4] = MFLOAT_C(0.0);
+    result[0] = MONE;
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MZERO;
+    result[4] = MZERO;
     result[5] = c;
     result[6] = s;
-    result[7] = MFLOAT_C(0.0);
-    result[8] = MFLOAT_C(0.0);
+    result[7] = MZERO;
+    result[8] = MZERO;
     result[9] = -s;
     result[10] = c;
-    result[11] = MFLOAT_C(0.0);
-    result[12] = MFLOAT_C(0.0);
-    result[13] = MFLOAT_C(0.0);
-    result[14] = MFLOAT_C(0.0);
-    result[15] = MFLOAT_C(1.0);
+    result[11] = MZERO;
+    result[12] = MZERO;
+    result[13] = MZERO;
+    result[14] = MZERO;
+    result[15] = MONE;
     return result;
 }
 
@@ -398,21 +398,21 @@ mfloat_t *mat4_rotation_y(mfloat_t *result, mfloat_t f) {
     mfloat_t c = MCOS(f);
     mfloat_t s = MSIN(f);
     result[0] = c;
-    result[1] = MFLOAT_C(0.0);
+    result[1] = MZERO;
     result[2] = -s;
-    result[3] = MFLOAT_C(0.0);
-    result[4] = MFLOAT_C(0.0);
-    result[5] = MFLOAT_C(1.0);
-    result[6] = MFLOAT_C(0.0);
-    result[7] = MFLOAT_C(0.0);
+    result[3] = MZERO;
+    result[4] = MZERO;
+    result[5] = MONE;
+    result[6] = MZERO;
+    result[7] = MZERO;
     result[8] = s;
-    result[9] = MFLOAT_C(0.0);
+    result[9] = MZERO;
     result[10] = c;
-    result[11] = MFLOAT_C(0.0);
-    result[12] = MFLOAT_C(0.0);
-    result[13] = MFLOAT_C(0.0);
-    result[14] = MFLOAT_C(0.0);
-    result[15] = MFLOAT_C(1.0);
+    result[11] = MZERO;
+    result[12] = MZERO;
+    result[13] = MZERO;
+    result[14] = MZERO;
+    result[15] = MONE;
     return result;
 }
 
@@ -421,20 +421,20 @@ mfloat_t *mat4_rotation_z(mfloat_t *result, mfloat_t f) {
     mfloat_t s = MSIN(f);
     result[0] = c;
     result[1] = s;
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(0.0);
+    result[2] = MZERO;
+    result[3] = MZERO;
     result[4] = -s;
     result[5] = c;
-    result[6] = MFLOAT_C(0.0);
-    result[7] = MFLOAT_C(0.0);
-    result[8] = MFLOAT_C(0.0);
-    result[9] = MFLOAT_C(0.0);
-    result[10] = MFLOAT_C(1.0);
-    result[11] = MFLOAT_C(0.0);
-    result[12] = MFLOAT_C(0.0);
-    result[13] = MFLOAT_C(0.0);
-    result[14] = MFLOAT_C(0.0);
-    result[15] = MFLOAT_C(1.0);
+    result[6] = MZERO;
+    result[7] = MZERO;
+    result[8] = MZERO;
+    result[9] = MZERO;
+    result[10] = MONE;
+    result[11] = MZERO;
+    result[12] = MZERO;
+    result[13] = MZERO;
+    result[14] = MZERO;
+    result[15] = MONE;
     return result;
 }
 
@@ -445,7 +445,7 @@ mfloat_t *mat4_rotation_axis(mfloat_t *result, const mfloat_t *v0, mfloat_t f) {
 #else
     mfloat_t c = MCOS(f);
     mfloat_t s = MSIN(f);
-    mfloat_t one_c = MFLOAT_C(1.0) - c;
+    mfloat_t one_c = MONE - c;
 #endif
     mfloat_t x = v0[0];
     mfloat_t y = v0[1];
@@ -461,19 +461,19 @@ mfloat_t *mat4_rotation_axis(mfloat_t *result, const mfloat_t *v0, mfloat_t f) {
     result[0] = (xx + (yy + zz) * c) / l;
     result[1] = (xy * one_c + v0[2] * sqrt_l * s) / l;
     result[2] = (xz * one_c - v0[1] * sqrt_l * s) / l;
-    result[3] = MFLOAT_C(0.0);
+    result[3] = MZERO;
     result[4] = (xy * one_c - v0[2] * sqrt_l * s) / l;
     result[5] = (yy + (xx + zz) * c) / l;
     result[6] = (yz * one_c + v0[0] * sqrt_l * s) / l;
-    result[7] = MFLOAT_C(0.0);
+    result[7] = MZERO;
     result[8] = (xz * one_c + v0[1] * sqrt_l * s) / l;
     result[9] = (yz * one_c - v0[0] * sqrt_l * s) / l;
     result[10] = (zz + (xx + yy) * c) / l;
-    result[11] = MFLOAT_C(0.0);
-    result[12] = MFLOAT_C(0.0);
-    result[13] = MFLOAT_C(0.0);
-    result[14] = MFLOAT_C(0.0);
-    result[15] = MFLOAT_C(1.0);
+    result[11] = MZERO;
+    result[12] = MZERO;
+    result[13] = MZERO;
+    result[14] = MZERO;
+    result[15] = MONE;
     return result;
 }
 
@@ -487,22 +487,22 @@ mfloat_t *mat4_rotation_quat(mfloat_t *result, const mfloat_t *q0) {
     mfloat_t yw = q0[1] * q0[3];
     mfloat_t yz = q0[1] * q0[2];
     mfloat_t xw = q0[0] * q0[3];
-    result[0] = MFLOAT_C(1.0) - MFLOAT_C(2.0) * (yy + zz);
-    result[1] = MFLOAT_C(2.0) * (xy + zw);
-    result[2] = MFLOAT_C(2.0) * (xz - yw);
-    result[3] = MFLOAT_C(0.0);
-    result[4] = MFLOAT_C(2.0) * (xy - zw);
-    result[5] = MFLOAT_C(1.0) - MFLOAT_C(2.0) * (xx + zz);
-    result[6] = MFLOAT_C(2.0) * (yz + xw);
-    result[7] = MFLOAT_C(0.0);
-    result[8] = MFLOAT_C(2.0) * (xz + yw);
-    result[9] = MFLOAT_C(2.0) * (yz - xw);
-    result[10] = MFLOAT_C(1.0) - MFLOAT_C(2.0) * (xx + yy);
-    result[11] = MFLOAT_C(0.0);
-    result[12] = MFLOAT_C(0.0);
-    result[13] = MFLOAT_C(0.0);
-    result[14] = MFLOAT_C(0.0);
-    result[15] = MFLOAT_C(1.0);
+    result[0] = MONE - MTWO * (yy + zz);
+    result[1] = MTWO * (xy + zw);
+    result[2] = MTWO * (xz - yw);
+    result[3] = MZERO;
+    result[4] = MTWO * (xy - zw);
+    result[5] = MONE - MTWO * (xx + zz);
+    result[6] = MTWO * (yz + xw);
+    result[7] = MZERO;
+    result[8] = MTWO * (xz + yw);
+    result[9] = MTWO * (yz - xw);
+    result[10] = MONE - MTWO * (xx + yy);
+    result[11] = MZERO;
+    result[12] = MZERO;
+    result[13] = MZERO;
+    result[14] = MZERO;
+    result[15] = MONE;
     return result;
 }
 
@@ -758,7 +758,7 @@ mfloat_t *mat4_inverse(mfloat_t *result, const mfloat_t *m0) {
         + m12 * m31 * m23
         + m13 * m21 * m32
         - m13 * m31 * m22;
-    inverted_determinant = MFLOAT_C(1.0) / (m11 * inverse[0] + m21 * inverse[4] + m31 * inverse[8] + m41 * inverse[12]);
+    inverted_determinant = MONE / (m11 * inverse[0] + m21 * inverse[4] + m31 * inverse[8] + m41 * inverse[12]);
     result[0] = inverse[0] * inverted_determinant;
     result[1] = inverse[1] * inverted_determinant;
     result[2] = inverse[2] * inverted_determinant;
@@ -810,107 +810,107 @@ mfloat_t *mat4_look_at(mfloat_t *result, const mfloat_t *position, const mfloat_
     result[0] = tmp_side[0];
     result[1] = tmp_up[0];
     result[2] = -tmp_forward[0];
-    result[3] = MFLOAT_C(0.0);
+    result[3] = MZERO;
     result[4] = tmp_side[1];
     result[5] = tmp_up[1];
     result[6] = -tmp_forward[1];
-    result[7] = MFLOAT_C(0.0);
+    result[7] = MZERO;
     result[8] = tmp_side[2];
     result[9] = tmp_up[2];
     result[10] = -tmp_forward[2];
-    result[11] = MFLOAT_C(0.0);
+    result[11] = MZERO;
     result[12] = -vec3_dot(tmp_side, position);
     result[13] = -vec3_dot(tmp_up, position);
     result[14] = vec3_dot(tmp_forward, position);
-    result[15] = MFLOAT_C(1.0);
+    result[15] = MONE;
     return result;
 }
 
 mfloat_t *mat4_ortho(mfloat_t *result, mfloat_t l, mfloat_t r, mfloat_t b, mfloat_t t, mfloat_t n, mfloat_t f) {
-    result[0] = MFLOAT_C(2.0) / (r - l);
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(0.0);
-    result[4] = MFLOAT_C(0.0);
-    result[5] = MFLOAT_C(2.0) / (t - b);
-    result[6] = MFLOAT_C(0.0);
-    result[7] = MFLOAT_C(0.0);
-    result[8] = MFLOAT_C(0.0);
-    result[9] = MFLOAT_C(0.0);
-    result[10] = -MFLOAT_C(2.0) / (f - n);
-    result[11] = MFLOAT_C(0.0);
+    result[0] = MTWO / (r - l);
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MZERO;
+    result[4] = MZERO;
+    result[5] = MTWO / (t - b);
+    result[6] = MZERO;
+    result[7] = MZERO;
+    result[8] = MZERO;
+    result[9] = MZERO;
+    result[10] = -MTWO / (f - n);
+    result[11] = MZERO;
     result[12] = -((r + l) / (r - l));
     result[13] = -((t + b) / (t - b));
     result[14] = -((f + n) / (f - n));
-    result[15] = MFLOAT_C(1.0);
+    result[15] = MONE;
     return result;
 }
 
 mfloat_t *mat4_perspective(mfloat_t *result, mfloat_t fov_y, mfloat_t aspect, mfloat_t n, mfloat_t f) {
-    mfloat_t tan_half_fov_y = MFLOAT_C(1.0) / MTAN(fov_y * MFLOAT_C(0.5));
-    result[0] = MFLOAT_C(1.0) / aspect * tan_half_fov_y;
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(0.0);
-    result[4] = MFLOAT_C(0.0);
-    result[5] = MFLOAT_C(1.0) / tan_half_fov_y;
-    result[6] = MFLOAT_C(0.0);
-    result[7] = MFLOAT_C(0.0);
-    result[8] = MFLOAT_C(0.0);
-    result[9] = MFLOAT_C(0.0);
+    mfloat_t tan_half_fov_y = MONE / MTAN(fov_y * MHALF);
+    result[0] = MONE / aspect * tan_half_fov_y;
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MZERO;
+    result[4] = MZERO;
+    result[5] = MONE / tan_half_fov_y;
+    result[6] = MZERO;
+    result[7] = MZERO;
+    result[8] = MZERO;
+    result[9] = MZERO;
     result[10] = f / (n - f);
-    result[11] = -MFLOAT_C(1.0);
-    result[12] = MFLOAT_C(0.0);
-    result[13] = MFLOAT_C(0.0);
+    result[11] = -MONE;
+    result[12] = MZERO;
+    result[13] = MZERO;
     result[14] = -(f * n) / (f - n);
-    result[15] = MFLOAT_C(0.0);
+    result[15] = MZERO;
     return result;
 }
 
 mfloat_t *mat4_perspective_fov(mfloat_t *result, mfloat_t fov, mfloat_t w, mfloat_t h, mfloat_t n, mfloat_t f) {
-    mfloat_t h2 = MCOS(fov * MFLOAT_C(0.5)) / MSIN(fov * MFLOAT_C(0.5));
+    mfloat_t h2 = MCOS(fov * MHALF) / MSIN(fov * MHALF);
     mfloat_t w2 = h2 * h / w;
     result[0] = w2;
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(0.0);
-    result[4] = MFLOAT_C(0.0);
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MZERO;
+    result[4] = MZERO;
     result[5] = h2;
-    result[6] = MFLOAT_C(0.0);
-    result[7] = MFLOAT_C(0.0);
-    result[8] = MFLOAT_C(0.0);
-    result[9] = MFLOAT_C(0.0);
+    result[6] = MZERO;
+    result[7] = MZERO;
+    result[8] = MZERO;
+    result[9] = MZERO;
     result[10] = f / (n - f);
-    result[11] = -MFLOAT_C(1.0);
-    result[12] = MFLOAT_C(0.0);
-    result[13] = MFLOAT_C(0.0);
+    result[11] = -MONE;
+    result[12] = MZERO;
+    result[13] = MZERO;
     result[14] = -(f * n) / (f - n);
-    result[15] = MFLOAT_C(0.0);
+    result[15] = MZERO;
     return result;
 }
 
 mfloat_t *mat4_perspective_infinite(mfloat_t *result, mfloat_t fov_y, mfloat_t aspect, mfloat_t n) {
-    mfloat_t range = MTAN(fov_y * MFLOAT_C(0.5)) * n;
+    mfloat_t range = MTAN(fov_y * MHALF) * n;
     mfloat_t left = -range * aspect;
     mfloat_t right = range * aspect;
     mfloat_t top = range;
     mfloat_t bottom = -range;
-    result[0] = MFLOAT_C(2.0) * n / (right - left);
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(0.0);
-    result[4] = MFLOAT_C(0.0);
-    result[5] = MFLOAT_C(2.0) * n / (top - bottom);
-    result[6] = MFLOAT_C(0.0);
-    result[7] = MFLOAT_C(0.0);
-    result[8] = MFLOAT_C(0.0);
-    result[9] = MFLOAT_C(0.0);
-    result[10] = -MFLOAT_C(1.0);
-    result[11] = -MFLOAT_C(1.0);
-    result[12] = MFLOAT_C(0.0);
-    result[13] = MFLOAT_C(0.0);
-    result[14] = -MFLOAT_C(2.0) * n;
-    result[15] = MFLOAT_C(0.0);
+    result[0] = MTWO * n / (right - left);
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MZERO;
+    result[4] = MZERO;
+    result[5] = MTWO * n / (top - bottom);
+    result[6] = MZERO;
+    result[7] = MZERO;
+    result[8] = MZERO;
+    result[9] = MZERO;
+    result[10] = -MONE;
+    result[11] = -MONE;
+    result[12] = MZERO;
+    result[13] = MZERO;
+    result[14] = -MTWO * n;
+    result[15] = MZERO;
     return result;
 }
 

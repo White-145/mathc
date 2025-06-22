@@ -35,28 +35,28 @@ mfloat_t *mat3(mfloat_t *result, mfloat_t m11, mfloat_t m12, mfloat_t m13, mfloa
 }
 
 mfloat_t *mat3_zero(mfloat_t *result) {
-    result[0] = MFLOAT_C(0.0);
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(0.0);
-    result[4] = MFLOAT_C(0.0);
-    result[5] = MFLOAT_C(0.0);
-    result[6] = MFLOAT_C(0.0);
-    result[7] = MFLOAT_C(0.0);
-    result[8] = MFLOAT_C(0.0);
+    result[0] = MZERO;
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MZERO;
+    result[4] = MZERO;
+    result[5] = MZERO;
+    result[6] = MZERO;
+    result[7] = MZERO;
+    result[8] = MZERO;
     return result;
 }
 
 mfloat_t *mat3_identity(mfloat_t *result) {
-    result[0] = MFLOAT_C(1.0);
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(0.0);
-    result[4] = MFLOAT_C(1.0);
-    result[5] = MFLOAT_C(0.0);
-    result[6] = MFLOAT_C(0.0);
-    result[7] = MFLOAT_C(0.0);
-    result[8] = MFLOAT_C(1.0);
+    result[0] = MONE;
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MZERO;
+    result[4] = MONE;
+    result[5] = MZERO;
+    result[6] = MZERO;
+    result[7] = MZERO;
+    result[8] = MONE;
     return result;
 }
 
@@ -245,7 +245,7 @@ mfloat_t *mat3_inverse(mfloat_t *result, const mfloat_t *m0) {
     inverse[2] = m21 * m32 - m31 * m22;
     inverse[5] = m31 * m12 - m11 * m32;
     inverse[8] = m11 * m22 - m21 * m12;
-    inverted_determinant = MFLOAT_C(1.0) / (m11 * inverse[0] + m21 * inverse[3] + m31 * inverse[6]);
+    inverted_determinant = MONE / (m11 * inverse[0] + m21 * inverse[3] + m31 * inverse[6]);
     result[0] = inverse[0] * inverted_determinant;
     result[1] = inverse[1] * inverted_determinant;
     result[2] = inverse[2] * inverted_determinant;
@@ -260,13 +260,13 @@ mfloat_t *mat3_inverse(mfloat_t *result, const mfloat_t *m0) {
 
 mfloat_t *mat3_scaling(mfloat_t *result, const mfloat_t *v0) {
     result[0] = v0[0];
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(0.0);
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MZERO;
     result[4] = v0[1];
-    result[5] = MFLOAT_C(0.0);
-    result[6] = MFLOAT_C(0.0);
-    result[7] = MFLOAT_C(0.0);
+    result[5] = MZERO;
+    result[6] = MZERO;
+    result[7] = MZERO;
     result[8] = v0[2];
     return result;
 }
@@ -287,13 +287,13 @@ mfloat_t *mat3_scale(mfloat_t *result, const mfloat_t *m0, const mfloat_t *v0) {
 mfloat_t *mat3_rotation_x(mfloat_t *result, mfloat_t f) {
     mfloat_t c = MCOS(f);
     mfloat_t s = MSIN(f);
-    result[0] = MFLOAT_C(1.0);
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(0.0);
+    result[0] = MONE;
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MZERO;
     result[4] = c;
     result[5] = s;
-    result[6] = MFLOAT_C(0.0);
+    result[6] = MZERO;
     result[7] = -s;
     result[8] = c;
     return result;
@@ -303,13 +303,13 @@ mfloat_t *mat3_rotation_y(mfloat_t *result, mfloat_t f) {
     mfloat_t c = MCOS(f);
     mfloat_t s = MSIN(f);
     result[0] = c;
-    result[1] = MFLOAT_C(0.0);
+    result[1] = MZERO;
     result[2] = -s;
-    result[3] = MFLOAT_C(0.0);
-    result[4] = MFLOAT_C(1.0);
-    result[5] = MFLOAT_C(0.0);
+    result[3] = MZERO;
+    result[4] = MONE;
+    result[5] = MZERO;
     result[6] = s;
-    result[7] = MFLOAT_C(0.0);
+    result[7] = MZERO;
     result[8] = c;
     return result;
 }
@@ -319,13 +319,13 @@ mfloat_t *mat3_rotation_z(mfloat_t *result, mfloat_t f) {
     mfloat_t s = MSIN(f);
     result[0] = c;
     result[1] = s;
-    result[2] = MFLOAT_C(0.0);
+    result[2] = MZERO;
     result[3] = -s;
     result[4] = c;
-    result[5] = MFLOAT_C(0.0);
-    result[6] = MFLOAT_C(0.0);
-    result[7] = MFLOAT_C(0.0);
-    result[8] = MFLOAT_C(1.0);
+    result[5] = MZERO;
+    result[6] = MZERO;
+    result[7] = MZERO;
+    result[8] = MONE;
     return result;
 }
 
@@ -336,7 +336,7 @@ mfloat_t *mat3_rotation_axis(mfloat_t *result, const mfloat_t *v0, mfloat_t f) {
 #else
     mfloat_t c = MCOS(f);
     mfloat_t s = MSIN(f);
-    mfloat_t one_c = MFLOAT_C(1.0) - c;
+    mfloat_t one_c = MONE - c;
 #endif
     mfloat_t x = v0[0];
     mfloat_t y = v0[1];
@@ -371,15 +371,15 @@ mfloat_t *mat3_rotation_quat(mfloat_t *result, const mfloat_t *q0) {
     mfloat_t yw = q0[1] * q0[3];
     mfloat_t yz = q0[1] * q0[2];
     mfloat_t xw = q0[0] * q0[3];
-    result[0] = MFLOAT_C(1.0) - MFLOAT_C(2.0) * (yy - zz);
-    result[1] = MFLOAT_C(2.0) * (xy + zw);
-    result[2] = MFLOAT_C(2.0) * (xz - yw);
-    result[3] = MFLOAT_C(2.0) * (xy - zw);
-    result[4] = MFLOAT_C(1.0) - MFLOAT_C(2.0) * (xx - zz);
-    result[5] = MFLOAT_C(2.0) * (yz + xw);
-    result[6] = MFLOAT_C(2.0) * (xz + yw);
-    result[7] = MFLOAT_C(2.0) * (yz - xw);
-    result[8] = MFLOAT_C(1.0) - MFLOAT_C(2.0) * (xx - yy);
+    result[0] = MONE - MTWO * (yy - zz);
+    result[1] = MTWO * (xy + zw);
+    result[2] = MTWO * (xz - yw);
+    result[3] = MTWO * (xy - zw);
+    result[4] = MONE - MTWO * (xx - zz);
+    result[5] = MTWO * (yz + xw);
+    result[6] = MTWO * (xz + yw);
+    result[7] = MTWO * (yz - xw);
+    result[8] = MONE - MTWO * (xx - yy);
     return result;
 }
 

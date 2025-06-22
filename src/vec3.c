@@ -42,40 +42,40 @@ mfloat_t *vec3_assign(mfloat_t *result, const mfloat_t *v0) {
 }
 
 mfloat_t *vec3_zero(mfloat_t *result) {
-    result[0] = MFLOAT_C(0.0);
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
+    result[0] = MZERO;
+    result[1] = MZERO;
+    result[2] = MZERO;
     return result;
 }
 
 mfloat_t *vec3_one(mfloat_t *result) {
-    result[0] = MFLOAT_C(1.0);
-    result[1] = MFLOAT_C(1.0);
-    result[2] = MFLOAT_C(1.0);
+    result[0] = MONE;
+    result[1] = MONE;
+    result[2] = MONE;
     return result;
 }
 
 mfloat_t *vec3_sign(mfloat_t *result, const mfloat_t *v0) {
-    if (v0[0] > MFLOAT_C(0.0)) {
-        result[0] = MFLOAT_C(1.0);
+    if (v0[0] > MZERO) {
+        result[0] = MONE;
     } else if (v0[0] < 0) {
-        result[0] = -MFLOAT_C(1.0);
+        result[0] = -MONE;
     } else {
-        result[0] = MFLOAT_C(0.0);
+        result[0] = MZERO;
     }
-    if (v0[1] > MFLOAT_C(0.0)) {
-        result[1] = MFLOAT_C(1.0);
+    if (v0[1] > MZERO) {
+        result[1] = MONE;
     } else if (v0[1] < 0) {
-        result[1] = -MFLOAT_C(1.0);
+        result[1] = -MONE;
     } else {
-        result[1] = MFLOAT_C(0.0);
+        result[1] = MZERO;
     }
-    if (v0[2] > MFLOAT_C(0.0)) {
-        result[2] = MFLOAT_C(1.0);
+    if (v0[2] > MZERO) {
+        result[2] = MONE;
     } else if (v0[2] < 0) {
-        result[2] = -MFLOAT_C(1.0);
+        result[2] = -MONE;
     } else {
-        result[2] = MFLOAT_C(0.0);
+        result[2] = MZERO;
     }
     return result;
 }
@@ -255,7 +255,7 @@ mfloat_t *vec3_slide(mfloat_t *result, const mfloat_t *v0, const mfloat_t *norma
 }
 
 mfloat_t *vec3_reflect(mfloat_t *result, const mfloat_t *v0, const mfloat_t *normal) {
-    mfloat_t d = MFLOAT_C(2.0) * vec3_dot(v0, normal);
+    mfloat_t d = MTWO * vec3_dot(v0, normal);
     result[0] = normal[0] * d - v0[0];
     result[1] = normal[1] * d - v0[1];
     result[2] = normal[2] * d - v0[2];

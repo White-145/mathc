@@ -109,6 +109,10 @@ typedef MATHC_FLOATING_POINT_TYPE mfloat_t;
 #if !defined(MATHC_FLOATING_POINT_TYPE)
 typedef float mfloat_t;
 #endif
+#define MZERO 0.0f
+#define MONE 1.0f
+#define MTWO 2.0f
+#define MHALF 0.5f
 #define MPI 3.1415926536f
 #define MPI_2 1.5707963268f
 #define MPI_4 0.7853981634f
@@ -133,6 +137,10 @@ typedef float mfloat_t;
 #if !defined(MATHC_FLOATING_POINT_TYPE)
 typedef double mfloat_t;
 #endif
+#define MZERO 0.0
+#define MONE 1.0
+#define MTWO 2.0
+#define MHALF 0.5
 #define MPI 3.14159265358979323846
 #define MPI_2 1.57079632679489661923
 #define MPI_4 0.78539816339744830962

@@ -30,18 +30,18 @@ mfloat_t *mat2(mfloat_t *result, mfloat_t m11, mfloat_t m12, mfloat_t m21, mfloa
 }
 
 mfloat_t *mat2_zero(mfloat_t *result) {
-    result[0] = MFLOAT_C(0.0);
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(0.0);
+    result[0] = MZERO;
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MZERO;
     return result;
 }
 
 mfloat_t *mat2_identity(mfloat_t *result) {
-    result[0] = MFLOAT_C(1.0);
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(1.0);
+    result[0] = MONE;
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MONE;
     return result;
 }
 
@@ -129,7 +129,7 @@ mfloat_t *mat2_inverse(mfloat_t *result, const mfloat_t *m0) {
     mfloat_t inverse[MAT2_SIZE];
     mfloat_t det = mat2_determinant(m0);
     mat2_cofactor(inverse, m0);
-    mat2_multiply_f(inverse, inverse, MFLOAT_C(1.0) / det);
+    mat2_multiply_f(inverse, inverse, MONE / det);
     result[0] = inverse[0];
     result[1] = inverse[1];
     result[2] = inverse[2];
@@ -139,8 +139,8 @@ mfloat_t *mat2_inverse(mfloat_t *result, const mfloat_t *m0) {
 
 mfloat_t *mat2_scaling(mfloat_t *result, const mfloat_t *v0) {
     result[0] = v0[0];
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
+    result[1] = MZERO;
+    result[2] = MZERO;
     result[3] = v0[1];
     return result;
 }

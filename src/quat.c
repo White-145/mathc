@@ -43,18 +43,18 @@ mfloat_t *quat_assign(mfloat_t *result, const mfloat_t *q0) {
 }
 
 mfloat_t *quat_zero(mfloat_t *result) {
-    result[0] = MFLOAT_C(0.0);
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(0.0);
+    result[0] = MZERO;
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MZERO;
     return result;
 }
 
 mfloat_t *quat_null(mfloat_t *result) {
-    result[0] = MFLOAT_C(0.0);
-    result[1] = MFLOAT_C(0.0);
-    result[2] = MFLOAT_C(0.0);
-    result[3] = MFLOAT_C(1.0);
+    result[0] = MZERO;
+    result[1] = MZERO;
+    result[2] = MZERO;
+    result[3] = MONE;
     return result;
 }
 
@@ -116,7 +116,7 @@ mfloat_t *quat_conjugate(mfloat_t *result, const mfloat_t *q0) {
 }
 
 mfloat_t *quat_inverse(mfloat_t *result, const mfloat_t *q0) {
-    mfloat_t l = MFLOAT_C(1.0) / (q0[0] * q0[0] + q0[1] * q0[1] + q0[2] * q0[2] + q0[3] * q0[3]);
+    mfloat_t l = MONE / (q0[0] * q0[0] + q0[1] * q0[1] + q0[2] * q0[2] + q0[3] * q0[3]);
     result[0] = -q0[0] * l;
     result[1] = -q0[1] * l;
     result[2] = -q0[2] * l;
@@ -125,7 +125,7 @@ mfloat_t *quat_inverse(mfloat_t *result, const mfloat_t *q0) {
 }
 
 mfloat_t *quat_normalize(mfloat_t *result, const mfloat_t *q0) {
-    mfloat_t l = MFLOAT_C(1.0) / MSQRT(q0[0] * q0[0] + q0[1] * q0[1] + q0[2] * q0[2] + q0[3] * q0[3]);
+    mfloat_t l = MONE / MSQRT(q0[0] * q0[0] + q0[1] * q0[1] + q0[2] * q0[2] + q0[3] * q0[3]);
     result[0] = q0[0] * l;
     result[1] = q0[1] * l;
     result[2] = q0[2] * l;
@@ -138,7 +138,7 @@ mfloat_t quat_dot(const mfloat_t *q0, const mfloat_t *q1) {
 }
 
 mfloat_t *quat_power(mfloat_t *result, const mfloat_t *q0, mfloat_t exponent) {
-    if (MFABS(q0[3]) < MFLOAT_C(1.0) - MFLT_EPSILON) {
+    if (MFABS(q0[3]) < MONE - MFLT_EPSILON) {
         mfloat_t alpha = MACOS(q0[3]);
         mfloat_t new_alpha = alpha * exponent;
         mfloat_t s = MSIN(new_alpha) / MSIN(alpha);
@@ -153,7 +153,7 @@ mfloat_t *quat_power(mfloat_t *result, const mfloat_t *q0, mfloat_t exponent) {
 }
 
 mfloat_t *quat_from_axis_angle(mfloat_t *result, const mfloat_t *v0, mfloat_t angle) {
-    mfloat_t half = angle * MFLOAT_C(0.5);
+    mfloat_t half = angle * MHALF;
     mfloat_t s = MSIN(half);
     result[0] = v0[0] * s;
     result[1] = v0[1] * s;
@@ -175,33 +175,33 @@ mfloat_t *quat_from_vec3(mfloat_t *result, const mfloat_t *v0, const mfloat_t *v
 
 mfloat_t *quat_from_mat4(mfloat_t *result, const mfloat_t *m0) {
     mfloat_t scale = m0[0] + m0[5] + m0[10];
-    if (scale > MFLOAT_C(0.0)) {
-        mfloat_t sr = MSQRT(scale + MFLOAT_C(1.0));
-        result[3] = sr * MFLOAT_C(0.5);
-        sr = MFLOAT_C(0.5) / sr;
+    if (scale > MZERO) {
+        mfloat_t sr = MSQRT(scale + MONE);
+        result[3] = sr * MHALF;
+        sr = MHALF / sr;
         result[0] = (m0[9] - m0[6]) * sr;
         result[1] = (m0[2] - m0[8]) * sr;
         result[2] = (m0[4] - m0[1]) * sr;
     } else if ((m0[0] >= m0[5]) && (m0[0] >= m0[10])) {
-        mfloat_t sr = MSQRT(MFLOAT_C(1.0) + m0[0] - m0[5] - m0[10]);
-        mfloat_t half = MFLOAT_C(0.5) / sr;
-        result[0] = MFLOAT_C(0.5) * sr;
+        mfloat_t sr = MSQRT(MONE + m0[0] - m0[5] - m0[10]);
+        mfloat_t half = MHALF / sr;
+        result[0] = MHALF * sr;
         result[1] = (m0[4] + m0[1]) * half;
         result[2] = (m0[8] + m0[2]) * half;
         result[3] = (m0[9] - m0[6]) * half;
     } else if (m0[5] > m0[10]) {
-        mfloat_t sr = MSQRT(MFLOAT_C(1.0) + m0[5] - m0[0] - m0[10]);
-        mfloat_t half = MFLOAT_C(0.5) / sr;
+        mfloat_t sr = MSQRT(MONE + m0[5] - m0[0] - m0[10]);
+        mfloat_t half = MHALF / sr;
         result[0] = (m0[1] + m0[4]) * half;
-        result[1] = MFLOAT_C(0.5) * sr;
+        result[1] = MHALF * sr;
         result[2] = (m0[6] + m0[9]) * half;
         result[3] = (m0[2] - m0[8]) * half;
     } else {
-        mfloat_t sr = MSQRT(MFLOAT_C(1.0) + m0[10] - m0[0] - m0[5]);
-        mfloat_t half = MFLOAT_C(0.5) / sr;
+        mfloat_t sr = MSQRT(MONE + m0[10] - m0[0] - m0[5]);
+        mfloat_t half = MHALF / sr;
         result[0] = (m0[2] + m0[8]) * half;
         result[1] = (m0[6] + m0[9]) * half;
-        result[2] = MFLOAT_C(0.5) * sr;
+        result[2] = MHALF * sr;
         result[3] = (m0[4] - m0[1]) * half;
     }
     return result;
@@ -221,17 +221,17 @@ mfloat_t *quat_slerp(mfloat_t *result, const mfloat_t *q0, const mfloat_t *q1, m
     mfloat_t f0;
     mfloat_t f1;
     quat_assign(tmp1, q1);
-    if (d < MFLOAT_C(0.0)) {
+    if (d < MZERO) {
         quat_negative(tmp1, tmp1);
         d = -d;
     }
     if (d > MFLOAT_C(0.9995)) {
-        f0 = MFLOAT_C(1.0) - f;
+        f0 = MONE - f;
         f1 = f;
     } else {
         mfloat_t theta = MACOS(d);
         mfloat_t sin_theta = MSIN(theta);
-        f0 = MSIN((MFLOAT_C(1.0) - f) * theta) / sin_theta;
+        f0 = MSIN((MONE - f) * theta) / sin_theta;
         f1 = MSIN(f * theta) / sin_theta;
     }
     result[0] = q0[0] * f0 + tmp1[0] * f1;
@@ -251,7 +251,7 @@ mfloat_t quat_length_squared(const mfloat_t *q0) {
 
 mfloat_t quat_angle(const mfloat_t *q0, const mfloat_t *q1) {
     mfloat_t s = MSQRT(quat_length_squared(q0) * quat_length_squared(q1));
-    s = MFLOAT_C(1.0) / s;
+    s = MONE / s;
     return MACOS(quat_dot(q0, q1) * s);
 }
 
