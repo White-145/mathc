@@ -1,10 +1,23 @@
 project(mathc LANGUAGES C)
 
 add_library(${PROJECT_NAME}
-    mathc.c
+    src/int.c
+    src/float.c
+    src/vec2i.c
+    src/vec3i.c
+    src/vec4i.c
+    src/vec2.c
+    src/vec3.c
+    src/vec4.c
+    src/quat.c
+    src/mat2.c
+    src/mat3.c
+    src/mat4.c
+    src/ease.c
+    src/sncs1cs.c
 )
 
 target_include_directories(${PROJECT_NAME}
     PUBLIC
-        ./
+        include/
 )
