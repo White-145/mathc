@@ -506,6 +506,41 @@ mfloat_t *mat4_rotation_quat(mfloat_t *result, const mfloat_t *q0) {
     return result;
 }
 
+mfloat_t *mat4_rotate_x(mfloat_t *result, const mfloat_t *m0, mfloat_t f) {
+    mfloat_t rotation[MAT4_SIZE];
+    mat4_rotation_x(rotation, f);
+    mat4_multiply(result, m0, rotation);
+    return result;
+}
+
+mfloat_t *mat4_rotate_y(mfloat_t *result, const mfloat_t *m0, mfloat_t f) {
+    mfloat_t rotation[MAT4_SIZE];
+    mat4_rotation_y(rotation, f);
+    mat4_multiply(result, m0, rotation);
+    return result;
+}
+
+mfloat_t *mat4_rotate_z(mfloat_t *result, const mfloat_t *m0, mfloat_t f) {
+    mfloat_t rotation[MAT4_SIZE];
+    mat4_rotation_z(rotation, f);
+    mat4_multiply(result, m0, rotation);
+    return result;
+}
+
+mfloat_t *mat4_rotate_axis(mfloat_t *result, const mfloat_t *m0, const mfloat_t *v0, mfloat_t f) {
+    mfloat_t rotation[MAT4_SIZE];
+    mat4_rotation_axis(rotation, v0, f);
+    mat4_multiply(result, m0, rotation);
+    return result;
+}
+
+mfloat_t *mat4_rotate_quat(mfloat_t *result, const mfloat_t *m0, const mfloat_t *q0) {
+    mfloat_t rotation[MAT4_SIZE];
+    mat4_rotation_quat(rotation, q0);
+    mat4_multiply(result, m0, rotation);
+    return result;
+}
+
 mfloat_t *mat4_translation(mfloat_t *result, const mfloat_t *m0, const mfloat_t *v0) {
     result[0] = m0[0];
     result[1] = m0[1];
@@ -1071,6 +1106,36 @@ struct mat4 smat4_rotation_quat(struct quat q0) {
     return result;
 }
 
+struct mat4 smat4_rotate_x(struct mat4 m0, mfloat_t f) {
+    struct mat4 result;
+    mat4_rotate_x((mfloat_t *)&result, (const mfloat_t *)&m0, f);
+    return result;
+}
+
+struct mat4 smat4_rotate_y(struct mat4 m0, mfloat_t f) {
+    struct mat4 result;
+    mat4_rotate_y((mfloat_t *)&result, (const mfloat_t *)&m0, f);
+    return result;
+}
+
+struct mat4 smat4_rotate_z(struct mat4 m0, mfloat_t f) {
+    struct mat4 result;
+    mat4_rotate_z((mfloat_t *)&result, (const mfloat_t *)&m0, f);
+    return result;
+}
+
+struct mat4 smat4_rotate_axis(struct mat4 m0, struct vec3 v0, mfloat_t f) {
+    struct mat4 result;
+    mat4_rotate_axis((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&v0, f);
+    return result;
+}
+
+struct mat4 smat4_rotate_quat(struct mat4 m0, struct quat q0) {
+    struct mat4 result;
+    mat4_rotate_quat((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&q0);
+    return result;
+}
+
 struct mat4 smat4_translation(struct mat4 m0, struct vec3 v0) {
     struct mat4 result;
     mat4_translation((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&v0);
@@ -1225,6 +1290,26 @@ struct mat4 *psmat4_rotation_axis(struct mat4 *result, const struct vec3 *v0, mf
 
 struct mat4 *psmat4_rotation_quat(struct mat4 *result, const struct quat *q0) {
     return (struct mat4 *)mat4_rotation_quat((mfloat_t *)result, (const mfloat_t *)q0);
+}
+
+struct mat4 *psmat4_rotate_x(struct mat4 *result, const struct mat4 *m0, mfloat_t f) {
+    return (struct mat4 *)mat4_rotate_x((mfloat_t *)result, (const mfloat_t *)m0, f);
+}
+
+struct mat4 *psmat4_rotate_y(struct mat4 *result, const struct mat4 *m0, mfloat_t f) {
+    return (struct mat4 *)mat4_rotate_y((mfloat_t *)result, (const mfloat_t *)m0, f);
+}
+
+struct mat4 *psmat4_rotate_z(struct mat4 *result, const struct mat4 *m0, mfloat_t f) {
+    return (struct mat4 *)mat4_rotate_z((mfloat_t *)result, (const mfloat_t *)m0, f);
+}
+
+struct mat4 *psmat4_rotate_axis(struct mat4 *result, const struct mat4 *m0, const struct vec3 *v0, mfloat_t f) {
+    return (struct mat4 *)mat4_rotate_axis((mfloat_t *)result, (const mfloat_t *)m0, (const mfloat_t *)v0, f);
+}
+
+struct mat4 *psmat4_rotate_quat(struct mat4 *result, const struct mat4 *m0, const struct quat *q0) {
+    return (struct mat4 *)mat4_rotate_quat((mfloat_t *)result, (const mfloat_t *)m0, (const mfloat_t *)q0);
 }
 
 struct mat4 *psmat4_translation(struct mat4 *result, const struct mat4 *m0, const struct vec3 *v0) {

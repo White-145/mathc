@@ -435,6 +435,41 @@ mfloat_t *mat3_rotation_quat(mfloat_t *result, const mfloat_t *q0) {
     return result;
 }
 
+mfloat_t *mat3_rotate_x(mfloat_t *result, const mfloat_t *m0, mfloat_t f) {
+    mfloat_t rotation[MAT3_SIZE];
+    mat3_rotation_x(rotation, f);
+    mat3_multiply(result, m0, rotation);
+    return result;
+}
+
+mfloat_t *mat3_rotate_y(mfloat_t *result, const mfloat_t *m0, mfloat_t f) {
+    mfloat_t rotation[MAT3_SIZE];
+    mat3_rotation_y(rotation, f);
+    mat3_multiply(result, m0, rotation);
+    return result;
+}
+
+mfloat_t *mat3_rotate_z(mfloat_t *result, const mfloat_t *m0, mfloat_t f) {
+    mfloat_t rotation[MAT3_SIZE];
+    mat3_rotation_z(rotation, f);
+    mat3_multiply(result, m0, rotation);
+    return result;
+}
+
+mfloat_t *mat3_rotate_axis(mfloat_t *result, const mfloat_t *m0, const mfloat_t *v0, mfloat_t f) {
+    mfloat_t rotation[MAT3_SIZE];
+    mat3_rotation_axis(rotation, v0, f);
+    mat3_multiply(result, m0, rotation);
+    return result;
+}
+
+mfloat_t *mat3_rotate_quat(mfloat_t *result, const mfloat_t *m0, const mfloat_t *q0) {
+    mfloat_t rotation[MAT3_SIZE];
+    mat3_rotation_quat(rotation, q0);
+    mat3_multiply(result, m0, rotation);
+    return result;
+}
+
 mfloat_t *mat3_lerp(mfloat_t *result, const mfloat_t *m0, const mfloat_t *m1, mfloat_t f) {
     result[0] = m0[0] + (m1[0] - m0[0]) * f;
     result[1] = m0[1] + (m1[1] - m0[1]) * f;
@@ -579,6 +614,36 @@ struct mat3 smat3_rotation_quat(struct quat q0) {
     return result;
 }
 
+struct mat3 smat3_rotate_x(struct mat3 m0, mfloat_t f) {
+    struct mat3 result;
+    mat3_rotate_x((mfloat_t *)&result, (const mfloat_t *)&m0, f);
+    return result;
+}
+
+struct mat3 smat3_rotate_y(struct mat3 m0, mfloat_t f) {
+    struct mat3 result;
+    mat3_rotate_y((mfloat_t *)&result, (const mfloat_t *)&m0, f);
+    return result;
+}
+
+struct mat3 smat3_rotate_z(struct mat3 m0, mfloat_t f) {
+    struct mat3 result;
+    mat3_rotate_z((mfloat_t *)&result, (const mfloat_t *)&m0, f);
+    return result;
+}
+
+struct mat3 smat3_rotate_axis(struct mat3 m0, struct vec3 v0, mfloat_t f) {
+    struct mat3 result;
+    mat3_rotate_axis((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&v0, f);
+    return result;
+}
+
+struct mat3 smat3_rotate_quat(struct mat3 m0, struct quat q0) {
+    struct mat3 result;
+    mat3_rotate_quat((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&q0);
+    return result;
+}
+
 struct mat3 smat3_lerp(struct mat3 m0, struct mat3 m1, mfloat_t f) {
     struct mat3 result;
     mat3_lerp((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&m1, f);
@@ -673,6 +738,26 @@ struct mat3 *psmat3_rotation_axis(struct mat3 *result, const struct vec3 *v0, mf
 
 struct mat3 *psmat3_rotation_quat(struct mat3 *result, const struct quat *q0) {
     return (struct mat3 *)mat3_rotation_quat((mfloat_t *)result, (const mfloat_t *)q0);
+}
+
+struct mat3 *psmat3_rotate_x(struct mat3 *result, const struct mat3 *m0, mfloat_t f) {
+    return (struct mat3 *)mat3_rotate_x((mfloat_t *)result, (const mfloat_t *)m0, f);
+}
+
+struct mat3 *psmat3_rotate_y(struct mat3 *result, const struct mat3 *m0, mfloat_t f) {
+    return (struct mat3 *)mat3_rotate_y((mfloat_t *)result, (const mfloat_t *)m0, f);
+}
+
+struct mat3 *psmat3_rotate_z(struct mat3 *result, const struct mat3 *m0, mfloat_t f) {
+    return (struct mat3 *)mat3_rotate_z((mfloat_t *)result, (const mfloat_t *)m0, f);
+}
+
+struct mat3 *psmat3_rotate_axis(struct mat3 *result, const struct mat3 *m0, const struct vec3 *v0, mfloat_t f) {
+    return (struct mat3 *)mat3_rotate_axis((mfloat_t *)result, (const mfloat_t *)m0, (const mfloat_t *)v0, f);
+}
+
+struct mat3 *psmat3_rotate_quat(struct mat3 *result, const struct mat3 *m0, const struct quat *q0) {
+    return (struct mat3 *)mat3_rotate_quat((mfloat_t *)result, (const mfloat_t *)m0, (const mfloat_t *)q0);
 }
 
 struct mat3 *psmat3_lerp(struct mat3 *result, const struct mat3 *m0, const struct mat3 *m1, mfloat_t f) {

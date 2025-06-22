@@ -195,6 +195,13 @@ mfloat_t *mat2_rotation_z(mfloat_t *result, mfloat_t f) {
     return result;
 }
 
+mfloat_t *mat2_rotate_z(mfloat_t *result, const mfloat_t *m0, mfloat_t f) {
+    mfloat_t rotation[MAT2_SIZE];
+    mat2_rotation_z(rotation, f);
+    mat2_multiply(result, m0, rotation);
+    return result;
+}
+
 mfloat_t *mat2_lerp(mfloat_t *result, const mfloat_t *m0, const mfloat_t *m1, mfloat_t f) {
     result[0] = m0[0] + (m1[0] - m0[0]) * f;
     result[1] = m0[1] + (m1[1] - m0[1]) * f;
@@ -317,6 +324,12 @@ struct mat2 smat2_rotation_z(mfloat_t f) {
     return result;
 }
 
+struct mat2 smat2_rotate_z(struct mat2 m0, mfloat_t f) {
+    struct mat2 result;
+    mat2_rotate_z((mfloat_t *)&result, (const mfloat_t *)&m0, f);
+    return result;
+}
+
 struct mat2 smat2_lerp(struct mat2 m0, struct mat2 m1, mfloat_t f) {
     struct mat2 result;
     mat2_lerp((mfloat_t *)&result, (const mfloat_t *)&m0, (const mfloat_t *)&m1, f);
@@ -399,6 +412,10 @@ struct mat2 *psmat2_scale(struct mat2 *result, const struct mat2 *m0, struct vec
 
 struct mat2 *psmat2_rotation_z(struct mat2 *result, mfloat_t f) {
     return (struct mat2 *)mat2_rotation_z((mfloat_t *)result, f);
+}
+
+struct mat2 *psmat2_rotate_z(struct mat2 *result, struct mat2 *m0, mfloat_t f) {
+    return (struct mat2 *)mat2_rotate_z((mfloat_t *)result, (mfloat_t *)m0, f);
 }
 
 struct mat2 *psmat2_lerp(struct mat2 *result, const struct mat2 *m0, const struct mat2 *m1, mfloat_t f) {

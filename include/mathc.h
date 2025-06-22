@@ -1235,6 +1235,7 @@ mfloat_t *mat2_inverse(mfloat_t *result, const mfloat_t *m0);
 mfloat_t *mat2_scaling(mfloat_t *result, const mfloat_t *v0);
 mfloat_t *mat2_scale(mfloat_t *result, const mfloat_t *m0, const mfloat_t *v0);
 mfloat_t *mat2_rotation_z(mfloat_t *result, mfloat_t f);
+mfloat_t *mat2_rotate_z(mfloat_t *result, const mfloat_t *m0, mfloat_t f);
 mfloat_t *mat2_lerp(mfloat_t *result, const mfloat_t *m0, const mfloat_t *m1, mfloat_t f);
 
 #if defined(MATHC_USE_STRUCT_FUNCTIONS)
@@ -1257,6 +1258,7 @@ struct mat2 smat2_inverse(struct mat2 m0);
 struct mat2 smat2_scaling(struct vec2 v0);
 struct mat2 smat2_scale(struct mat2 m0, struct vec2 v0);
 struct mat2 smat2_rotation_z(mfloat_t f);
+struct mat2 smat2_rotate_z(struct mat2 m0, mfloat_t f);
 struct mat2 smat2_lerp(struct mat2 m0, struct mat2 m1, mfloat_t f);
 #endif
 
@@ -1280,6 +1282,7 @@ struct mat2 *psmat2_inverse(struct mat2 *result, const struct mat2 *m0);
 struct mat2 *psmat2_scaling(struct mat2 *result, struct vec2 *v0);
 struct mat2 *psmat2_scale(struct mat2 *result, const struct mat2 *m0, struct vec2 *v0);
 struct mat2 *psmat2_rotation_z(struct mat2 *result, mfloat_t f);
+struct mat2 *psmat2_rotate_z(struct mat2 *result, struct mat2 *m0, mfloat_t f);
 struct mat2 *psmat2_lerp(struct mat2 *result, const struct mat2 *m0, const struct mat2 *m1, mfloat_t f);
 #endif
 
@@ -1307,6 +1310,11 @@ mfloat_t *mat3_rotation_y(mfloat_t *result, mfloat_t f);
 mfloat_t *mat3_rotation_z(mfloat_t *result, mfloat_t f);
 mfloat_t *mat3_rotation_axis(mfloat_t *result, const mfloat_t *v0, mfloat_t f);
 mfloat_t *mat3_rotation_quat(mfloat_t *result, const mfloat_t *q0);
+mfloat_t *mat3_rotate_x(mfloat_t *result, const mfloat_t *m0, mfloat_t f);
+mfloat_t *mat3_rotate_y(mfloat_t *result, const mfloat_t *m0, mfloat_t f);
+mfloat_t *mat3_rotate_z(mfloat_t *result, const mfloat_t *m0, mfloat_t f);
+mfloat_t *mat3_rotate_axis(mfloat_t *result, const mfloat_t *m0, const mfloat_t *v0, mfloat_t f);
+mfloat_t *mat3_rotate_quat(mfloat_t *result, const mfloat_t *m0, const mfloat_t *q0);
 mfloat_t *mat3_lerp(mfloat_t *result, const mfloat_t *m0, const mfloat_t *m1, mfloat_t f);
 
 #if defined(MATHC_USE_STRUCT_FUNCTIONS)
@@ -1332,6 +1340,11 @@ struct mat3 smat3_rotation_y(mfloat_t f);
 struct mat3 smat3_rotation_z(mfloat_t f);
 struct mat3 smat3_rotation_axis(struct vec3 v0, mfloat_t f);
 struct mat3 smat3_rotation_quat(struct quat q0);
+struct mat3 smat3_rotate_x(struct mat3 m0, mfloat_t f);
+struct mat3 smat3_rotate_y(struct mat3 m0, mfloat_t f);
+struct mat3 smat3_rotate_z(struct mat3 m0, mfloat_t f);
+struct mat3 smat3_rotate_axis(struct mat3 m0, struct vec3 v0, mfloat_t f);
+struct mat3 smat3_rotate_quat(struct mat3 m0, struct quat q0);
 struct mat3 smat3_lerp(struct mat3 m0, struct mat3 m1, mfloat_t f);
 #endif
 
@@ -1358,6 +1371,11 @@ struct mat3 *psmat3_rotation_y(struct mat3 *result, mfloat_t f);
 struct mat3 *psmat3_rotation_z(struct mat3 *result, mfloat_t f);
 struct mat3 *psmat3_rotation_axis(struct mat3 *result, const struct vec3 *v0, mfloat_t f);
 struct mat3 *psmat3_rotation_quat(struct mat3 *result, const struct quat *q0);
+struct mat3 *psmat3_rotate_x(struct mat3 *result, const struct mat3 *m0, mfloat_t f);
+struct mat3 *psmat3_rotate_y(struct mat3 *result, const struct mat3 *m0, mfloat_t f);
+struct mat3 *psmat3_rotate_z(struct mat3 *result, const struct mat3 *m0, mfloat_t f);
+struct mat3 *psmat3_rotate_axis(struct mat3 *result, const struct mat3 *m0, const struct vec3 *v0, mfloat_t f);
+struct mat3 *psmat3_rotate_quat(struct mat3 *result, const struct mat3 *m0, const struct quat *q0);
 struct mat3 *psmat3_lerp(struct mat3 *result, const struct mat3 *m0, const struct mat3 *m1, mfloat_t f);
 #endif
 
@@ -1376,6 +1394,11 @@ mfloat_t *mat4_rotation_y(mfloat_t *result, mfloat_t f);
 mfloat_t *mat4_rotation_z(mfloat_t *result, mfloat_t f);
 mfloat_t *mat4_rotation_axis(mfloat_t *result, const mfloat_t *v0, mfloat_t f);
 mfloat_t *mat4_rotation_quat(mfloat_t *result, const mfloat_t *q0);
+mfloat_t *mat4_rotate_x(mfloat_t *result, const mfloat_t *m0, mfloat_t f);
+mfloat_t *mat4_rotate_y(mfloat_t *result, const mfloat_t *m0, mfloat_t f);
+mfloat_t *mat4_rotate_z(mfloat_t *result, const mfloat_t *m0, mfloat_t f);
+mfloat_t *mat4_rotate_axis(mfloat_t *result, const mfloat_t *m0, const mfloat_t *v0, mfloat_t f);
+mfloat_t *mat4_rotate_quat(mfloat_t *result, const mfloat_t *m0, const mfloat_t *q0);
 mfloat_t *mat4_translation(mfloat_t *result, const mfloat_t *m0, const mfloat_t *v0);
 mfloat_t *mat4_translate(mfloat_t *result, const mfloat_t *m0, const mfloat_t *v0);
 mfloat_t *mat4_scaling(mfloat_t *result, const mfloat_t *m0, const mfloat_t *v0);
@@ -1408,6 +1431,11 @@ struct mat4 smat4_rotation_y(mfloat_t f);
 struct mat4 smat4_rotation_z(mfloat_t f);
 struct mat4 smat4_rotation_axis(struct vec3 v0, mfloat_t f);
 struct mat4 smat4_rotation_quat(struct quat q0);
+struct mat4 smat4_rotate_x(struct mat4 m0, mfloat_t f);
+struct mat4 smat4_rotate_y(struct mat4 m0, mfloat_t f);
+struct mat4 smat4_rotate_z(struct mat4 m0, mfloat_t f);
+struct mat4 smat4_rotate_axis(struct mat4 m0, struct vec3 v0, mfloat_t f);
+struct mat4 smat4_rotate_quat(struct mat4 m0, struct quat q0);
 struct mat4 smat4_translation(struct mat4 m0, struct vec3 v0);
 struct mat4 smat4_translate(struct mat4 m0, struct vec3 v0);
 struct mat4 smat4_scaling(struct mat4 m0, struct vec3 v0);
@@ -1441,6 +1469,11 @@ struct mat4 *psmat4_rotation_y(struct mat4 *result, mfloat_t f);
 struct mat4 *psmat4_rotation_z(struct mat4 *result, mfloat_t f);
 struct mat4 *psmat4_rotation_axis(struct mat4 *result, const struct vec3 *v0, mfloat_t f);
 struct mat4 *psmat4_rotation_quat(struct mat4 *result, const struct quat *q0);
+struct mat4 *psmat4_rotate_x(struct mat4 *result, const struct mat4 *m0, mfloat_t f);
+struct mat4 *psmat4_rotate_y(struct mat4 *result, const struct mat4 *m0, mfloat_t f);
+struct mat4 *psmat4_rotate_z(struct mat4 *result, const struct mat4 *m0, mfloat_t f);
+struct mat4 *psmat4_rotate_axis(struct mat4 *result, const struct mat4 *m0, const struct vec3 *v0, mfloat_t f);
+struct mat4 *psmat4_rotate_quat(struct mat4 *result, const struct mat4 *m0, const struct quat *q0);
 struct mat4 *psmat4_translation(struct mat4 *result, const struct mat4 *m0, const struct vec3 *v0);
 struct mat4 *psmat4_translate(struct mat4 *result, const struct mat4 *m0, const struct vec3 *v0);
 struct mat4 *psmat4_scaling(struct mat4 *result, const struct mat4 *m0, const struct vec3 *v0);
