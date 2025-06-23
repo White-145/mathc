@@ -307,7 +307,6 @@ struct mat2 smat2_inverse(struct mat2 m0) {
 
 struct mat2 smat2_scaling(struct vec2 v0) {
     struct mat2 result;
-    mat2_identity((mfloat_t *)&result);
     mat2_scaling((mfloat_t *)&result, (const mfloat_t *)&v0);
     return result;
 }
