@@ -38,17 +38,26 @@ mint_t *vec4i(mint_t *result, mint_t x, mint_t y, mint_t z, mint_t w) {
 }
 
 mint_t *vec4i_assign(mint_t *result, const mint_t *v0) {
-    memcpy(result, v0, sizeof(mint_t) * VEC4_SIZE);
+    result[0] = v0[0];
+    result[1] = v0[1];
+    result[2] = v0[2];
+    result[3] = v0[3];
     return result;
 }
 
 mint_t *vec4i_zero(mint_t *result) {
-    memset(result, 0, sizeof(mint_t) * VEC4_SIZE);
+    result[0] = 0;
+    result[1] = 0;
+    result[2] = 0;
+    result[3] = 0;
     return result;
 }
 
 mint_t *vec4i_one(mint_t *result) {
-    memset(result, 1, sizeof(mint_t) * VEC4_SIZE);
+    result[0] = 1;
+    result[1] = 1;
+    result[2] = 1;
+    result[3] = 1;
     return result;
 }
 

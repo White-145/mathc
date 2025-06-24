@@ -23,7 +23,6 @@ the following restrictions:
 
 #include <stdbool.h>
 #include <math.h>
-#include <string.h>
 
 #define MATHC_VERSION_YYYY 2025
 #define MATHC_VERSION_MM 06

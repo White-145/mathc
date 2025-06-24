@@ -38,7 +38,10 @@ mfloat_t *quat(mfloat_t *result, mfloat_t x, mfloat_t y, mfloat_t z, mfloat_t w)
 }
 
 mfloat_t *quat_assign(mfloat_t *result, const mfloat_t *q0) {
-    memcpy(result, q0, sizeof(mfloat_t) * QUAT_SIZE);
+    result[0] = q0[0];
+    result[1] = q0[1];
+    result[2] = q0[2];
+    result[3] = q0[3];
     return result;
 }
 
@@ -147,7 +150,10 @@ mfloat_t *quat_power(mfloat_t *result, const mfloat_t *q0, mfloat_t exponent) {
         result[2] = result[2] * s;
         result[3] = MCOS(new_alpha);
     } else {
-        memcpy(result, q0, sizeof(mfloat_t) * QUAT_SIZE);
+        result[0] = q0[0];
+        result[1] = q0[1];
+        result[2] = q0[2];
+        result[3] = q0[3];
     }
     return result;
 }

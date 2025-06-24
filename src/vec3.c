@@ -37,7 +37,9 @@ mfloat_t *vec3(mfloat_t *result, mfloat_t x, mfloat_t y, mfloat_t z) {
 }
 
 mfloat_t *vec3_assign(mfloat_t *result, const mfloat_t *v0) {
-    memcpy(result, v0, sizeof(mfloat_t) * VEC3_SIZE);
+    result[0] = v0[0];
+    result[1] = v0[1];
+    result[2] = v0[2];
     return result;
 }
 
@@ -221,7 +223,9 @@ mfloat_t *vec3_cross(mfloat_t *result, const mfloat_t *v0, const mfloat_t *v1) {
     cross[0] = v0[1] * v1[2] - v0[2] * v1[1];
     cross[1] = v0[2] * v1[0] - v0[0] * v1[2];
     cross[2] = v0[0] * v1[1] - v0[1] * v1[0];
-    memcpy(result, cross, sizeof(mfloat_t) * VEC3_SIZE);
+    result[0] = cross[0];
+    result[1] = cross[1];
+    result[2] = cross[2];
     return result;
 }
 
