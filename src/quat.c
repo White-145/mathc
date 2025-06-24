@@ -145,9 +145,9 @@ mfloat_t *quat_power(mfloat_t *result, const mfloat_t *q0, mfloat_t exponent) {
         mfloat_t alpha = MACOS(q0[3]);
         mfloat_t new_alpha = alpha * exponent;
         mfloat_t s = MSIN(new_alpha) / MSIN(alpha);
-        result[0] = result[0] * s;
-        result[1] = result[1] * s;
-        result[2] = result[2] * s;
+        result[0] = q0[0] * s;
+        result[1] = q0[1] * s;
+        result[2] = q0[2] * s;
         result[3] = MCOS(new_alpha);
     } else {
         result[0] = q0[0];
