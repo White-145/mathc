@@ -43,6 +43,20 @@ mfloat_t *vec3_assign(mfloat_t *result, const mfloat_t *v0) {
     return result;
 }
 
+mfloat_t *vec3_expand_vec2(mfloat_t *result, const mfloat_t *v0, mfloat_t z) {
+    result[0] = v0[0];
+    result[1] = v0[1];
+    result[2] = z;
+    return result;
+}
+
+mfloat_t *vec3_reduce_vec4(mfloat_t *result, const mfloat_t *v0) {
+    result[0] = v0[0];
+    result[1] = v0[1];
+    result[2] = v0[2];
+    return result;
+}
+
 mfloat_t *vec3_zero(mfloat_t *result) {
     result[0] = MZERO;
     result[1] = MZERO;
@@ -411,6 +425,18 @@ struct vec3 svec3_assign(struct vec3 v0) {
     return result;
 }
 
+struct vec3 svec3_expand_vec2(struct vec2 v0, mfloat_t z) {
+    struct vec3 result;
+    vec3_expand_vec2((mfloat_t *)&result, (const mfloat_t *)&v0, z);
+    return result;
+}
+
+struct vec3 svec3_reduce_vec4(struct vec4 v0) {
+    struct vec3 result;
+    vec3_reduce_vec4((mfloat_t *)&result, (const mfloat_t *)&v0);
+    return result;
+}
+
 struct vec3 svec3_zero(void) {
     struct vec3 result;
     vec3_zero((mfloat_t *)&result);
@@ -641,6 +667,14 @@ struct vec3 *psvec3(struct vec3 *result, mfloat_t x, mfloat_t y, mfloat_t z) {
 
 struct vec3 *psvec3_assign(struct vec3 *result, const struct vec3 *v0) {
     return (struct vec3 *)vec3_assign((mfloat_t *)result, (const mfloat_t *)v0);
+}
+
+struct vec3 *psvec3_expand_vec2(struct vec3 *result, const struct vec2 *v0, mfloat_t z) {
+    return (struct vec3 *)vec3_expand_vec2((mfloat_t *)result, (const mfloat_t *)v0, z);
+}
+
+struct vec3 *psvec3_reduce_vec4(struct vec3 *result, const struct vec4 *v0) {
+    return (struct vec3 *)vec3_reduce_vec4((mfloat_t *)result, (const mfloat_t *)v0);
 }
 
 struct vec3 *psvec3_zero(struct vec3 *result) {

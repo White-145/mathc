@@ -45,6 +45,22 @@ mint_t *vec4i_assign(mint_t *result, const mint_t *v0) {
     return result;
 }
 
+mint_t *vec4i_expand_vec2i(mint_t *result, const mint_t *v0, mint_t z, mint_t w) {
+    result[0] = v0[0];
+    result[1] = v0[1];
+    result[2] = z;
+    result[3] = w;
+    return result;
+}
+
+mint_t *vec4i_expand_vec3i(mint_t *result, const mint_t *v0, mint_t w) {
+    result[0] = v0[0];
+    result[1] = v0[1];
+    result[2] = v0[2];
+    result[3] = w;
+    return result;
+}
+
 mint_t *vec4i_zero(mint_t *result) {
     result[0] = 0;
     result[1] = 0;
@@ -312,6 +328,18 @@ struct vec4i svec4i_assign(struct vec4i v0) {
     return result;
 }
 
+struct vec4i svec4i_expand_vec2i(struct vec2i v0, mint_t z, mint_t w) {
+    struct vec4i result;
+    vec4i_expand_vec2i((mint_t *)&result, (const mint_t *)&v0, z, w);
+    return result;
+}
+
+struct vec4i svec4i_expand_vec3i(struct vec3i v0, mint_t w) {
+    struct vec4i result;
+    vec4i_expand_vec3i((mint_t *)&result, (const mint_t *)&v0, w);
+    return result;
+}
+
 struct vec4i svec4i_zero(void) {
     struct vec4i result;
     vec4i_zero((mint_t *)&result);
@@ -444,6 +472,14 @@ struct vec4i *psvec4i(struct vec4i *result, mint_t x, mint_t y, mint_t z, mint_t
 
 struct vec4i *psvec4i_assign(struct vec4i *result, struct vec4i *v0) {
     return (struct vec4i *)vec4i_assign((mint_t *)result, (const mint_t *)v0);
+}
+
+struct vec4i *psvec4i_expand_vec2i(struct vec4i *result, struct vec2i *v0, mint_t z, mint_t w) {
+    return (struct vec4i *)vec4i_expand_vec2i((mint_t *)result, (const mint_t *)v0, z, w);
+}
+
+struct vec4i *psvec4i_expand_vec3i(struct vec4i *result, struct vec3i *v0, mint_t w) {
+    return (struct vec4i *)vec4i_expand_vec3i((mint_t *)result, (const mint_t *)v0, w);
 }
 
 struct vec4i *psvec4i_zero(struct vec4i *result) {

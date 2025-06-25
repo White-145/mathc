@@ -43,6 +43,20 @@ mint_t *vec3i_assign(mint_t *result, const mint_t *v0) {
     return result;
 }
 
+mint_t *vec3i_expand_vec2i(mint_t *result, const mint_t *v0, mint_t z) {
+    result[0] = v0[0];
+    result[1] = v0[1];
+    result[2] = z;
+    return result;
+}
+
+mint_t *vec3i_reduce_vec4i(mint_t *result, const mint_t *v0) {
+    result[0] = v0[0];
+    result[1] = v0[1];
+    result[2] = v0[2];
+    return result;
+}
+
 mint_t *vec3i_zero(mint_t *result) {
     result[0] = 0;
     result[1] = 0;
@@ -275,6 +289,18 @@ struct vec3i svec3i_assign(struct vec3i v0) {
     return result;
 }
 
+struct vec3i svec3i_expand_vec2i(struct vec2i v0, mint_t z) {
+    struct vec3i result;
+    vec3i_expand_vec2i((mint_t *)&result, (mint_t *)&v0, z);
+    return result;
+}
+
+struct vec3i svec3i_reduce_vec4i(struct vec4i v0) {
+    struct vec3i result;
+    vec3i_reduce_vec4i((mint_t *)&result, (mint_t *)&v0);
+    return result;
+}
+
 struct vec3i svec3i_zero(void) {
     struct vec3i result;
     vec3i_zero((mint_t *)&result);
@@ -413,6 +439,14 @@ struct vec3i *psvec3i(struct vec3i *result, mint_t x, mint_t y, mint_t z) {
 
 struct vec3i *psvec3i_assign(struct vec3i *result, const struct vec3i *v0) {
     return (struct vec3i *)vec3i_assign((mint_t *)result, (const mint_t *)v0);
+}
+
+struct vec3i *psvec3i_expand_vec2i(struct vec3i *result, const struct vec2i *v0, mint_t z) {
+    return (struct vec3i *)vec3i_expand_vec2i((mint_t *)result, (const mint_t *)v0, z);
+}
+
+struct vec3i *psvec3i_reduce_vec4i(struct vec3i *result, const struct vec4i *v0) {
+    return (struct vec3i *)vec3i_reduce_vec4i((mint_t *)result, (const mint_t *)v0);
 }
 
 struct vec3i *psvec3i_zero(struct vec3i *result) {
