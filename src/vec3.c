@@ -358,11 +358,7 @@ mfloat_t vec3_distance_squared(const mfloat_t *v0, const mfloat_t *v1) {
     return (v0[0] - v1[0]) * (v0[0] - v1[0]) + (v0[1] - v1[1]) * (v0[1] - v1[1]) + (v0[2] - v1[2]) * (v0[2] - v1[2]);
 }
 
-bool vec3_linear_independent(const mfloat_t *v0, const mfloat_t *v1, const mfloat_t *v2) {
-    return v0[0] * v1[1] * v2[2] + v0[1] * v1[2] * v2[0] + v0[2] * v1[0] * v2[1] - v0[2] * v1[1] * v2[0] - v0[1] * v1[0] * v2[2] - v0[0] * v1[2] * v2[1];
-}
-
-mfloat_t **vec3_orthonormalization(mfloat_t result[3][3], const mfloat_t basis[3][3]) {
+mfloat_t **vec3_orthonormalization(mfloat_t **result, const mfloat_t **basis) {
     mfloat_t v0[3];
     mfloat_t v1[3];
     mfloat_t v2[3];
@@ -373,7 +369,7 @@ mfloat_t **vec3_orthonormalization(mfloat_t result[3][3], const mfloat_t basis[3
         v2[i] = basis[2][i];
     }
 
-    if (!vec3_linear_independent(v0, v1, v2)) {
+    if (vec3_is_collinear(v0, v1) || vec3_is_collinear(v0, v2) || vec3_is_collinear(v1, v2)) {
         return (mfloat_t **)result;
     }
 

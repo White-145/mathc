@@ -811,8 +811,7 @@ mfloat_t vec2_length(const mfloat_t *v0);
 mfloat_t vec2_length_squared(const mfloat_t *v0);
 mfloat_t vec2_distance(const mfloat_t *v0, const mfloat_t *v1);
 mfloat_t vec2_distance_squared(const mfloat_t *v0, const mfloat_t *v1);
-bool vec2_linear_independent(const mfloat_t *v0, const mfloat_t *v1);
-mfloat_t **vec2_orthonormalization(mfloat_t result[2][2], const mfloat_t basis[2][2]);
+mfloat_t **vec2_orthonormalization(mfloat_t **result, const mfloat_t **basis);
 #if defined(MATHC_USE_INT)
 mfloat_t *vec2_assign_vec2i(mfloat_t *result, const mint_t *v0);
 #endif
@@ -962,8 +961,7 @@ mfloat_t vec3_length(const mfloat_t *v0);
 mfloat_t vec3_length_squared(const mfloat_t *v0);
 mfloat_t vec3_distance(const mfloat_t *v0, const mfloat_t *v1);
 mfloat_t vec3_distance_squared(const mfloat_t *v0, const mfloat_t *v1);
-bool vec3_linear_independent(const mfloat_t *v0, const mfloat_t *v1, const mfloat_t *v2);
-mfloat_t **vec3_orthonormalization(mfloat_t result[3][3], const mfloat_t basis[3][3]);
+mfloat_t **vec3_orthonormalization(mfloat_t **result, const mfloat_t **basis);
 #if defined(MATHC_USE_INT)
 mfloat_t *vec3_assign_vec3i(mfloat_t *result, const mint_t *v0);
 #endif
