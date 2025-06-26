@@ -359,40 +359,25 @@ mfloat_t vec3_distance_squared(const mfloat_t *v0, const mfloat_t *v1) {
 }
 
 mfloat_t **vec3_orthonormalization(mfloat_t **result, const mfloat_t **basis) {
-    mfloat_t v0[3];
-    mfloat_t v1[3];
-    mfloat_t v2[3];
-
-    for(int32_t i = 0; i < 3; ++i) {
-        v0[i] = basis[0][i];
-        v1[i] = basis[1][i];
-        v2[i] = basis[2][i];
-    }
-
-    if (vec3_is_collinear(v0, v1) || vec3_is_collinear(v0, v2) || vec3_is_collinear(v1, v2)) {
+    if (vec3_is_collinear(basis[0], basis[1]) || vec3_is_collinear(basis[0], basis[2]) || vec3_is_collinear(basis[1], basis[2])) {
         return (mfloat_t **)result;
     }
 
     mfloat_t proj[3];
     mfloat_t u0[3];
     mfloat_t u1[3];
-    mfloat_t u2[3];
 
-    for(int32_t i = 0; i < 3; ++i) {
-        u0[i] = v0[i];
-    }
+    vec3_project(proj, basis[1], basis[0]);
+    vec3_subtract(u0, basis[1], proj);
 
-    vec3_project(proj, v1, u0);
-    vec3_subtract(u1, v1, proj);
+    vec3_project(proj, basis[2], basis[0]);
+    vec3_subtract(u1, basis[2], proj);
+    vec3_project(proj, basis[2], u0);
+    vec3_subtract(u1, u1, proj);
 
-    vec3_project(proj, v2, u0);
-    vec3_subtract(u2, v2, proj);
-    vec3_project(proj, v2, u1);
-    vec3_subtract(u2, u2, proj);
-
-    vec3_normalize(result[0], u0);
-    vec3_normalize(result[1], u1);
-    vec3_normalize(result[2], u2);
+    vec3_normalize(result[0], basis[0]);
+    vec3_normalize(result[1], u0);
+    vec3_normalize(result[2], u1);
 
     return (mfloat_t **)result;
 }

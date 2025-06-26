@@ -305,30 +305,17 @@ mfloat_t vec2_distance_squared(const mfloat_t *v0, const mfloat_t *v1) {
 }
 
 mfloat_t **vec2_orthonormalization(mfloat_t **result, const mfloat_t **basis) {
-    mfloat_t v0[2];
-    mfloat_t v1[2];
-
-    for (int32_t i = 0; i < 2; ++i) {
-        v0[i] = basis[0][i];
-        v1[i] = basis[1][i];
-    }
-
-    if (vec2_is_collinear(v0, v1)) {
+    if (vec2_is_collinear(basis[0], basis[1])) {
         return (mfloat_t **)result;
     }
 
-    mfloat_t proju1[2];
-    mfloat_t u0[2];
-    mfloat_t u1[2];
+    mfloat_t proj[VEC2_SIZE];
+    mfloat_t u0[VEC2_SIZE];
 
-    for (int32_t i = 0; i < 2; ++i) {
-        u0[i] = v0[i];
-    }
-
-    vec2_project(proju1, v1, v0);
-    vec2_subtract(u1, v1, proju1);
-    vec2_normalize(result[0], u0);
-    vec2_normalize(result[1], u1);
+    vec2_project(proj, basis[1], basis[0]);
+    vec2_subtract(u0, basis[1], proj);
+    vec2_normalize(result[0], basis[0]);
+    vec2_normalize(result[1], u0);
 
     return (mfloat_t **)result;
 }
