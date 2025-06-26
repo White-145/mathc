@@ -458,11 +458,11 @@ struct vec4i svec4i_assign_vec4(struct vec4 v0) {
 #endif
 
 #if defined(MATHC_USE_POINTER_STRUCT_FUNCTIONS)
-bool psvec4i_is_zero(struct vec4i *v0) {
+bool psvec4i_is_zero(const struct vec4i *v0) {
     return vec4i_is_zero((const mint_t *)v0);
 }
 
-bool psvec4i_is_equal(struct vec4i *v0, struct vec4i *v1) {
+bool psvec4i_is_equal(const struct vec4i *v0, const struct vec4i *v1) {
     return vec4i_is_equal((const mint_t *)v0, (const mint_t *)v1);
 }
 
@@ -470,15 +470,15 @@ struct vec4i *psvec4i(struct vec4i *result, mint_t x, mint_t y, mint_t z, mint_t
     return (struct vec4i *)vec4i((mint_t *)result, x, y, z, w);
 }
 
-struct vec4i *psvec4i_assign(struct vec4i *result, struct vec4i *v0) {
+struct vec4i *psvec4i_assign(struct vec4i *result, const struct vec4i *v0) {
     return (struct vec4i *)vec4i_assign((mint_t *)result, (const mint_t *)v0);
 }
 
-struct vec4i *psvec4i_expand_vec2i(struct vec4i *result, struct vec2i *v0, mint_t z, mint_t w) {
+struct vec4i *psvec4i_expand_vec2i(struct vec4i *result, const struct vec2i *v0, mint_t z, mint_t w) {
     return (struct vec4i *)vec4i_expand_vec2i((mint_t *)result, (const mint_t *)v0, z, w);
 }
 
-struct vec4i *psvec4i_expand_vec3i(struct vec4i *result, struct vec3i *v0, mint_t w) {
+struct vec4i *psvec4i_expand_vec3i(struct vec4i *result, const struct vec3i *v0, mint_t w) {
     return (struct vec4i *)vec4i_expand_vec3i((mint_t *)result, (const mint_t *)v0, w);
 }
 
@@ -490,72 +490,72 @@ struct vec4i *psvec4i_one(struct vec4i *result) {
     return (struct vec4i *)vec4i_one((mint_t *)result);
 }
 
-struct vec4i *psvec4i_sign(struct vec4i *result, struct vec4i *v0) {
+struct vec4i *psvec4i_sign(struct vec4i *result, const struct vec4i *v0) {
     return (struct vec4i *)vec4i_sign((mint_t *)result, (const mint_t *)v0);
 }
 
-struct vec4i *psvec4i_add(struct vec4i *result, struct vec4i *v0, struct vec4i *v1) {
+struct vec4i *psvec4i_add(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1) {
     return (struct vec4i *)vec4i_add((mint_t *)result, (const mint_t *)v0, (const mint_t *)v1);
 }
 
-struct vec4i *psvec4i_add_i(struct vec4i *result, struct vec4i *v0, mint_t i) {
+struct vec4i *psvec4i_add_i(struct vec4i *result, const struct vec4i *v0, mint_t i) {
     return (struct vec4i *)vec4i_add_i((mint_t *)result, (const mint_t *)v0, i);
 }
 
-struct vec4i *psvec4i_subtract(struct vec4i *result, struct vec4i *v0, struct vec4i *v1) {
+struct vec4i *psvec4i_subtract(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1) {
     return (struct vec4i *)vec4i_subtract((mint_t *)result, (const mint_t *)v0, (const mint_t *)v1);
 }
 
-struct vec4i *psvec4i_subtract_i(struct vec4i *result, struct vec4i *v0, mint_t i) {
+struct vec4i *psvec4i_subtract_i(struct vec4i *result, const struct vec4i *v0, mint_t i) {
     return (struct vec4i *)vec4i_subtract_i((mint_t *)result, (const mint_t *)v0, i);
 }
 
-struct vec4i *psvec4i_multiply(struct vec4i *result, struct vec4i *v0, struct vec4i *v1) {
+struct vec4i *psvec4i_multiply(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1) {
     return (struct vec4i *)vec4i_multiply((mint_t *)result, (const mint_t *)v0, (const mint_t *)v1);
 }
 
-struct vec4i *psvec4i_multiply_i(struct vec4i *result, struct vec4i *v0, mint_t i) {
+struct vec4i *psvec4i_multiply_i(struct vec4i *result, const struct vec4i *v0, mint_t i) {
     return (struct vec4i *)vec4i_multiply_i((mint_t *)result, (const mint_t *)v0, i);
 }
 
-struct vec4i *psvec4i_divide(struct vec4i *result, struct vec4i *v0, struct vec4i *v1) {
+struct vec4i *psvec4i_divide(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1) {
     return (struct vec4i *)vec4i_divide((mint_t *)result, (const mint_t *)v0, (const mint_t *)v1);
 }
 
-struct vec4i *psvec4i_divide_i(struct vec4i *result, struct vec4i *v0, mint_t i) {
+struct vec4i *psvec4i_divide_i(struct vec4i *result, const struct vec4i *v0, mint_t i) {
     return (struct vec4i *)vec4i_divide_i((mint_t *)result, (const mint_t *)v0, i);
 }
 
-struct vec4i *psvec4i_snap(struct vec4i *result, struct vec4i *v0, struct vec4i *v1) {
+struct vec4i *psvec4i_snap(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1) {
     return (struct vec4i *)vec4i_snap((mint_t *)result, (const mint_t *)v0, (const mint_t *)v1);
 }
 
-struct vec4i *psvec4i_snap_i(struct vec4i *result, struct vec4i *v0, mint_t i) {
+struct vec4i *psvec4i_snap_i(struct vec4i *result, const struct vec4i *v0, mint_t i) {
     return (struct vec4i *)vec4i_snap_i((mint_t *)result, (const mint_t *)v0, i);
 }
 
-struct vec4i *psvec4i_negative(struct vec4i *result, struct vec4i *v0) {
+struct vec4i *psvec4i_negative(struct vec4i *result, const struct vec4i *v0) {
     return (struct vec4i *)vec4i_negative((mint_t *)result, (const mint_t *)v0);
 }
 
-struct vec4i *psvec4i_abs(struct vec4i *result, struct vec4i *v0) {
+struct vec4i *psvec4i_abs(struct vec4i *result, const struct vec4i *v0) {
     return (struct vec4i *)vec4i_abs((mint_t *)result, (const mint_t *)v0);
 }
 
-struct vec4i *psvec4i_max(struct vec4i *result, struct vec4i *v0, struct vec4i *v1) {
+struct vec4i *psvec4i_max(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1) {
     return (struct vec4i *)vec4i_max((mint_t *)result, (const mint_t *)v0, (const mint_t *)v1);
 }
 
-struct vec4i *psvec4i_min(struct vec4i *result, struct vec4i *v0, struct vec4i *v1) {
+struct vec4i *psvec4i_min(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1) {
     return (struct vec4i *)vec4i_min((mint_t *)result, (const mint_t *)v0, (const mint_t *)v1);
 }
 
-struct vec4i *psvec4i_clamp(struct vec4i *result, struct vec4i *v0, struct vec4i *v1, struct vec4i *v2) {
+struct vec4i *psvec4i_clamp(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1, const struct vec4i *v2) {
     return (struct vec4i *)vec4i_clamp((mint_t *)result, (const mint_t *)v0, (const mint_t *)v1, (const mint_t *)v2);
 }
 
 #if defined(MATHC_USE_FLOATING_POINT)
-struct vec4i *psvec4i_assign_vec4(struct vec4i *result, struct vec4 *v0) {
+struct vec4i *psvec4i_assign_vec4(struct vec4i *result, const struct vec4 *v0) {
     return (struct vec4i *)vec4i_assign_vec4((mint_t *)result, (const mfloat_t *)v0);
 }
 #endif

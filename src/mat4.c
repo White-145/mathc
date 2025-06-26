@@ -1210,7 +1210,7 @@ struct mat4 smat4_lerp(struct mat4 m0, struct mat4 m1, mfloat_t f) {
 
 struct mat4 smat4_look_at(struct vec3 position, struct vec3 target, struct vec3 up) {
     struct mat4 result;
-    mat4_look_at((mfloat_t *)&result, (mfloat_t *)&position, (mfloat_t *)&target, (mfloat_t *)&up);
+    mat4_look_at((mfloat_t *)&result, (const mfloat_t *)&position, (const mfloat_t *)&target, (const mfloat_t *)&up);
     return result;
 }
 
@@ -1360,7 +1360,7 @@ struct mat4 *psmat4_lerp(struct mat4 *result, const struct mat4 *m0, const struc
     return (struct mat4 *)mat4_lerp((mfloat_t *)result, (const mfloat_t *)m0, (const mfloat_t *)m1, f);
 }
 
-struct mat4 *psmat4_look_at(struct mat4 *result,const struct vec3 *position,const struct vec3 *target,const struct vec3 *up) {
+struct mat4 *psmat4_look_at(struct mat4 *result,const struct vec3 *position, const struct vec3 *target, const struct vec3 *up) {
     return (struct mat4 *)mat4_look_at((mfloat_t *)result, (const mfloat_t *)position, (const mfloat_t *)target, (const mfloat_t *)up);
 }
 

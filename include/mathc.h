@@ -576,7 +576,7 @@ struct vec2i *psvec2i_min(struct vec2i *result, const struct vec2i *v0, const st
 struct vec2i *psvec2i_clamp(struct vec2i *result, const struct vec2i *v0, const struct vec2i *v1, struct vec2i *v2);
 struct vec2i *psvec2i_tangent(struct vec2i *result, const struct vec2i *v0);
 #if defined(MATHC_USE_FLOATING_POINT)
-struct vec2i *psvec2i_assign_vec2(struct vec2i *result, struct vec2 *v0);
+struct vec2i *psvec2i_assign_vec2(struct vec2i *result, const struct vec2 *v0);
 #endif
 #endif
 
@@ -734,32 +734,32 @@ struct vec4i svec4i_assign_vec4(struct vec4 v0);
 #endif
 
 #if defined(MATHC_USE_POINTER_STRUCT_FUNCTIONS)
-bool psvec4i_is_zero(struct vec4i *v0);
-bool psvec4i_is_equal(struct vec4i *v0, struct vec4i *v1);
+bool psvec4i_is_zero(const struct vec4i *v0);
+bool psvec4i_is_equal(const struct vec4i *v0, const struct vec4i *v1);
 struct vec4i *psvec4i(struct vec4i *result, mint_t x, mint_t y, mint_t z, mint_t w);
-struct vec4i *psvec4i_assign(struct vec4i *result, struct vec4i *v0);
-struct vec4i *psvec4i_expand_vec2i(struct vec4i *result, struct vec2i *v0, mint_t z, mint_t w);
-struct vec4i *psvec4i_expand_vec3i(struct vec4i *result, struct vec3i *v0, mint_t w);
+struct vec4i *psvec4i_assign(struct vec4i *result, const struct vec4i *v0);
+struct vec4i *psvec4i_expand_vec2i(struct vec4i *result, const struct vec2i *v0, mint_t z, mint_t w);
+struct vec4i *psvec4i_expand_vec3i(struct vec4i *result, const struct vec3i *v0, mint_t w);
 struct vec4i *psvec4i_zero(struct vec4i *result);
 struct vec4i *psvec4i_one(struct vec4i *result);
-struct vec4i *psvec4i_sign(struct vec4i *result, struct vec4i *v0);
-struct vec4i *psvec4i_add(struct vec4i *result, struct vec4i *v0, struct vec4i *v1);
-struct vec4i *psvec4i_add_i(struct vec4i *result, struct vec4i *v0, mint_t i);
-struct vec4i *psvec4i_subtract(struct vec4i *result, struct vec4i *v0, struct vec4i *v1);
-struct vec4i *psvec4i_subtract_i(struct vec4i *result, struct vec4i *v0, mint_t i);
-struct vec4i *psvec4i_multiply(struct vec4i *result, struct vec4i *v0, struct vec4i *v1);
-struct vec4i *psvec4i_multiply_i(struct vec4i *result, struct vec4i *v0, mint_t i);
-struct vec4i *psvec4i_divide(struct vec4i *result, struct vec4i *v0, struct vec4i *v1);
-struct vec4i *psvec4i_divide_i(struct vec4i *result, struct vec4i *v0, mint_t i);
-struct vec4i *psvec4i_snap(struct vec4i *result, struct vec4i *v0, struct vec4i *v1);
-struct vec4i *psvec4i_snap_i(struct vec4i *result, struct vec4i *v0, mint_t i);
-struct vec4i *psvec4i_negative(struct vec4i *result, struct vec4i *v0);
-struct vec4i *psvec4i_abs(struct vec4i *result, struct vec4i *v0);
-struct vec4i *psvec4i_max(struct vec4i *result, struct vec4i *v0, struct vec4i *v1);
-struct vec4i *psvec4i_min(struct vec4i *result, struct vec4i *v0, struct vec4i *v1);
-struct vec4i *psvec4i_clamp(struct vec4i *result, struct vec4i *v0, struct vec4i *v1, struct vec4i *v2);
+struct vec4i *psvec4i_sign(struct vec4i *result, const struct vec4i *v0);
+struct vec4i *psvec4i_add(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1);
+struct vec4i *psvec4i_add_i(struct vec4i *result, const struct vec4i *v0, mint_t i);
+struct vec4i *psvec4i_subtract(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1);
+struct vec4i *psvec4i_subtract_i(struct vec4i *result, const struct vec4i *v0, mint_t i);
+struct vec4i *psvec4i_multiply(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1);
+struct vec4i *psvec4i_multiply_i(struct vec4i *result, const struct vec4i *v0, mint_t i);
+struct vec4i *psvec4i_divide(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1);
+struct vec4i *psvec4i_divide_i(struct vec4i *result, const struct vec4i *v0, mint_t i);
+struct vec4i *psvec4i_snap(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1);
+struct vec4i *psvec4i_snap_i(struct vec4i *result, const struct vec4i *v0, mint_t i);
+struct vec4i *psvec4i_negative(struct vec4i *result, const struct vec4i *v0);
+struct vec4i *psvec4i_abs(struct vec4i *result, const struct vec4i *v0);
+struct vec4i *psvec4i_max(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1);
+struct vec4i *psvec4i_min(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1);
+struct vec4i *psvec4i_clamp(struct vec4i *result, const struct vec4i *v0, const struct vec4i *v1, const struct vec4i *v2);
 #if defined(MATHC_USE_FLOATING_POINT)
-struct vec4i *psvec4i_assign_vec4(struct vec4i *result, struct vec4 *v0);
+struct vec4i *psvec4i_assign_vec4(struct vec4i *result, const struct vec4 *v0);
 #endif
 #endif
 #endif
@@ -812,7 +812,7 @@ mfloat_t vec2_length_squared(const mfloat_t *v0);
 mfloat_t vec2_distance(const mfloat_t *v0, const mfloat_t *v1);
 mfloat_t vec2_distance_squared(const mfloat_t *v0, const mfloat_t *v1);
 bool vec2_linear_independent(const mfloat_t *v0, const mfloat_t *v1);
-mfloat_t **vec2_orthonormalization(mfloat_t result[2][2], mfloat_t basis[2][2]);
+mfloat_t **vec2_orthonormalization(mfloat_t result[2][2], const mfloat_t basis[2][2]);
 #if defined(MATHC_USE_INT)
 mfloat_t *vec2_assign_vec2i(mfloat_t *result, const mint_t *v0);
 #endif
@@ -868,50 +868,50 @@ struct vec2 svec2_assign_vec2i(struct vec2i v0);
 #endif
 
 #if defined(MATHC_USE_POINTER_STRUCT_FUNCTIONS)
-bool psvec2_is_zero(struct vec2 *v0);
-bool psvec2_is_equal(struct vec2 *v0, struct vec2 *v1);
-bool psvec2_is_collinear(struct vec2 *v0, struct vec2 *v1);
+bool psvec2_is_zero(const struct vec2 *v0);
+bool psvec2_is_equal(const struct vec2 *v0, const struct vec2 *v1);
+bool psvec2_is_collinear(const struct vec2 *v0, const struct vec2 *v1);
 struct vec2 *psvec2(struct vec2 *result, mfloat_t x, mfloat_t y);
-struct vec2 *psvec2_assign(struct vec2 *result, struct vec2 *v0);
-struct vec2 *psvec2_reduce_vec3(struct vec2 *result, struct vec3 *v0);
-struct vec2 *psvec2_reduce_vec4(struct vec2 *result, struct vec4 *v0);
+struct vec2 *psvec2_assign(struct vec2 *result, const struct vec2 *v0);
+struct vec2 *psvec2_reduce_vec3(struct vec2 *result, const struct vec3 *v0);
+struct vec2 *psvec2_reduce_vec4(struct vec2 *result, const struct vec4 *v0);
 struct vec2 *psvec2_zero(struct vec2 *result);
 struct vec2 *psvec2_one(struct vec2 *result);
-struct vec2 *psvec2_sign(struct vec2 *result, struct vec2 *v0);
-struct vec2 *psvec2_add(struct vec2 *result, struct vec2 *v0, struct vec2 *v1);
-struct vec2 *psvec2_add_f(struct vec2 *result, struct vec2 *v0, mfloat_t f);
-struct vec2 *psvec2_subtract(struct vec2 *result, struct vec2 *v0, struct vec2 *v1);
-struct vec2 *psvec2_subtract_f(struct vec2 *result, struct vec2 *v0, mfloat_t f);
-struct vec2 *psvec2_multiply(struct vec2 *result, struct vec2 *v0, struct vec2 *v1);
-struct vec2 *psvec2_multiply_f(struct vec2 *result, struct vec2 *v0, mfloat_t f);
-struct vec2 *psvec2_multiply_mat2(struct vec2 *result, struct vec2 *v0, const struct mat2 *m0);
-struct vec2 *psvec2_divide(struct vec2 *result, struct vec2 *v0, struct vec2 *v1);
-struct vec2 *psvec2_divide_f(struct vec2 *result, struct vec2 *v0, mfloat_t f);
-struct vec2 *psvec2_snap(struct vec2 *result, struct vec2 *v0, struct vec2 *v1);
-struct vec2 *psvec2_snap_f(struct vec2 *result, struct vec2 *v0, mfloat_t f);
-struct vec2 *psvec2_negative(struct vec2 *result, struct vec2 *v0);
-struct vec2 *psvec2_abs(struct vec2 *result, struct vec2 *v0);
-struct vec2 *psvec2_floor(struct vec2 *result, struct vec2 *v0);
-struct vec2 *psvec2_ceil(struct vec2 *result, struct vec2 *v0);
-struct vec2 *psvec2_round(struct vec2 *result, struct vec2 *v0);
-struct vec2 *psvec2_max(struct vec2 *result, struct vec2 *v0, struct vec2 *v1);
-struct vec2 *psvec2_min(struct vec2 *result, struct vec2 *v0, struct vec2 *v1);
-struct vec2 *psvec2_clamp(struct vec2 *result, struct vec2 *v0, struct vec2 *v1, struct vec2 *v2);
-struct vec2 *psvec2_normalize(struct vec2 *result, struct vec2 *v0);
-mfloat_t psvec2_dot(struct vec2 *v0, struct vec2 *v1);
-struct vec2 *psvec2_project(struct vec2 *result, struct vec2 *v0, struct vec2 *v1);
-struct vec2 *psvec2_slide(struct vec2 *result, struct vec2 *v0, struct vec2 *normal);
-struct vec2 *psvec2_reflect(struct vec2 *result, struct vec2 *v0, struct vec2 *normal);
-struct vec2 *psvec2_tangent(struct vec2 *result, struct vec2 *v0);
-struct vec2 *psvec2_rotate(struct vec2 *result, struct vec2 *v0, mfloat_t f);
-struct vec2 *psvec2_lerp(struct vec2 *result, struct vec2 *v0, struct vec2 *v1, mfloat_t f);
-struct vec2 *psvec2_bezier3(struct vec2 *result, struct vec2 *v0, struct vec2 *v1, struct vec2 *v2, mfloat_t f);
-struct vec2 *psvec2_bezier4(struct vec2 *result, struct vec2 *v0, struct vec2 *v1, struct vec2 *v2, struct vec2 *v3, mfloat_t f);
-mfloat_t psvec2_angle(struct vec2 *v0);
-mfloat_t psvec2_length(struct vec2 *v0);
-mfloat_t psvec2_length_squared(struct vec2 *v0);
-mfloat_t psvec2_distance(struct vec2 *v0, struct vec2 *v1);
-mfloat_t psvec2_distance_squared(struct vec2 *v0, struct vec2 *v1);
+struct vec2 *psvec2_sign(struct vec2 *result, const struct vec2 *v0);
+struct vec2 *psvec2_add(struct vec2 *result, const struct vec2 *v0, const struct vec2 *v1);
+struct vec2 *psvec2_add_f(struct vec2 *result, const struct vec2 *v0, mfloat_t f);
+struct vec2 *psvec2_subtract(struct vec2 *result, const struct vec2 *v0, const struct vec2 *v1);
+struct vec2 *psvec2_subtract_f(struct vec2 *result, const struct vec2 *v0, mfloat_t f);
+struct vec2 *psvec2_multiply(struct vec2 *result, const struct vec2 *v0, const struct vec2 *v1);
+struct vec2 *psvec2_multiply_f(struct vec2 *result, const struct vec2 *v0, mfloat_t f);
+struct vec2 *psvec2_multiply_mat2(struct vec2 *result, const struct vec2 *v0, const struct mat2 *m0);
+struct vec2 *psvec2_divide(struct vec2 *result, const struct vec2 *v0, const struct vec2 *v1);
+struct vec2 *psvec2_divide_f(struct vec2 *result, const struct vec2 *v0, mfloat_t f);
+struct vec2 *psvec2_snap(struct vec2 *result, const struct vec2 *v0, const struct vec2 *v1);
+struct vec2 *psvec2_snap_f(struct vec2 *result, const struct vec2 *v0, mfloat_t f);
+struct vec2 *psvec2_negative(struct vec2 *result, const struct vec2 *v0);
+struct vec2 *psvec2_abs(struct vec2 *result, const struct vec2 *v0);
+struct vec2 *psvec2_floor(struct vec2 *result, const struct vec2 *v0);
+struct vec2 *psvec2_ceil(struct vec2 *result, const struct vec2 *v0);
+struct vec2 *psvec2_round(struct vec2 *result, const struct vec2 *v0);
+struct vec2 *psvec2_max(struct vec2 *result, const struct vec2 *v0, const struct vec2 *v1);
+struct vec2 *psvec2_min(struct vec2 *result, const struct vec2 *v0, const struct vec2 *v1);
+struct vec2 *psvec2_clamp(struct vec2 *result, const struct vec2 *v0, const struct vec2 *v1, const struct vec2 *v2);
+struct vec2 *psvec2_normalize(struct vec2 *result, const struct vec2 *v0);
+mfloat_t psvec2_dot(const struct vec2 *v0, const struct vec2 *v1);
+struct vec2 *psvec2_project(struct vec2 *result, const struct vec2 *v0, const struct vec2 *v1);
+struct vec2 *psvec2_slide(struct vec2 *result, const struct vec2 *v0, const struct vec2 *normal);
+struct vec2 *psvec2_reflect(struct vec2 *result, const struct vec2 *v0, const struct vec2 *normal);
+struct vec2 *psvec2_tangent(struct vec2 *result, const struct vec2 *v0);
+struct vec2 *psvec2_rotate(struct vec2 *result, const struct vec2 *v0, mfloat_t f);
+struct vec2 *psvec2_lerp(struct vec2 *result, const struct vec2 *v0, const struct vec2 *v1, mfloat_t f);
+struct vec2 *psvec2_bezier3(struct vec2 *result, const struct vec2 *v0, const struct vec2 *v1, const struct vec2 *v2, mfloat_t f);
+struct vec2 *psvec2_bezier4(struct vec2 *result, const struct vec2 *v0, const struct vec2 *v1, const struct vec2 *v2, const struct vec2 *v3, mfloat_t f);
+mfloat_t psvec2_angle(const struct vec2 *v0);
+mfloat_t psvec2_length(const struct vec2 *v0);
+mfloat_t psvec2_length_squared(const struct vec2 *v0);
+mfloat_t psvec2_distance(const struct vec2 *v0, const struct vec2 *v1);
+mfloat_t psvec2_distance_squared(const struct vec2 *v0, const struct vec2 *v1);
 #if defined(MATHC_USE_INT)
 struct vec2 *psvec2_assign_vec2i(struct vec2 *result, const struct vec2i *v0);
 #endif
@@ -963,7 +963,7 @@ mfloat_t vec3_length_squared(const mfloat_t *v0);
 mfloat_t vec3_distance(const mfloat_t *v0, const mfloat_t *v1);
 mfloat_t vec3_distance_squared(const mfloat_t *v0, const mfloat_t *v1);
 bool vec3_linear_independent(const mfloat_t *v0, const mfloat_t *v1, const mfloat_t *v2);
-mfloat_t **vec3_orthonormalization(mfloat_t result[3][3], mfloat_t basis[3][3]);
+mfloat_t **vec3_orthonormalization(mfloat_t result[3][3], const mfloat_t basis[3][3]);
 #if defined(MATHC_USE_INT)
 mfloat_t *vec3_assign_vec3i(mfloat_t *result, const mint_t *v0);
 #endif
@@ -1019,8 +1019,8 @@ struct vec3 svec3_assign_vec3i(struct vec3i v0);
 
 #if defined(MATHC_USE_POINTER_STRUCT_FUNCTIONS)
 bool psvec3_is_zero(const struct vec3 *v0);
-bool psvec3_is_equal(const struct vec3 *v0, struct vec3 *v1);
-bool psvec3_is_collinear(const struct vec3 *v0, struct vec3 *v1);
+bool psvec3_is_equal(const struct vec3 *v0, const struct vec3 *v1);
+bool psvec3_is_collinear(const struct vec3 *v0, const struct vec3 *v1);
 struct vec3 *psvec3(struct vec3 *result, mfloat_t x, mfloat_t y, mfloat_t z);
 struct vec3 *psvec3_assign(struct vec3 *result, const struct vec3 *v0);
 struct vec3 *psvec3_expand_vec2(struct vec3 *result, const struct vec2 *v0, mfloat_t z);
@@ -1028,39 +1028,39 @@ struct vec3 *psvec3_reduce_vec4(struct vec3 *result, const struct vec4 *v0);
 struct vec3 *psvec3_zero(struct vec3 *result);
 struct vec3 *psvec3_one(struct vec3 *result);
 struct vec3 *psvec3_sign(struct vec3 *result, const struct vec3 *v0);
-struct vec3 *psvec3_add(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1);
+struct vec3 *psvec3_add(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1);
 struct vec3 *psvec3_add_f(struct vec3 *result, const struct vec3 *v0, mfloat_t f);
-struct vec3 *psvec3_subtract(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1);
+struct vec3 *psvec3_subtract(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1);
 struct vec3 *psvec3_subtract_f(struct vec3 *result, const struct vec3 *v0, mfloat_t f);
-struct vec3 *psvec3_multiply(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1);
+struct vec3 *psvec3_multiply(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1);
 struct vec3 *psvec3_multiply_f(struct vec3 *result, const struct vec3 *v0, mfloat_t f);
 struct vec3 *psvec3_multiply_mat3(struct vec3 *result, const struct vec3 *v0, const struct mat3 *m0);
-struct vec3 *psvec3_divide(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1);
+struct vec3 *psvec3_divide(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1);
 struct vec3 *psvec3_divide_f(struct vec3 *result, const struct vec3 *v0, mfloat_t f);
-struct vec3 *psvec3_snap(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1);
+struct vec3 *psvec3_snap(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1);
 struct vec3 *psvec3_snap_f(struct vec3 *result, const struct vec3 *v0, mfloat_t f);
 struct vec3 *psvec3_negative(struct vec3 *result, const struct vec3 *v0);
 struct vec3 *psvec3_abs(struct vec3 *result, const struct vec3 *v0);
 struct vec3 *psvec3_floor(struct vec3 *result, const struct vec3 *v0);
 struct vec3 *psvec3_ceil(struct vec3 *result, const struct vec3 *v0);
 struct vec3 *psvec3_round(struct vec3 *result, const struct vec3 *v0);
-struct vec3 *psvec3_max(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1);
-struct vec3 *psvec3_min(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1);
-struct vec3 *psvec3_clamp(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1, struct vec3 *v2);
-struct vec3 *psvec3_cross(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1);
+struct vec3 *psvec3_max(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1);
+struct vec3 *psvec3_min(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1);
+struct vec3 *psvec3_clamp(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1, const struct vec3 *v2);
+struct vec3 *psvec3_cross(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1);
 struct vec3 *psvec3_normalize(struct vec3 *result, const struct vec3 *v0);
-mfloat_t psvec3_dot(const struct vec3 *v0, struct vec3 *v1);
-struct vec3 *psvec3_project(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1);
-struct vec3 *psvec3_slide(struct vec3 *result, const struct vec3 *v0, struct vec3 *normal);
-struct vec3 *psvec3_reflect(struct vec3 *result, const struct vec3 *v0, struct vec3 *normal);
-struct vec3 *psvec3_rotate(struct vec3 *result, const struct vec3 *v0, struct vec3 *ra, mfloat_t f);
-struct vec3 *psvec3_lerp(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1, mfloat_t f);
-struct vec3 *psvec3_bezier3(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1, struct vec3 *v2, mfloat_t f);
-struct vec3 *psvec3_bezier4(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1, struct vec3 *v2, struct vec3 *v3, mfloat_t f);
+mfloat_t psvec3_dot(const struct vec3 *v0, const struct vec3 *v1);
+struct vec3 *psvec3_project(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1);
+struct vec3 *psvec3_slide(struct vec3 *result, const struct vec3 *v0, const struct vec3 *normal);
+struct vec3 *psvec3_reflect(struct vec3 *result, const struct vec3 *v0, const struct vec3 *normal);
+struct vec3 *psvec3_rotate(struct vec3 *result, const struct vec3 *v0, const struct vec3 *ra, mfloat_t f);
+struct vec3 *psvec3_lerp(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1, mfloat_t f);
+struct vec3 *psvec3_bezier3(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1, const struct vec3 *v2, mfloat_t f);
+struct vec3 *psvec3_bezier4(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1, const struct vec3 *v2, const struct vec3 *v3, mfloat_t f);
 mfloat_t psvec3_length(const struct vec3 *v0);
 mfloat_t psvec3_length_squared(const struct vec3 *v0);
-mfloat_t psvec3_distance(const struct vec3 *v0, struct vec3 *v1);
-mfloat_t psvec3_distance_squared(const struct vec3 *v0, struct vec3 *v1);
+mfloat_t psvec3_distance(const struct vec3 *v0, const struct vec3 *v1);
+mfloat_t psvec3_distance_squared(const struct vec3 *v0, const struct vec3 *v1);
 #if defined(MATHC_USE_INT)
 struct vec3 *psvec3_assign_vec3i(struct vec3 *result, const struct vec3i *v0);
 #endif
@@ -1143,40 +1143,40 @@ struct vec4 svec4_assign_vec4i(struct vec4i v0);
 #endif
 
 #if defined(MATHC_USE_POINTER_STRUCT_FUNCTIONS)
-bool psvec4_is_zero(struct vec4 *v0);
-bool psvec4_is_equal(struct vec4 *v0, struct vec4 *v1);
-bool psvec4_is_collinear(struct vec4 *v0, struct vec4 *v1);
+bool psvec4_is_zero(const struct vec4 *v0);
+bool psvec4_is_equal(const struct vec4 *v0, const struct vec4 *v1);
+bool psvec4_is_collinear(const struct vec4 *v0, const struct vec4 *v1);
 struct vec4 *psvec4(struct vec4 *result, mfloat_t x, mfloat_t y, mfloat_t z, mfloat_t w);
-struct vec4 *psvec4_assign(struct vec4 *result, struct vec4 *v0);
-struct vec4 *psvec4_expand_vec2(struct vec4 *result, struct vec2 *v0, mfloat_t z, mfloat_t w);
-struct vec4 *psvec4_expand_vec3(struct vec4 *result, struct vec3 *v0, mfloat_t w);
+struct vec4 *psvec4_assign(struct vec4 *result, const struct vec4 *v0);
+struct vec4 *psvec4_expand_vec2(struct vec4 *result, const struct vec2 *v0, mfloat_t z, mfloat_t w);
+struct vec4 *psvec4_expand_vec3(struct vec4 *result, const struct vec3 *v0, mfloat_t w);
 struct vec4 *psvec4_zero(struct vec4 *result);
 struct vec4 *psvec4_one(struct vec4 *result);
-struct vec4 *psvec4_sign(struct vec4 *result, struct vec4 *v0);
-struct vec4 *psvec4_add(struct vec4 *result, struct vec4 *v0, struct vec4 *v1);
-struct vec4 *psvec4_add_f(struct vec4 *result, struct vec4 *v0, mfloat_t f);
-struct vec4 *psvec4_subtract(struct vec4 *result, struct vec4 *v0, struct vec4 *v1);
-struct vec4 *psvec4_subtract_f(struct vec4 *result, struct vec4 *v0, mfloat_t f);
-struct vec4 *psvec4_multiply(struct vec4 *result, struct vec4 *v0, struct vec4 *v1);
-struct vec4 *psvec4_multiply_f(struct vec4 *result, struct vec4 *v0, mfloat_t f);
-struct vec4 *psvec4_multiply_mat4(struct vec4 *result, struct vec4 *v0, const struct mat4 *m0);
-struct vec4 *psvec4_divide(struct vec4 *result, struct vec4 *v0, struct vec4 *v1);
-struct vec4 *psvec4_divide_f(struct vec4 *result, struct vec4 *v0, mfloat_t f);
-struct vec4 *psvec4_snap(struct vec4 *result, struct vec4 *v0, struct vec4 *v1);
-struct vec4 *psvec4_snap_f(struct vec4 *result, struct vec4 *v0, mfloat_t f);
-struct vec4 *psvec4_negative(struct vec4 *result, struct vec4 *v0);
-struct vec4 *psvec4_abs(struct vec4 *result, struct vec4 *v0);
-struct vec4 *psvec4_floor(struct vec4 *result, struct vec4 *v0);
-struct vec4 *psvec4_ceil(struct vec4 *result, struct vec4 *v0);
-struct vec4 *psvec4_round(struct vec4 *result, struct vec4 *v0);
-struct vec4 *psvec4_max(struct vec4 *result, struct vec4 *v0, struct vec4 *v1);
-struct vec4 *psvec4_min(struct vec4 *result, struct vec4 *v0, struct vec4 *v1);
-struct vec4 *psvec4_clamp(struct vec4 *result, struct vec4 *v0, struct vec4 *v1, struct vec4 *v2);
-struct vec4 *psvec4_normalize(struct vec4 *result, struct vec4 *v0);
-mfloat_t psvec4_dot(struct vec4 *v0, struct vec4 *v1);
-struct vec4 *psvec4_lerp(struct vec4 *result, struct vec4 *v0, struct vec4 *v1, mfloat_t f);
+struct vec4 *psvec4_sign(struct vec4 *result, const struct vec4 *v0);
+struct vec4 *psvec4_add(struct vec4 *result, const struct vec4 *v0, const struct vec4 *v1);
+struct vec4 *psvec4_add_f(struct vec4 *result, const struct vec4 *v0, mfloat_t f);
+struct vec4 *psvec4_subtract(struct vec4 *result, const struct vec4 *v0, const struct vec4 *v1);
+struct vec4 *psvec4_subtract_f(struct vec4 *result, const struct vec4 *v0, mfloat_t f);
+struct vec4 *psvec4_multiply(struct vec4 *result, const struct vec4 *v0, const struct vec4 *v1);
+struct vec4 *psvec4_multiply_f(struct vec4 *result, const struct vec4 *v0, mfloat_t f);
+struct vec4 *psvec4_multiply_mat4(struct vec4 *result, const struct vec4 *v0, const struct mat4 *m0);
+struct vec4 *psvec4_divide(struct vec4 *result, const struct vec4 *v0, const struct vec4 *v1);
+struct vec4 *psvec4_divide_f(struct vec4 *result, const struct vec4 *v0, mfloat_t f);
+struct vec4 *psvec4_snap(struct vec4 *result, const struct vec4 *v0, const struct vec4 *v1);
+struct vec4 *psvec4_snap_f(struct vec4 *result, const struct vec4 *v0, mfloat_t f);
+struct vec4 *psvec4_negative(struct vec4 *result, const struct vec4 *v0);
+struct vec4 *psvec4_abs(struct vec4 *result, const struct vec4 *v0);
+struct vec4 *psvec4_floor(struct vec4 *result, const struct vec4 *v0);
+struct vec4 *psvec4_ceil(struct vec4 *result, const struct vec4 *v0);
+struct vec4 *psvec4_round(struct vec4 *result, const struct vec4 *v0);
+struct vec4 *psvec4_max(struct vec4 *result, const struct vec4 *v0, const struct vec4 *v1);
+struct vec4 *psvec4_min(struct vec4 *result, const struct vec4 *v0, const struct vec4 *v1);
+struct vec4 *psvec4_clamp(struct vec4 *result, const struct vec4 *v0, const struct vec4 *v1, const struct vec4 *v2);
+struct vec4 *psvec4_normalize(struct vec4 *result, const struct vec4 *v0);
+mfloat_t psvec4_dot(const struct vec4 *v0, const struct vec4 *v1);
+struct vec4 *psvec4_lerp(struct vec4 *result, const struct vec4 *v0, const struct vec4 *v1, mfloat_t f);
 #if defined(MATHC_USE_INT)
-struct vec4 *psvec4_assign_vec4i(struct vec4 *result, struct vec4i *v0);
+struct vec4 *psvec4_assign_vec4i(struct vec4 *result, const struct vec4i *v0);
 #endif
 #endif
 
@@ -1326,10 +1326,10 @@ struct mat2 *psmat2_subtract_f(struct mat2 *result, const struct mat2 *m0, mfloa
 struct mat2 *psmat2_multiply(struct mat2 *result, const struct mat2 *m0, const struct mat2 *m1);
 struct mat2 *psmat2_multiply_f(struct mat2 *result, const struct mat2 *m0, mfloat_t f);
 struct mat2 *psmat2_inverse(struct mat2 *result, const struct mat2 *m0);
-struct mat2 *psmat2_scaling(struct mat2 *result, struct vec2 *v0);
+struct mat2 *psmat2_scaling(struct mat2 *result, const struct vec2 *v0);
 struct mat2 *psmat2_scale(struct mat2 *result, const struct mat2 *m0, struct vec2 *v0);
 struct mat2 *psmat2_rotation_z(struct mat2 *result, mfloat_t f);
-struct mat2 *psmat2_rotate_z(struct mat2 *result, struct mat2 *m0, mfloat_t f);
+struct mat2 *psmat2_rotate_z(struct mat2 *result, const struct mat2 *m0, mfloat_t f);
 struct mat2 *psmat2_lerp(struct mat2 *result, const struct mat2 *m0, const struct mat2 *m1, mfloat_t f);
 #endif
 

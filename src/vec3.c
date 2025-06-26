@@ -300,11 +300,11 @@ mfloat_t *vec3_rotate(mfloat_t *result, const mfloat_t *v0, const mfloat_t *ra, 
     x = v0[0];
     y = v0[1];
     z = v0[2];
-    struct vec3 norm;
-    vec3_normalize((mfloat_t *)&norm, ra);
-    rx = norm.x;
-    ry = norm.y;
-    rz = norm.z;
+    mfloat_t norm[VEC3_SIZE];
+    vec3_normalize(norm, ra);
+    rx = norm[0];
+    ry = norm[1];
+    rz = norm[2];
     result[0] = x * (cs + rx * rx * (1 - cs)) + y * (rx * ry * (1 - cs) - rz * sn) + z * (rx * rz * (1 - cs) + ry * sn);
     result[1] = x * (ry * rx * (1 - cs) + rz * sn) + y * (cs + ry * ry * (1 - cs)) + z * (ry * rz * (1 - cs) - rx * sn);
     result[2] = x * (rz * rx * (1 - cs) - ry * sn) + y * (rz * ry * (1 - cs) + rx * sn) + z * (cs + rz * rz * (1 - cs));
@@ -362,7 +362,7 @@ bool vec3_linear_independent(const mfloat_t *v0, const mfloat_t *v1, const mfloa
     return v0[0] * v1[1] * v2[2] + v0[1] * v1[2] * v2[0] + v0[2] * v1[0] * v2[1] - v0[2] * v1[1] * v2[0] - v0[1] * v1[0] * v2[2] - v0[0] * v1[2] * v2[1];
 }
 
-mfloat_t **vec3_orthonormalization(mfloat_t result[3][3], mfloat_t basis[3][3]) {
+mfloat_t **vec3_orthonormalization(mfloat_t result[3][3], const mfloat_t basis[3][3]) {
     mfloat_t v0[3];
     mfloat_t v1[3];
     mfloat_t v2[3];
@@ -603,19 +603,19 @@ struct vec3 svec3_project(struct vec3 v0, struct vec3 v1) {
 
 struct vec3 svec3_slide(struct vec3 v0, struct vec3 normal) {
     struct vec3 result;
-    vec3_slide((mfloat_t *)&result, (const mfloat_t *)&v0, (mfloat_t *)&normal);
+    vec3_slide((mfloat_t *)&result, (const mfloat_t *)&v0, (const mfloat_t *)&normal);
     return result;
 }
 
 struct vec3 svec3_reflect(struct vec3 v0, struct vec3 normal) {
     struct vec3 result;
-    vec3_reflect((mfloat_t *)&result, (const mfloat_t *)&v0, (mfloat_t *)&normal);
+    vec3_reflect((mfloat_t *)&result, (const mfloat_t *)&v0, (const mfloat_t *)&normal);
     return result;
 }
 
 struct vec3 svec3_rotate(struct vec3 v0, struct vec3 ra, mfloat_t f) {
     struct vec3 result;
-    vec3_rotate((mfloat_t *)&result, (const mfloat_t *)&v0, (mfloat_t *)&ra, f);
+    vec3_rotate((mfloat_t *)&result, (const mfloat_t *)&v0, (const mfloat_t *)&ra, f);
     return result;
 }
 
@@ -667,11 +667,11 @@ bool psvec3_is_zero(const struct vec3 *v0) {
     return vec3_is_zero((const mfloat_t *)v0);
 }
 
-bool psvec3_is_equal(const struct vec3 *v0, struct vec3 *v1) {
+bool psvec3_is_equal(const struct vec3 *v0, const struct vec3 *v1) {
     return vec3_is_equal((const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
-bool psvec3_is_collinear(const struct vec3 *v0, struct vec3 *v1) {
+bool psvec3_is_collinear(const struct vec3 *v0, const struct vec3 *v1) {
     return vec3_is_collinear((const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
@@ -703,7 +703,7 @@ struct vec3 *psvec3_sign(struct vec3 *result, const struct vec3 *v0) {
     return (struct vec3 *)vec3_sign((mfloat_t *)result, (const mfloat_t *)v0);
 }
 
-struct vec3 *psvec3_add(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1) {
+struct vec3 *psvec3_add(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1) {
     return (struct vec3 *)vec3_add((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
@@ -711,7 +711,7 @@ struct vec3 *psvec3_add_f(struct vec3 *result, const struct vec3 *v0, mfloat_t f
     return (struct vec3 *)vec3_add_f((mfloat_t *)result, (const mfloat_t *)v0, f);
 }
 
-struct vec3 *psvec3_subtract(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1) {
+struct vec3 *psvec3_subtract(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1) {
     return (struct vec3 *)vec3_subtract((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
@@ -719,7 +719,7 @@ struct vec3 *psvec3_subtract_f(struct vec3 *result, const struct vec3 *v0, mfloa
     return (struct vec3 *)vec3_subtract_f((mfloat_t *)result, (const mfloat_t *)v0, f);
 }
 
-struct vec3 *psvec3_multiply(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1) {
+struct vec3 *psvec3_multiply(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1) {
     return (struct vec3 *)vec3_multiply((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
@@ -731,7 +731,7 @@ struct vec3 *psvec3_multiply_mat3(struct vec3 *result, const struct vec3 *v0, co
     return (struct vec3 *)vec3_multiply_mat3((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)m0);
 }
 
-struct vec3 *psvec3_divide(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1) {
+struct vec3 *psvec3_divide(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1) {
     return (struct vec3 *)vec3_divide((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
@@ -739,7 +739,7 @@ struct vec3 *psvec3_divide_f(struct vec3 *result, const struct vec3 *v0, mfloat_
     return (struct vec3 *)vec3_divide_f((mfloat_t *)result, (const mfloat_t *)v0, f);
 }
 
-struct vec3 *psvec3_snap(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1) {
+struct vec3 *psvec3_snap(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1) {
     return (struct vec3 *)vec3_snap((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
@@ -767,19 +767,19 @@ struct vec3 *psvec3_round(struct vec3 *result, const struct vec3 *v0) {
     return (struct vec3 *)vec3_round((mfloat_t *)result, (const mfloat_t *)v0);
 }
 
-struct vec3 *psvec3_max(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1) {
+struct vec3 *psvec3_max(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1) {
     return (struct vec3 *)vec3_max((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
-struct vec3 *psvec3_min(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1) {
+struct vec3 *psvec3_min(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1) {
     return (struct vec3 *)vec3_min((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
-struct vec3 *psvec3_clamp(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1, struct vec3 *v2) {
+struct vec3 *psvec3_clamp(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1, const struct vec3 *v2) {
     return (struct vec3 *)vec3_clamp((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)v1, (const mfloat_t *)v2);
 }
 
-struct vec3 *psvec3_cross(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1) {
+struct vec3 *psvec3_cross(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1) {
     return (struct vec3 *)vec3_cross((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
@@ -787,35 +787,35 @@ struct vec3 *psvec3_normalize(struct vec3 *result, const struct vec3 *v0) {
     return (struct vec3 *)vec3_normalize((mfloat_t *)result, (const mfloat_t *)v0);
 }
 
-mfloat_t psvec3_dot(const struct vec3 *v0, struct vec3 *v1) {
+mfloat_t psvec3_dot(const struct vec3 *v0, const struct vec3 *v1) {
     return vec3_dot((const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
-struct vec3 *psvec3_project(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1) {
+struct vec3 *psvec3_project(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1) {
     return (struct vec3 *)vec3_project((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
-struct vec3 *psvec3_slide(struct vec3 *result, const struct vec3 *v0, struct vec3 *normal) {
-    return (struct vec3 *)vec3_slide((mfloat_t *)result, (const mfloat_t *)v0, (mfloat_t *)normal);
+struct vec3 *psvec3_slide(struct vec3 *result, const struct vec3 *v0, const struct vec3 *normal) {
+    return (struct vec3 *)vec3_slide((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)normal);
 }
 
-struct vec3 *psvec3_reflect(struct vec3 *result, const struct vec3 *v0, struct vec3 *normal) {
-    return (struct vec3 *)vec3_reflect((mfloat_t *)result, (const mfloat_t *)v0, (mfloat_t *)normal);
+struct vec3 *psvec3_reflect(struct vec3 *result, const struct vec3 *v0, const struct vec3 *normal) {
+    return (struct vec3 *)vec3_reflect((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)normal);
 }
 
-struct vec3 *psvec3_rotate(struct vec3 *result, const struct vec3 *v0, struct vec3 *ra, mfloat_t f) {
-    return (struct vec3 *)vec3_rotate((mfloat_t *)result, (const mfloat_t *)v0, (mfloat_t *)ra, f);
+struct vec3 *psvec3_rotate(struct vec3 *result, const struct vec3 *v0, const struct vec3 *ra, mfloat_t f) {
+    return (struct vec3 *)vec3_rotate((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)ra, f);
 }
 
-struct vec3 *psvec3_lerp(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1, mfloat_t f) {
+struct vec3 *psvec3_lerp(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1, mfloat_t f) {
     return (struct vec3 *)vec3_lerp((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)v1, f);
 }
 
-struct vec3 *psvec3_bezier3(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1, struct vec3 *v2, mfloat_t f) {
+struct vec3 *psvec3_bezier3(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1, const struct vec3 *v2, mfloat_t f) {
     return (struct vec3 *)vec3_bezier3((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)v1, (const mfloat_t *)v2, f);
 }
 
-struct vec3 *psvec3_bezier4(struct vec3 *result, const struct vec3 *v0, struct vec3 *v1, struct vec3 *v2, struct vec3 *v3, mfloat_t f) {
+struct vec3 *psvec3_bezier4(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1, const struct vec3 *v2, const struct vec3 *v3, mfloat_t f) {
     return (struct vec3 *)vec3_bezier4((mfloat_t *)result, (const mfloat_t *)v0, (const mfloat_t *)v1, (const mfloat_t *)v2, (const mfloat_t *)v3, f);
 }
 
@@ -827,11 +827,11 @@ mfloat_t psvec3_length_squared(const struct vec3 *v0) {
     return vec3_length_squared((const mfloat_t *)v0);
 }
 
-mfloat_t psvec3_distance(const struct vec3 *v0, struct vec3 *v1) {
+mfloat_t psvec3_distance(const struct vec3 *v0, const struct vec3 *v1) {
     return vec3_distance((const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
-mfloat_t psvec3_distance_squared(const struct vec3 *v0, struct vec3 *v1) {
+mfloat_t psvec3_distance_squared(const struct vec3 *v0, const struct vec3 *v1) {
     return vec3_distance_squared((const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 

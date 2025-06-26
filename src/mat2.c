@@ -401,7 +401,7 @@ struct mat2 *psmat2_inverse(struct mat2 *result, const struct mat2 *m0) {
     return (struct mat2 *)mat2_inverse((mfloat_t *)result, (const mfloat_t *)m0);
 }
 
-struct mat2 *psmat2_scaling(struct mat2 *result, struct vec2 *v0) {
+struct mat2 *psmat2_scaling(struct mat2 *result, const struct vec2 *v0) {
     return (struct mat2 *)mat2_scaling((mfloat_t *)result, (const mfloat_t *)v0);
 }
 
@@ -413,8 +413,8 @@ struct mat2 *psmat2_rotation_z(struct mat2 *result, mfloat_t f) {
     return (struct mat2 *)mat2_rotation_z((mfloat_t *)result, f);
 }
 
-struct mat2 *psmat2_rotate_z(struct mat2 *result, struct mat2 *m0, mfloat_t f) {
-    return (struct mat2 *)mat2_rotate_z((mfloat_t *)result, (mfloat_t *)m0, f);
+struct mat2 *psmat2_rotate_z(struct mat2 *result, const struct mat2 *m0, mfloat_t f) {
+    return (struct mat2 *)mat2_rotate_z((mfloat_t *)result, (const mfloat_t *)m0, f);
 }
 
 struct mat2 *psmat2_lerp(struct mat2 *result, const struct mat2 *m0, const struct mat2 *m1, mfloat_t f) {

@@ -291,13 +291,13 @@ struct vec3i svec3i_assign(struct vec3i v0) {
 
 struct vec3i svec3i_expand_vec2i(struct vec2i v0, mint_t z) {
     struct vec3i result;
-    vec3i_expand_vec2i((mint_t *)&result, (mint_t *)&v0, z);
+    vec3i_expand_vec2i((mint_t *)&result, (const mint_t *)&v0, z);
     return result;
 }
 
 struct vec3i svec3i_reduce_vec4i(struct vec4i v0) {
     struct vec3i result;
-    vec3i_reduce_vec4i((mint_t *)&result, (mint_t *)&v0);
+    vec3i_reduce_vec4i((mint_t *)&result, (const mint_t *)&v0);
     return result;
 }
 

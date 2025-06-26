@@ -481,7 +481,7 @@ struct vec2i *psvec2i_tangent(struct vec2i *result, const struct vec2i *v0) {
 }
 
 #if defined(MATHC_USE_FLOATING_POINT)
-struct vec2i *psvec2i_assign_vec2(struct vec2i *result, struct vec2 *v0) {
+struct vec2i *psvec2i_assign_vec2(struct vec2i *result, const struct vec2 *v0) {
     return (struct vec2i *)vec2i_assign_vec2((mint_t *)result, (const mfloat_t *)v0);
 }
 #endif
