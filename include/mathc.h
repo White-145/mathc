@@ -31,7 +31,7 @@ https://github.com/White-145/mathc
 
 #define MATHC_VERSION_YYYY 2025
 #define MATHC_VERSION_MM 06
-#define MATHC_VERSION_DD 22
+#define MATHC_VERSION_DD 26
 #define MATHC_VERSION_MICRO 0
 
 #if !defined(MATHC_NO_INT)
