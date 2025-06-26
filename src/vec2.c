@@ -29,6 +29,10 @@ bool vec2_is_equal(const mfloat_t *v0, const mfloat_t *v1) {
     return MFABS(v0[0] - v1[0]) < MFLT_EPSILON && MFABS(v0[1] - v1[1]) < MFLT_EPSILON;
 }
 
+bool vec2_is_collinear(const mfloat_t *v0, const mfloat_t *v1) {
+    return MFABS(v0[0] * v1[1] - v0[1] * v1[0]) < MFLT_EPSILON;
+}
+
 mfloat_t *vec2(mfloat_t *result, mfloat_t x, mfloat_t y) {
     result[0] = x;
     result[1] = y;
@@ -350,6 +354,10 @@ bool svec2_is_equal(struct vec2 v0, struct vec2 v1) {
     return vec2_is_equal((const mfloat_t *)&v0, (const mfloat_t *)&v1);
 }
 
+bool svec2_is_collinear(struct vec2 v0, struct vec2 v1) {
+    return vec2_is_collinear((const mfloat_t *)&v0, (const mfloat_t *)&v1);
+}
+
 struct vec2 svec2(mfloat_t x, mfloat_t y) {
     struct vec2 result;
     vec2((mfloat_t *)&result, x, y);
@@ -600,6 +608,10 @@ bool psvec2_is_zero(struct vec2 *v0) {
 
 bool psvec2_is_equal(struct vec2 *v0, struct vec2 *v1) {
     return vec2_is_equal((const mfloat_t *)v0, (const mfloat_t *)v1);
+}
+
+bool psvec2_is_collinear(struct vec2 *v0, struct vec2 *v1) {
+    return vec2_is_collinear((const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
 struct vec2 *psvec2(struct vec2 *result, mfloat_t x, mfloat_t y) {

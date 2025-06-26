@@ -29,6 +29,10 @@ bool vec4_is_equal(const mfloat_t *v0, const mfloat_t *v1) {
     return MFABS(v0[0] - v1[0]) < MFLT_EPSILON && MFABS(v0[1] - v1[1]) < MFLT_EPSILON && MFABS(v0[2] - v1[2]) < MFLT_EPSILON && MFABS(v0[3] - v1[3]) < MFLT_EPSILON;
 }
 
+bool vec4_is_collinear(const mfloat_t *v0, const mfloat_t *v1) {
+    return MFABS(v0[0] * v1[1] - v0[1] * v1[0]) < MFLT_EPSILON && MFABS(v0[0] * v1[2] - v0[2] * v1[0]) < MFLT_EPSILON && MFABS(v0[0] * v1[3] - v0[3] * v1[0]) < MFLT_EPSILON && MFABS(v0[1] * v1[2] - v0[2] * v1[1]) < MFLT_EPSILON && MFABS(v0[1] * v1[3] - v0[3] * v1[1]) < MFLT_EPSILON && MFABS(v0[2] * v1[3] - v0[3] * v1[2]) < MFLT_EPSILON;
+}
+
 mfloat_t *vec4(mfloat_t *result, mfloat_t x, mfloat_t y, mfloat_t z, mfloat_t w) {
     result[0] = x;
     result[1] = y;
@@ -301,6 +305,10 @@ bool svec4_is_equal(struct vec4 v0, struct vec4 v1) {
     return vec4_is_equal((const mfloat_t *)&v0, (const mfloat_t *)&v1);
 }
 
+bool svec4_is_collinear(struct vec4 v0, struct vec4 v1) {
+    return vec4_is_collinear((const mfloat_t *)&v0, (const mfloat_t *)&v1);
+}
+
 struct vec4 svec4(mfloat_t x, mfloat_t y, mfloat_t z, mfloat_t w) {
     struct vec4 result;
     vec4((mfloat_t *)&result, x, y, z, w);
@@ -485,6 +493,10 @@ bool psvec4_is_zero(struct vec4 *v0) {
 
 bool psvec4_is_equal(struct vec4 *v0, struct vec4 *v1) {
     return vec4_is_equal((const mfloat_t *)v0, (const mfloat_t *)v1);
+}
+
+bool psvec4_is_collinear(struct vec4 *v0, struct vec4 *v1) {
+    return vec4_is_collinear((const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
 struct vec4 *psvec4(struct vec4 *result, mfloat_t x, mfloat_t y, mfloat_t z, mfloat_t w) {

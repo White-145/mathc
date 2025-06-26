@@ -29,6 +29,12 @@ bool vec3_is_equal(const mfloat_t *v0, const mfloat_t *v1) {
     return MFABS(v0[0] - v1[0]) < MFLT_EPSILON && MFABS(v0[1] - v1[1]) < MFLT_EPSILON && MFABS(v0[2] - v1[2]) < MFLT_EPSILON;
 }
 
+bool vec3_is_collinear(const mfloat_t *v0, const mfloat_t *v1) {
+    mfloat_t cross[VEC3_SIZE];
+    vec3_cross(cross, v0, v1);
+    return MFABS(cross[0]) < MFLT_EPSILON && MFABS(cross[1]) < MFLT_EPSILON && MFABS(cross[2]) < MFLT_EPSILON;
+}
+
 mfloat_t *vec3(mfloat_t *result, mfloat_t x, mfloat_t y, mfloat_t z) {
     result[0] = x;
     result[1] = y;
@@ -413,6 +419,10 @@ bool svec3_is_equal(struct vec3 v0, struct vec3 v1) {
     return vec3_is_equal((const mfloat_t *)&v0, (const mfloat_t *)&v1);
 }
 
+bool svec3_is_collinear(struct vec3 v0, struct vec3 v1) {
+    return vec3_is_collinear((const mfloat_t *)&v0, (const mfloat_t *)&v1);
+}
+
 struct vec3 svec3(mfloat_t x, mfloat_t y, mfloat_t z) {
     struct vec3 result;
     vec3((mfloat_t *)&result, x, y, z);
@@ -659,6 +669,10 @@ bool psvec3_is_zero(const struct vec3 *v0) {
 
 bool psvec3_is_equal(const struct vec3 *v0, struct vec3 *v1) {
     return vec3_is_equal((const mfloat_t *)v0, (const mfloat_t *)v1);
+}
+
+bool psvec3_is_collinear(const struct vec3 *v0, struct vec3 *v1) {
+    return vec3_is_collinear((const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
 struct vec3 *psvec3(struct vec3 *result, mfloat_t x, mfloat_t y, mfloat_t z) {

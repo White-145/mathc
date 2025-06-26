@@ -769,6 +769,7 @@ struct vec4i *psvec4i_assign_vec4(struct vec4i *result, struct vec4 *v0);
 // vec2.c
 bool vec2_is_zero(const mfloat_t *v0);
 bool vec2_is_equal(const mfloat_t *v0, const mfloat_t *v1);
+bool vec2_is_collinear(const mfloat_t *v0, const mfloat_t *v1);
 mfloat_t *vec2(mfloat_t *result, mfloat_t x, mfloat_t y);
 mfloat_t *vec2_assign(mfloat_t *result, const mfloat_t *v0);
 mfloat_t *vec2_reduce_vec3(mfloat_t *result, const mfloat_t *v0);
@@ -819,6 +820,7 @@ mfloat_t *vec2_assign_vec2i(mfloat_t *result, const mint_t *v0);
 #if defined(MATHC_USE_STRUCT_FUNCTIONS)
 bool svec2_is_zero(struct vec2 v0);
 bool svec2_is_equal(struct vec2 v0, struct vec2 v1);
+bool svec2_is_collinear(struct vec2 v0, struct vec2 v1);
 struct vec2 svec2(mfloat_t x, mfloat_t y);
 struct vec2 svec2_assign(struct vec2 v0);
 struct vec2 svec2_reduce_vec3(struct vec3 v0);
@@ -868,6 +870,7 @@ struct vec2 svec2_assign_vec2i(struct vec2i v0);
 #if defined(MATHC_USE_POINTER_STRUCT_FUNCTIONS)
 bool psvec2_is_zero(struct vec2 *v0);
 bool psvec2_is_equal(struct vec2 *v0, struct vec2 *v1);
+bool psvec2_is_collinear(struct vec2 *v0, struct vec2 *v1);
 struct vec2 *psvec2(struct vec2 *result, mfloat_t x, mfloat_t y);
 struct vec2 *psvec2_assign(struct vec2 *result, struct vec2 *v0);
 struct vec2 *psvec2_reduce_vec3(struct vec2 *result, struct vec3 *v0);
@@ -918,6 +921,7 @@ struct vec2 *psvec2_assign_vec2i(struct vec2 *result, const struct vec2i *v0);
 // vec3.c
 bool vec3_is_zero(const mfloat_t *v0);
 bool vec3_is_equal(const mfloat_t *v0, const mfloat_t *v1);
+bool vec3_is_collinear(const mfloat_t *v0, const mfloat_t *v1);
 mfloat_t *vec3(mfloat_t *result, mfloat_t x, mfloat_t y, mfloat_t z);
 mfloat_t *vec3_assign(mfloat_t *result, const mfloat_t *v0);
 mfloat_t *vec3_expand_vec2(mfloat_t *result, const mfloat_t *v0, mfloat_t z);
@@ -967,6 +971,7 @@ mfloat_t *vec3_assign_vec3i(mfloat_t *result, const mint_t *v0);
 #if defined(MATHC_USE_STRUCT_FUNCTIONS)
 bool svec3_is_zero(struct vec3 v0);
 bool svec3_is_equal(struct vec3 v0, struct vec3 v1);
+bool svec3_is_collinear(struct vec3 v0, struct vec3 v1);
 struct vec3 svec3(mfloat_t x, mfloat_t y, mfloat_t z);
 struct vec3 svec3_assign(struct vec3 v0);
 struct vec3 svec3_expand_vec2(struct vec2 v0, mfloat_t z);
@@ -1015,6 +1020,7 @@ struct vec3 svec3_assign_vec3i(struct vec3i v0);
 #if defined(MATHC_USE_POINTER_STRUCT_FUNCTIONS)
 bool psvec3_is_zero(const struct vec3 *v0);
 bool psvec3_is_equal(const struct vec3 *v0, struct vec3 *v1);
+bool psvec3_is_collinear(const struct vec3 *v0, struct vec3 *v1);
 struct vec3 *psvec3(struct vec3 *result, mfloat_t x, mfloat_t y, mfloat_t z);
 struct vec3 *psvec3_assign(struct vec3 *result, const struct vec3 *v0);
 struct vec3 *psvec3_expand_vec2(struct vec3 *result, const struct vec2 *v0, mfloat_t z);
@@ -1064,6 +1070,7 @@ struct vec3 *psvec3_assign_vec3i(struct vec3 *result, const struct vec3i *v0);
 // vec4.c
 bool vec4_is_zero(const mfloat_t *v0);
 bool vec4_is_equal(const mfloat_t *v0, const mfloat_t *v1);
+bool vec4_is_collinear(const mfloat_t *v0, const mfloat_t *v1);
 mfloat_t *vec4(mfloat_t *result, mfloat_t x, mfloat_t y, mfloat_t z, mfloat_t w);
 mfloat_t *vec4_assign(mfloat_t *result, const mfloat_t *v0);
 mfloat_t *vec4_expand_vec2(mfloat_t *result, const mfloat_t *v0, mfloat_t z, mfloat_t w);
@@ -1099,6 +1106,7 @@ mfloat_t *vec4_assign_vec4i(mfloat_t *result, const mint_t *v0);
 #if defined(MATHC_USE_STRUCT_FUNCTIONS)
 bool svec4_is_zero(struct vec4 v0);
 bool svec4_is_equal(struct vec4 v0, struct vec4 v1);
+bool svec4_is_collinear(struct vec4 v0, struct vec4 v1);
 struct vec4 svec4(mfloat_t x, mfloat_t y, mfloat_t z, mfloat_t w);
 struct vec4 svec4_assign(struct vec4 v0);
 struct vec4 svec4_expand_vec2(struct vec2 v0, mfloat_t z, mfloat_t w);
@@ -1135,6 +1143,7 @@ struct vec4 svec4_assign_vec4i(struct vec4i v0);
 #if defined(MATHC_USE_POINTER_STRUCT_FUNCTIONS)
 bool psvec4_is_zero(struct vec4 *v0);
 bool psvec4_is_equal(struct vec4 *v0, struct vec4 *v1);
+bool psvec4_is_collinear(struct vec4 *v0, struct vec4 *v1);
 struct vec4 *psvec4(struct vec4 *result, mfloat_t x, mfloat_t y, mfloat_t z, mfloat_t w);
 struct vec4 *psvec4_assign(struct vec4 *result, struct vec4 *v0);
 struct vec4 *psvec4_expand_vec2(struct vec4 *result, struct vec2 *v0, mfloat_t z, mfloat_t w);
