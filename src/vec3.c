@@ -636,7 +636,7 @@ mfloat_t svec3_length_squared(struct vec3 v0) {
 }
 
 bool svec3_linear_independent(struct vec3 v0, struct vec3 v1, struct vec3 v2) {
-    return vec3_linear_independent((const mfloat_t *)v0, (const mfloat_t *)v1, (const mfloat_t *)v2);
+    return vec3_linear_independent((const mfloat_t *)&v0, (const mfloat_t *)&v1, (const mfloat_t *)&v2);
 }
 
 mfloat_t svec3_distance(struct vec3 v0, struct vec3 v1) {
