@@ -278,6 +278,10 @@ mfloat_t *vec4_normalize(mfloat_t *result, const mfloat_t *v0) {
     return result;
 }
 
+mfloat_t vec4_dot(const mfloat_t *v0, const mfloat_t *v1) {
+    return v0[0] * v1[0] + v0[1] * v1[1] + v0[2] * v1[2] + v0[3] * v1[3];
+}
+
 mfloat_t *vec4_lerp(mfloat_t *result, const mfloat_t *v0, const mfloat_t *v1, mfloat_t f) {
     result[0] = v0[0] + (v1[0] - v0[0]) * f;
     result[1] = v0[1] + (v1[1] - v0[1]) * f;
@@ -471,6 +475,10 @@ struct vec4 svec4_normalize(struct vec4 v0) {
     return result;
 }
 
+mfloat_t svec4_dot(struct vec4 v0, struct vec4 v1) {
+    return vec4_dot((const mfloat_t *)&v0, (const mfloat_t *)&v1);
+}
+
 struct vec4 svec4_lerp(struct vec4 v0, struct vec4 v1, mfloat_t f) {
     struct vec4 result;
     vec4_lerp((mfloat_t *)&result, (const mfloat_t *)&v0, (const mfloat_t *)&v1, f);
@@ -605,6 +613,10 @@ struct vec4 *psvec4_clamp(struct vec4 *result, struct vec4 *v0, struct vec4 *v1,
 
 struct vec4 *psvec4_normalize(struct vec4 *result, struct vec4 *v0) {
     return (struct vec4 *)vec4_normalize((mfloat_t *)result, (const mfloat_t *)v0);
+}
+
+mfloat_t psvec4_dot(struct vec4 *v0, struct vec4 *v1) {
+    return vec4_dot((const mfloat_t *)v0, (const mfloat_t *)v1);
 }
 
 struct vec4 *psvec4_lerp(struct vec4 *result, struct vec4 *v0, struct vec4 *v1, mfloat_t f) {

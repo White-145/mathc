@@ -1098,6 +1098,7 @@ mfloat_t *vec4_max(mfloat_t *result, const mfloat_t *v0, const mfloat_t *v1);
 mfloat_t *vec4_min(mfloat_t *result, const mfloat_t *v0, const mfloat_t *v1);
 mfloat_t *vec4_clamp(mfloat_t *result, const mfloat_t *v0, const mfloat_t *v1, const mfloat_t *v2);
 mfloat_t *vec4_normalize(mfloat_t *result, const mfloat_t *v0);
+mfloat_t vec4_dot(const mfloat_t *v0, const mfloat_t *v1);
 mfloat_t *vec4_lerp(mfloat_t *result, const mfloat_t *v0, const mfloat_t *v1, mfloat_t f);
 #if defined(MATHC_USE_INT)
 mfloat_t *vec4_assign_vec4i(mfloat_t *result, const mint_t *v0);
@@ -1134,6 +1135,7 @@ struct vec4 svec4_max(struct vec4 v0, struct vec4 v1);
 struct vec4 svec4_min(struct vec4 v0, struct vec4 v1);
 struct vec4 svec4_clamp(struct vec4 v0, struct vec4 v1, struct vec4 v2);
 struct vec4 svec4_normalize(struct vec4 v0);
+mfloat_t svec4_dot(struct vec4 v0, struct vec4 v1);
 struct vec4 svec4_lerp(struct vec4 v0, struct vec4 v1, mfloat_t f);
 #if defined(MATHC_USE_INT)
 struct vec4 svec4_assign_vec4i(struct vec4i v0);
@@ -1171,6 +1173,7 @@ struct vec4 *psvec4_max(struct vec4 *result, struct vec4 *v0, struct vec4 *v1);
 struct vec4 *psvec4_min(struct vec4 *result, struct vec4 *v0, struct vec4 *v1);
 struct vec4 *psvec4_clamp(struct vec4 *result, struct vec4 *v0, struct vec4 *v1, struct vec4 *v2);
 struct vec4 *psvec4_normalize(struct vec4 *result, struct vec4 *v0);
+mfloat_t psvec4_dot(struct vec4 *v0, struct vec4 *v1);
 struct vec4 *psvec4_lerp(struct vec4 *result, struct vec4 *v0, struct vec4 *v1, mfloat_t f);
 #if defined(MATHC_USE_INT)
 struct vec4 *psvec4_assign_vec4i(struct vec4 *result, struct vec4i *v0);
