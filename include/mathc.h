@@ -814,6 +814,7 @@ mfloat_t *vec2_bezier4(mfloat_t *result, const mfloat_t *v0, const mfloat_t *v1,
 mfloat_t vec2_angle(const mfloat_t *v0);
 mfloat_t vec2_length(const mfloat_t *v0);
 mfloat_t vec2_length_squared(const mfloat_t *v0);
+bool vec2_linear_independent(const mfloat_t *v0, const mfloat_t *v1);
 mfloat_t vec2_distance(const mfloat_t *v0, const mfloat_t *v1);
 mfloat_t vec2_distance_squared(const mfloat_t *v0, const mfloat_t *v1);
 mfloat_t **vec2_orthonormalization(mfloat_t **result, const mfloat_t **basis);
@@ -864,6 +865,7 @@ struct vec2 svec2_bezier4(struct vec2 v0, struct vec2 v1, struct vec2 v2, struct
 mfloat_t svec2_angle(struct vec2 v0);
 mfloat_t svec2_length(struct vec2 v0);
 mfloat_t svec2_length_squared(struct vec2 v0);
+bool svec2_linear_independent(struct vec2 v0, struct vec2 v1);
 mfloat_t svec2_distance(struct vec2 v0, struct vec2 v1);
 mfloat_t svec2_distance_squared(struct vec2 v0, struct vec2 v1);
 #if defined(MATHC_USE_INT)
@@ -914,6 +916,7 @@ struct vec2 *psvec2_bezier4(struct vec2 *result, const struct vec2 *v0, const st
 mfloat_t psvec2_angle(const struct vec2 *v0);
 mfloat_t psvec2_length(const struct vec2 *v0);
 mfloat_t psvec2_length_squared(const struct vec2 *v0);
+bool psvec2_linear_independent(const struct vec2 *v0, const struct vec2 *v1);
 mfloat_t psvec2_distance(const struct vec2 *v0, const struct vec2 *v1);
 mfloat_t psvec2_distance_squared(const struct vec2 *v0, const struct vec2 *v1);
 #if defined(MATHC_USE_INT)
@@ -964,6 +967,7 @@ mfloat_t *vec3_bezier3(mfloat_t *result, const mfloat_t *v0, const mfloat_t *v1,
 mfloat_t *vec3_bezier4(mfloat_t *result, const mfloat_t *v0, const mfloat_t *v1, const mfloat_t *v2, const mfloat_t *v3, mfloat_t f);
 mfloat_t vec3_length(const mfloat_t *v0);
 mfloat_t vec3_length_squared(const mfloat_t *v0);
+bool vec3_linear_independent(const mfloat_t *v0, const mfloat_t *v1, const mfloat_t *v2);
 mfloat_t vec3_distance(const mfloat_t *v0, const mfloat_t *v1);
 mfloat_t vec3_distance_squared(const mfloat_t *v0, const mfloat_t *v1);
 mfloat_t **vec3_orthonormalization(mfloat_t **result, const mfloat_t **basis);
@@ -1013,6 +1017,7 @@ struct vec3 svec3_bezier3(struct vec3 v0, struct vec3 v1, struct vec3 v2, mfloat
 struct vec3 svec3_bezier4(struct vec3 v0, struct vec3 v1, struct vec3 v2, struct vec3 v3, mfloat_t f);
 mfloat_t svec3_length(struct vec3 v0);
 mfloat_t svec3_length_squared(struct vec3 v0);
+bool svec3_linear_independent(struct vec3 v0, struct vec3 v1, struct vec3 v2);
 mfloat_t svec3_distance(struct vec3 v0, struct vec3 v1);
 mfloat_t svec3_distance_squared(struct vec3 v0, struct vec3 v1);
 #if defined(MATHC_USE_INT)
@@ -1062,6 +1067,7 @@ struct vec3 *psvec3_bezier3(struct vec3 *result, const struct vec3 *v0, const st
 struct vec3 *psvec3_bezier4(struct vec3 *result, const struct vec3 *v0, const struct vec3 *v1, const struct vec3 *v2, const struct vec3 *v3, mfloat_t f);
 mfloat_t psvec3_length(const struct vec3 *v0);
 mfloat_t psvec3_length_squared(const struct vec3 *v0);
+bool psvec3_linear_independent(const struct vec3 *v0, const struct vec3 *v1, const struct vec3 *v2);
 mfloat_t psvec3_distance(const struct vec3 *v0, const struct vec3 *v1);
 mfloat_t psvec3_distance_squared(const struct vec3 *v0, const struct vec3 *v1);
 #if defined(MATHC_USE_INT)

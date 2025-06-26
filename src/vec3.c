@@ -355,6 +355,10 @@ mfloat_t vec3_length_squared(const mfloat_t *v0) {
     return v0[0] * v0[0] + v0[1] * v0[1] + v0[2] * v0[2];
 }
 
+bool vec3_linear_independent(const mfloat_t *v0, const mfloat_t *v1, const mfloat_t *v2) {
+    return MFABS(v0[0] * v1[1] * v2[2] + v0[1] * v1[2] * v2[0] + v0[2] * v1[0] * v2[1] - v0[2] * v1[1] * v2[0] - v0[1] * v1[0] * v2[2] - v0[0] * v1[2] * v2[1]) >= MFLT_EPSILON;
+}
+
 mfloat_t vec3_distance(const mfloat_t *v0, const mfloat_t *v1) {
     return MSQRT((v0[0] - v1[0]) * (v0[0] - v1[0]) + (v0[1] - v1[1]) * (v0[1] - v1[1]) + (v0[2] - v1[2]) * (v0[2] - v1[2]));
 }
@@ -364,7 +368,7 @@ mfloat_t vec3_distance_squared(const mfloat_t *v0, const mfloat_t *v1) {
 }
 
 mfloat_t **vec3_orthonormalization(mfloat_t **result, const mfloat_t **basis) {
-    if (vec3_is_collinear(basis[0], basis[1]) || vec3_is_collinear(basis[0], basis[2]) || vec3_is_collinear(basis[1], basis[2])) {
+    if (!vec3_linear_independent(basis[0], basis[1], basis[2])) {
         return (mfloat_t **)result;
     }
 
@@ -631,6 +635,10 @@ mfloat_t svec3_length_squared(struct vec3 v0) {
     return vec3_length_squared((const mfloat_t *)&v0);
 }
 
+bool svec3_linear_independent(struct vec3 v0, struct vec3 v1, struct vec3 v2) {
+    return vec3_linear_independent((const mfloat_t *)v0, (const mfloat_t *)v1, (const mfloat_t *)v2);
+}
+
 mfloat_t svec3_distance(struct vec3 v0, struct vec3 v1) {
     return vec3_distance((const mfloat_t *)&v0, (const mfloat_t *)&v1);
 }
@@ -811,6 +819,10 @@ mfloat_t psvec3_length(const struct vec3 *v0) {
 
 mfloat_t psvec3_length_squared(const struct vec3 *v0) {
     return vec3_length_squared((const mfloat_t *)v0);
+}
+
+bool psvec3_linear_independent(const struct vec3 *v0, const struct vec3 *v1, const struct vec3 *v2) {
+    return vec3_linear_independent((const mfloat_t *)v0, (const mfloat_t *)v1, (const mfloat_t *)v2);
 }
 
 mfloat_t psvec3_distance(const struct vec3 *v0, const struct vec3 *v1) {
