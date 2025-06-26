@@ -18,6 +18,11 @@ the following restrictions:
   3. This notice may not be removed or altered from any source distribution.
 */
 
+/*
+The following code has been altered by White_145, stated as per license agreement.
+https://github.com/White-145/mathc
+*/
+
 #ifndef MATHC_H
 #define MATHC_H
 
